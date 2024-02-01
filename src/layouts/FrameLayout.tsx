@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
 import ContextProvider from "../context/ContextProvider";
 
-const MainLayout = () => {
+const FrameLayout = () => {
     return (
         <ContextProvider>
             <SuspenseLoader>
@@ -12,4 +12,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+export default FrameLayout;

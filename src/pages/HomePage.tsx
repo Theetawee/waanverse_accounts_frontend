@@ -1,5 +1,6 @@
 import Welcome from "../assets/images/hello.png";
 import Bg from "../assets/images/bg.svg";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
     return (
@@ -66,12 +67,12 @@ const HomePage = () => {
                         >
                             Create account
                         </button>
-                        <button
+                        <Link to={"/login"}
                             type="button"
                             className="py-2.5 w-full sm:w-auto sm:ml-10 px-5 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10  focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                         >
                             Login to account
-                        </button>
+                        </Link>
                     </div>
                 </section>
             </section>
