@@ -7,7 +7,7 @@ const ProtectedRoute = () => {
 
 
     if(isAuthenticated) {
-        return <Navigate to="/" />;
+        return <Navigate to="/account" />;
     } else {
         return <Outlet />
     }

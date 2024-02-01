@@ -5,8 +5,10 @@ import ContextProvider from "../context/ContextProvider";
 const MainLayout = () => {
     return (
         <ContextProvider>
-            <SuspenseLoader>
-                <Outlet />
+        <SuspenseLoader>
+          <main className="min-h-screen">
+            <Outlet />
+            </main>
             </SuspenseLoader>
         </ContextProvider>
     );

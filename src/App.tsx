@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const AccountPage = lazy(() => import("./pages/AccountPage"));
+const SignupPage = lazy(() => import("./pages/SignupPage"));
 import FrameLayout from "./layouts/FrameLayout";
 import MainLayout from "./layouts/MainLayout";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
             <Route element={<ProtectedRoute />}>
                 <Route index element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
             </Route>
         </Route>,
         <Route path="/account" element={<FrameLayout />}>
