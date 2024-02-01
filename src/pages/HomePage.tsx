@@ -2,7 +2,15 @@ import Welcome from "../assets/images/hello.png";
 import Bg from "../assets/images/bg.svg";
 import { Link } from "react-router-dom";
 
+
+
+
 const HomePage = () => {
+
+
+
+
+
     return (
         <>
             <section
