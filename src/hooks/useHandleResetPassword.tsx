@@ -46,9 +46,30 @@ const useHandleResetPassword = () => {
   }
 
 
+  const changePassword=async (new_password1: string, new_password2: string,token: string,uid: string) => {
+    setIsLoading(true);
+    try {
+      const response = await api.post(`/accounts/reset/password/${uid}/${token}/`, {
+        new_password1,
+        new_password2,
+        uid,
+        token
+
+      })
+      return response.data
+    } catch {
+      toast.error("Unable to change password, please try again");
+
+    } finally {
+      setIsLoading(false);
+    }
+
+  }
+
+
 
   return {
-    getSecurityQuestions,isLoading,verifyAnswers
+    getSecurityQuestions,isLoading,verifyAnswers,changePassword
   }
 }
 
