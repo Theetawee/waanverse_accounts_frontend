@@ -18,3 +18,13 @@ export interface LoginResponse {
     refresh: string;
     user: User;
 }
+
+
+export interface SignupFormData{
+    email: string;
+    password: string;
+    confirm_password: string;
+    first_name: string;
+    last_name: string;
+    country: string;
+}

@@ -25,11 +25,10 @@ const useLogin = () => {
                 toast.success("Login successful")
 
             } else {
-                toast.error("Login failed")
+                toast.error("Invalid credentials! Login failed")
             }
         } catch (error) {
-            console.log(error)
-            toast.error("Login failed")
+            toast.error("Unable to login with provided credentials")
         }finally{
             setIsLoading(false);
         }
