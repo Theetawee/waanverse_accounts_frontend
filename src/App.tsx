@@ -14,6 +14,9 @@ import FrameLayout from "./layouts/FrameLayout";
 import MainLayout from "./layouts/MainLayout";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
 import PrivateRoute from "./components/utils/PrivateRoute";
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+import SuspenseLoader from "./components/utils/SuspenseLoader";
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -29,6 +32,7 @@ const router = createBrowserRouter(
                 <Route index element={<AccountPage />} />
             </Route>
         </Route>,
+        <Route path="*" element={<SuspenseLoader><NotFoundPage /></SuspenseLoader>} />
     ])
 );
 
