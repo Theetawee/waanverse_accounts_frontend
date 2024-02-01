@@ -16,7 +16,7 @@ import ProtectedRoute from "./components/utils/ProtectedRoute";
 import PrivateRoute from "./components/utils/PrivateRoute";
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 import SuspenseLoader from "./components/utils/SuspenseLoader";
-
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -25,6 +25,7 @@ const router = createBrowserRouter(
                 <Route index element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
+                <Route path="/reset-password" element={<ResetPasswordPage />} />
             </Route>
         </Route>,
         <Route path="/account" element={<FrameLayout />}>

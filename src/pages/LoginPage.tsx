@@ -71,7 +71,7 @@ const LoginPage = () => {
                                             </Link>{" "}
                                             a new account or click here if you{" "}
                                             <Link
-                                                to="/forgot-password"
+                                                to="/reset-password"
                                                 className="text-primary-600 hover:underline"
                                             >
                                                 Forgot&nbsp;your&nbsp;Password
