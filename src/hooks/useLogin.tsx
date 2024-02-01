@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import useAxios from "./useAxios";
 import { toast } from 'react-hot-toast';
-
+import { AuthContext } from "../context/AuthContext";
 
 
 const useLogin = () => {
@@ -10,7 +10,10 @@ const useLogin = () => {
 
     const api = useAxios();
 
-    const login = async (email: string, password: string) => {
+    const {AuthenticateUser } = useContext(AuthContext);
+
+
+    const login: (email: string, password: string) => Promise<void> = async (email, password) => {
         setIsLoading(true);
         try {
             const response = await api.post("/accounts/login/", {
@@ -18,14 +21,11 @@ const useLogin = () => {
                 password,
             })
             if (response.status === 200) {
-                console.log(response.data)
+                AuthenticateUser(response.data.user)
                 toast.success("Login successful")
-                return response.data
 
             } else {
-                console.log("login failed")
                 toast.error("Login failed")
-                console.log(response.data)
             }
         } catch (error) {
             console.log(error)
