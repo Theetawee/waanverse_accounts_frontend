@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Bg from "../assets/images/bg.svg";
 import Input from "../components/common/Input";
 import { FaLock } from "react-icons/fa";
 import { useState } from "react";
@@ -130,7 +129,6 @@ const SignupPage = () => {
     return (
         <section
             className="h-full overflow-x-hidden"
-            style={{ backgroundImage: `url(${Bg})` }}
         >
             <div className="min-h-screen py-16 bg-gray-100/40 px-4 flex items-center justify-center">
                 <div className="p-4 w-full mx-auto rounded-xl max-w-md shadow bg-white">

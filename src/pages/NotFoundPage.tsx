@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
     return (
-        <section className="h-screen flex px-4 items-center justify-center">
+        <section className="h-screen bg-page-pattern bg-no-repeat bg-center bg-cover flex px-4 items-center justify-center">
             <div className="max-w-lg mx-auto">
                 <h1 className="text-3xl font-bold mb-4">
                     Oops! Page Not Found

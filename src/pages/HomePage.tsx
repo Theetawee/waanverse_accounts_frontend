@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
-import Lock from "../assets/images/lock.png"; 
+import Lock from "../assets/images/lock.png";
 
 const HomePage = () => {
     return (
         <>
-            <section className="h-full bg-cover bg-page-pattern  bg-no-repeat bg-center overflow-x-hidden">
+            <section className="h-full overflow-x-hidden">
                 <section className="bg-gray-100/30">
                     <div className="p-10">
                         <img

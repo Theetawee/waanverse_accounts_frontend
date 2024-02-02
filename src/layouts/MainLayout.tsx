@@ -6,7 +6,7 @@ const MainLayout = () => {
     return (
         <ContextProvider>
         <SuspenseLoader>
-          <main className="min-h-screen">
+          <main className="min-h-screen bg-page-pattern bg-no-repeat bg-center bg-cover">
             <Outlet />
             </main>
             </SuspenseLoader>
