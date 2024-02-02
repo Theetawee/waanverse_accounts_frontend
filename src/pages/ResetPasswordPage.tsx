@@ -75,7 +75,7 @@ const ResetPasswordPage = () => {
     };
 
     return (
-        <section className="min-h-screen bg-gray-50 px-4 py-16">
+        <section className="min-h-screen bg-gray-50/40 px-4 py-16">
             <div>
                 <div className="max-w-lg bg-white shadow mx-auto p-4 rounded-xl">
                     {step === 1 && (
