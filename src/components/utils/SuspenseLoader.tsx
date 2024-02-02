@@ -9,7 +9,7 @@ const SuspenseLoader = ({ children }: { children: ReactNode }) => {
                     <>
                         <div className="flex items-center py-6 justify-center">
                             <span>
-                                <LuLoader2 className="animate-spin w-4 h-4 text-primary-600" />
+                                <LuLoader2 className="animate-spin w-6 h-6 text-primary-600" />
                             </span>
                         </div>
                     </>
