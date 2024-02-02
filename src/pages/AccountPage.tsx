@@ -1,30 +1,30 @@
-import { useContext } from "react"
-import { AuthContext } from "../context/AuthContext"
-import toast from "react-hot-toast";
-
+import DefaultAvater from "../assets/images/default.webp";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 const AccountPage = () => {
+    const { userData } = useContext(AuthContext);
 
-  const { userData,setUserData } = useContext(AuthContext);
+    const name = `${userData?.first_name} ${userData?.last_name}`;
 
+    return (
+        <section className="min-h-screen py-8 px-4">
+            <div className="w-full max-w-md mx-auto ">
+                <div className="flex items-center justify-center">
+                    <img
+                        src={DefaultAvater}
+                        alt={name}
+                        className="w-24 h-24 rounded-full"
+                    />
+                </div>
+                <div className="py-2 text-gray-700">
+                    <h1 className="text-2xl text-center">
+                        Hello {name}, Welcome to your account center
+                    </h1>
+                </div>
+            </div>
+        </section>
+    );
+};
 
-
-
-  return (
-    <>
-
-      <div>
-        <h1>Account Page</h1>
-        {userData?.email}
-      </div>
-
-      <button onClick={() => {
-        setUserData(null)
-        toast.success("Logout successful")
-      }}>Logout</button>
-
-    </>
-  )
-}
-
-export default AccountPage
+export default AccountPage;

@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
 import SuspenseLoader from "../components/utils/SuspenseLoader";
 import ContextProvider from "../context/ContextProvider";
+import AppBar from "./AppBar";
 
 const FrameLayout = () => {
     return (
         <ContextProvider>
+            <SuspenseLoader>
+                <AppBar/>
+            </SuspenseLoader>
             <SuspenseLoader>
                 <Outlet />
             </SuspenseLoader>
