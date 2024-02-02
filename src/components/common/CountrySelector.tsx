@@ -13,6 +13,7 @@ function CountrySelector( {sendValue}: {sendValue: (value: any) => void}) {
             padding:"4px",
             display: "flex",
             flexWrap: "nowrap",
+            borderRadius: "7px",
         }),
         menu: (provided:any) => ({
             ...provided,
