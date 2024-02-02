@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from "axios";
-// import { useContext } from "react";
-// import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const useAxios = () => {
     const baseUrl: string = import.meta.env.VITE_BASE_URL;
-    // const { refreshToken, logout } = useContext(AuthContext);
+    const { setUserData } = useContext(AuthContext);
     const axiosInstance: AxiosInstance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
@@ -13,7 +13,7 @@ const useAxios = () => {
         },
     });
 
-    /* Add a response interceptor
+    //Add a response interceptor
     axiosInstance.interceptors.response.use(
         (response) => response,
         async (error) => {
@@ -28,11 +28,14 @@ const useAxios = () => {
                 originalRequest._retry = true;
                 try {
                     // Wait for the token refresh to complete before retrying the request
-                    await refreshToken();
+                    await fetch(`${baseUrl}/accounts/token/refresh/`, {
+                        method: "POST",
+                        credentials: "include",
+                    })
                     return axiosInstance(originalRequest);
                 } catch {
                     // If token refresh fails, log the user out
-                    logout();
+                    setUserData(null);
                     return Promise.reject(error);
                 }
             }
@@ -40,7 +43,7 @@ const useAxios = () => {
             // If the error is not due to a 401 status code, reject the promise
             return Promise.reject(error);
         }
-    );*/
+    );
 
     return axiosInstance;
 };

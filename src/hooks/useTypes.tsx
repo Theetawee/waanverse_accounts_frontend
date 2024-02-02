@@ -11,6 +11,8 @@ export interface User {
     last_login: string;
     last_name: string;
     phone: string | null;
+    security_question_type_one: string | null;
+    security_question_type_two: string | null;
 }
 
 export interface LoginResponse {

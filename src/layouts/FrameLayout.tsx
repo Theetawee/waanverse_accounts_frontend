@@ -10,7 +10,9 @@ const FrameLayout = () => {
                 <AppBar/>
             </SuspenseLoader>
             <SuspenseLoader>
-                <Outlet />
+                <main className="min-h-screen">
+                    <Outlet />
+                    </main>
             </SuspenseLoader>
         </ContextProvider>
     );

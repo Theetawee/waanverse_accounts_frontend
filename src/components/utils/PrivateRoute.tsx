@@ -7,10 +7,12 @@ import { Navigate,Outlet } from "react-router-dom";
 
 
 const PrivateRoute = () => {
-    const { isAuthenticated} = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext);
+
+
 
     if (isAuthenticated) {
-        return <Outlet />;
+        return <Outlet />
     } else {
         return <Navigate to="/login" />
     }
