@@ -5,21 +5,22 @@ import Lock from "../assets/images/lock.png";
 const HomePage = () => {
     return (
         <>
-            <section
-                className="h-full bg-cover bg-page-pattern bg-no-repeat bg-center overflow-x-hidden"
-
-            >
+            <section className="h-full bg-cover bg-page-pattern  bg-no-repeat bg-center overflow-x-hidden">
                 <section className="bg-gray-100/30">
                     <div className="p-10">
-                        <img src={Logo} alt="Waanverse" className="w-16 h-16" />
+                        <img
+                            src={Logo}
+                            alt="Waanverse"
+                            className="w-12 rounded shadow h-12"
+                        />
                     </div>
 
                     <section className="dark:bg-gray-900">
                         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:px-12">
                             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                                Elevate Your Experience with{" "}
-                                <span className="text-primary-600">
-                                    WaanVerse Accounts
+                                Elevate Your Online Experience with{" "}
+                                <span className="text-primary-600 underline-offset-8 underline">
+                                    WaanVerse&nbsp;Accounts
                                 </span>
                             </h1>
                             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
@@ -61,8 +62,8 @@ const HomePage = () => {
                         </div>
                     </section>
                 </section>
-<hr />
-                <section className="h-[50vh] flex flex-col justify-center items-center px-6">
+                <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
+                <section className="min-h-[50vh] py-10 flex flex-col justify-center items-center px-6">
                     <div className="mb-20">
                         <h2 className="text-center text-4xl font-bold text-primary-600">
                             Embark on Your Journey with WaanVerse Accounts
