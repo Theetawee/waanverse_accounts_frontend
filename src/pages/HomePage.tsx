@@ -1,4 +1,3 @@
-import Bg from "../assets/images/bg.svg";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import Lock from "../assets/images/lock.png";
