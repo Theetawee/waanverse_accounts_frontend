@@ -3,6 +3,7 @@ import Input from "../components/common/Input";
 import { FaLock } from "react-icons/fa";
 import useLogin from "../hooks/useLogin";
 import Loader from "../components/common/Loader";
+import BasicFooter from "../components/common/BasicFooter";
 
 const LoginPage = () => {
     const { login, isLoading } = useLogin();
@@ -18,7 +19,7 @@ const LoginPage = () => {
         <section
             className="h-full overflow-x-hidden "
         >
-            <div className="h-screen bg-gray-100/40 px-4 flex items-center justify-center">
+            <div className="h-screen flex-col bg-gray-100/40 px-4 flex items-center justify-center">
                 <div className="p-4 w-full mx-auto rounded-xl max-w-md shadow bg-white">
                     <form method="post" onSubmit={handleSubmit}>
                         <div className="grid space-y-6 grid-cols-1">
@@ -81,7 +82,7 @@ const LoginPage = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+                <BasicFooter/>            </div>
         </section>
     );
 };

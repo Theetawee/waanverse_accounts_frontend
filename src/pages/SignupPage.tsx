@@ -5,12 +5,12 @@ import { useState } from "react";
 import CountrySelector from "../components/common/CountrySelector";
 import useSignup from "../hooks/useSignup";
 import Loader from "../components/common/Loader";
+import BasicFooter from "../components/common/BasicFooter";
 
 const SignupPage = () => {
     const [step, setStep] = useState(1);
     const totalSteps = 3;
     const { signup, isLoading, errors } = useSignup();
-
 
     const [data, setData] = useState({
         first_name: "",
@@ -127,10 +127,8 @@ const SignupPage = () => {
     };
 
     return (
-        <section
-            className="h-full overflow-x-hidden"
-        >
-            <div className="min-h-screen py-16 bg-gray-100/40 px-4 flex items-center justify-center">
+        <section className="h-full overflow-x-hidden">
+            <div className="min-h-screen flex-col py-16 bg-gray-100/40 px-4 flex items-center justify-center">
                 <div className="p-4 w-full mx-auto rounded-xl max-w-md shadow bg-white">
                     <form method="post" onSubmit={handleSubmit}>
                         <div className="grid space-y-6 grid-cols-1">
@@ -188,11 +186,14 @@ const SignupPage = () => {
                                             disabled={isLoading}
                                             className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded w-full"
                                         >
-                                            {isLoading ? <Loader fill="white"/> : "Submit"}
+                                            {isLoading ? (
+                                                <Loader fill="white" />
+                                            ) : (
+                                                "Submit"
+                                            )}
                                         </button>
                                     </div>
                                 )}
-
                             </div>
                             <div>
                                 <div className="flex items-center">
@@ -213,6 +214,7 @@ const SignupPage = () => {
                         </div>
                     </form>
                 </div>
+                <BasicFooter />
             </div>
         </section>
     );

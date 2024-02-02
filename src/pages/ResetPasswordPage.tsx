@@ -4,6 +4,7 @@ import Loader from "../components/common/Loader";
 import useHandleResetPassword from "../hooks/useHandleResetPassword";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import BasicFooter from "../components/common/BasicFooter";
 
 const ResetPasswordPage = () => {
     const navigate = useNavigate();
@@ -25,7 +26,6 @@ const ResetPasswordPage = () => {
 
         const qns = await getSecurityQuestions(email);
 
-
         if (
             qns.question1 !== "" &&
             qns.question1 !== null &&
@@ -35,7 +35,7 @@ const ResetPasswordPage = () => {
             setStep(2);
             setQuestion1(qns.question1);
             setQuestion2(qns.question2);
-        }else {
+        } else {
             toast.error("No security questions found for this email address");
         }
     };
@@ -103,7 +103,11 @@ const ResetPasswordPage = () => {
                                         disabled={isLoading}
                                         className=" bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded"
                                     >
-                                        {isLoading ? <Loader fill="white" /> : "Continue"}
+                                        {isLoading ? (
+                                            <Loader fill="white" />
+                                        ) : (
+                                            "Continue"
+                                        )}
                                     </button>
                                 </div>
                             </form>
@@ -209,6 +213,7 @@ const ResetPasswordPage = () => {
                     )}
                 </div>
             </div>
+            <BasicFooter />
         </section>
     );
 };

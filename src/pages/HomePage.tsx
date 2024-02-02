@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import Lock from "../assets/images/lock.png";
+import BasicFooter from "../components/common/BasicFooter";
 
 const HomePage = () => {
     return (
@@ -85,6 +86,9 @@ const HomePage = () => {
                             Login to Your Account
                         </Link>
                     </div>
+                    <div className="py-6">
+                        <BasicFooter />
+                        </div>
                 </section>
             </section>
         </>
