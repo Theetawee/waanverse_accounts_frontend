@@ -35,6 +35,8 @@ const ResetPasswordPage = () => {
             setStep(2);
             setQuestion1(qns.question1);
             setQuestion2(qns.question2);
+        }else {
+            toast.error("No security questions found for this email address");
         }
     };
 
