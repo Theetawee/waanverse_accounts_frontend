@@ -4,6 +4,10 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            backgroundImage: {
+                "page-pattern":
+                    "url('https://files.waanverse.com/images/bg.svg')",
+            },
             colors: {
                 primary: {
                     50: "#ecfeff",

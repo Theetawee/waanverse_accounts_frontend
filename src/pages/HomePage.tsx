@@ -7,8 +7,8 @@ const HomePage = () => {
     return (
         <>
             <section
-                className="h-full bg-cover bg-no-repeat bg-center overflow-x-hidden"
-                style={{ backgroundImage: `url(${Bg})` }}
+                className="h-full bg-cover bg-page-pattern bg-no-repeat bg-center overflow-x-hidden"
+
             >
                 <section className="bg-gray-100/30">
                     <div className="p-10">
