@@ -17,11 +17,11 @@ const AccountPage = () => {
                         className="w-24 h-24 rounded-full"
                     />
                 </div>
-                <div className="py-2 text-gray-700">
-                    <h1 className="text-2xl text-center">
-                        Hello {name}, Welcome to your account center
-                    </h1>
-                </div>
+            </div>
+            <div className="py-2 text-gray-700">
+                <h1 className="text-2xl text-center">
+                    Hello {name}, Welcome to your account center
+                </h1>
             </div>
         </section>
     );
