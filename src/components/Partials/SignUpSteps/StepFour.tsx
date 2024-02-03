@@ -17,6 +17,10 @@ const StepFour = () => {
                 disabled={false}
                 required={true}
             />
+            <span className="text-sm text-gray-600">
+                Enter a valid phone number with the country code, e.g.,
+                +2348012345678.
+            </span>
         </div>
     );
 

@@ -33,7 +33,7 @@ const AppBar = () => {
                                 <SearchBox />
                             </div>
                             <div className="w-1/2 justify-end flex items-center ml-auto">
-                                <div className="grid grid-cols-2 gap-4 sm:grid-col-1">
+                                <div className="grid grid-cols-3 gap-4 sm:grid-col-1">
                                     <button className="sm:hidden">
                                         <BsSearch className="w-6 h-6 text-gray-600" />
                                     </button>

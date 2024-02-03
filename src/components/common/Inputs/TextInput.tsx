@@ -12,10 +12,12 @@ interface Props {
     type: string,
     inref: any
 }
-
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const TextInput = ({id,name,disabled,required,setValue=false,minLength=0,value="",onChange=() => {},label,type,inref}: Props) => {
 
+    const [passwordType, setPasswordType] = useState("password");
 
 
 
@@ -29,7 +31,7 @@ const TextInput = ({id,name,disabled,required,setValue=false,minLength=0,value="
               <div className="relative">
                   {setValue ? (
                       <input
-                          type={type}
+                          type={type === "password" ? passwordType : type}
                           ref={inref}
                           name={name}
                           id={id}
@@ -46,9 +48,9 @@ const TextInput = ({id,name,disabled,required,setValue=false,minLength=0,value="
                       />
                   ) : (
                       <input
-                          type="text"
-                              name={name}
-                              ref={inref}
+                          type={type === "password" ? passwordType : type}
+                          name={name}
+                          ref={inref}
                           id={id}
                           disabled={disabled}
                           required={required}
@@ -56,15 +58,35 @@ const TextInput = ({id,name,disabled,required,setValue=false,minLength=0,value="
                           placeholder=" "
                           autoCapitalize="off"
                           autoComplete="off"
-                              minLength={minLength}
+                          minLength={minLength}
                           aria-label={label}
                       />
                   )}
+                  {type === "password" && (
+                      <div className="absolute  top-[18px] right-4">
+                          {passwordType === "text" ? (
+                              <span
+                                  onClick={() => setPasswordType("password")}
+                                  className="cursor-pointer"
+                              >
+                                  <FaEyeSlash className="w-5 text-gray-600 h-5" />
+                              </span>
+                          ) : (
+                              <span
+                                  onClick={() => setPasswordType("text")}
+                                  className="cursor-pointer"
+                              >
+                                  <FaEye className="w-5 h-5 text-gray-600" />
+                              </span>
+                          )}
+                      </div>
+                  )}
+
                   <label
                       htmlFor={id}
                       className="absolute  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 text-lg scale-75 top-3 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-primary-600 peer-focus:dark:text-primary-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                   >
-                    {label}
+                      {label}
                   </label>
               </div>
           </div>

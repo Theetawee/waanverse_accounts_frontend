@@ -18,8 +18,6 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 import SuspenseLoader from "./components/utils/SuspenseLoader";
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 const SetSecurityQuestions = lazy(() => import("./pages/SetSecurityQuestions"));
-import HasQuestions from "./components/utils/HasQuestions";
-import HasNoQuestions from "./components/utils/HasNoQuestions";
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<MainLayout />}>
@@ -32,15 +30,11 @@ const router = createBrowserRouter(
         </Route>,
         <Route path="/account" element={<FrameLayout />}>
             <Route element={<PrivateRoute />}>
-                <Route element={<HasQuestions />}>
                     <Route index element={<AccountPage />} />
-                </Route>
-                <Route element={<HasNoQuestions />}>
                     <Route
                         path="/account/set-security-questions"
                         element={<SetSecurityQuestions />}
                     />
-                </Route>
             </Route>
         </Route>,
         <Route

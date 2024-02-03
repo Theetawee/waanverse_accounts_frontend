@@ -17,6 +17,9 @@ const StepEight = () => {
                 disabled={false}
                 required={true}
             />
+            <span className="text-sm text-gray-600">
+                Use a strong password with at least 8 characters and numbers
+            </span>
         </div>
     );
 
