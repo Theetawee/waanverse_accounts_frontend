@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const useAxios = () => {
     const baseUrl: string = import.meta.env.VITE_BASE_URL;
-    const { setUserData } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
     const axiosInstance: AxiosInstance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
@@ -35,7 +35,7 @@ const useAxios = () => {
                     return axiosInstance(originalRequest);
                 } catch {
                     // If token refresh fails, log the user out
-                    setUserData(null);
+                    logout();
                     return Promise.reject(error);
                 }
             }
