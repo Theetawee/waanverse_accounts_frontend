@@ -1,22 +1,22 @@
-import TextInput from "../../common/Inputs/TextInput";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import StepFrame from "./StepFrame";
+import CountrySelector from "../../common/CountrySelector";
+
+
+
 
 // Step six handles the country
 const StepSix = () => {
+
+    const [country,setCountry]=useState('')
+
     const countryRef = useRef<HTMLInputElement>(null);
 
     const countryInput = (
         <div>
-            <TextInput
-                inref={countryRef}
-                type="text"
-                id="country"
-                name="country"
-                label="Country"
-                disabled={false}
-                required={true}
-            />
+            <p className="mb-2">What's your country?</p>
+            <CountrySelector sendValue={(value) => setCountry(value.label)}/>
+            <input type="hidden" id="waanverse_user_country" name="country" ref={countryRef} value={country} />
         </div>
     );
 

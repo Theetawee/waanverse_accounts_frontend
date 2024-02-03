@@ -10,7 +10,7 @@ const StepTwo = () => {
             <TextInput
                 inref={lastNameRef}
                 type="text"
-                id="last_name"
+                id="waanverse_last_name"
                 name="last_name"
                 label="Last Name"
                 disabled={false}

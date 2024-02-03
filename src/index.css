@@ -32,3 +32,21 @@
 .appbarlink.active{
   @apply border-b-4 rounded-sm border-primary-600 ;
 }
+
+
+.react-datepicker__input-container{
+  width: 100% !important;
+  display: block !important;
+
+}
+.react-datepicker__input-container>input{
+    padding: 10px !important;
+    padding-left: 40px !important;
+
+}
+
+
+
+.react-datepicker-wrapper{
+  width: 100%;
+}

@@ -1,23 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
-
 interface StepContextType {
     step: number;
     setStep: React.Dispatch<React.SetStateAction<number>>
-    data: DataType[]
-    setData: React.Dispatch<React.SetStateAction<DataType[]>>
+    data: [];
+    setData: React.Dispatch<React.SetStateAction<[]>>
 }
 
-interface DataType{
-    name: string
-    value: string
-}
 
 export const StepContext = createContext<StepContextType>({
     step: 1,
     setStep: () => { },
     data: [],
-    setData: () => { }
+    setData:()=>{}
 });
 
 
@@ -25,7 +20,7 @@ const StepContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [step, setStep] = useState(1);
 
-    const [data, setData] = useState<DataType[]>([]);
+    const [data, setData] = useState<any>([]);
 
     const contextData: StepContextType ={
         step,

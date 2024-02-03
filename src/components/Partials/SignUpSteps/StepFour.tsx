@@ -11,8 +11,8 @@ const StepFour = () => {
             <TextInput
                 inref={phoneNumberRef}
                 type="text"
-                id="phone_nummber"
-                name="phone_nummber"
+                id="phone_number"
+                name="phone_number"
                 label="Phone Number"
                 disabled={false}
                 required={true}

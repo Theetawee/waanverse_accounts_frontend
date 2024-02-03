@@ -20,9 +20,31 @@ const utils = () => {
         return decryptedData;
     };
 
+    const generateWaanverseEmail = (input: string): string | null => {
+        // Remove unwanted characters and replace spaces with underscores
+        const sanitizedInput = input
+            .replace(/[^\w\s@.-]/g, "")
+            .replace(/\s/g, "_");
+
+        // Validate if the string looks like an email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailRegex.test(sanitizedInput)) {
+            // If it's a valid email, append "@waanverse.com" and return
+            return sanitizedInput.includes("@")
+                ? sanitizedInput.split("@")[0] + "@waanverse.com"
+                : sanitizedInput + "@waanverse.com";
+        } else {
+            const newEmail = sanitizedInput + "@waanverse.com";
+            return newEmail;
+        }
+    };
+
+
     return {
         encryptData,
         decryptData,
+        generateWaanverseEmail
     }
 };
 

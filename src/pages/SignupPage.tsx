@@ -23,6 +23,9 @@ const SignupPage = () => {
                                 <h1 className="text-3xl">
                                     Create your WaanVerse Account
                                 </h1>
+                                <div className="max-w-32 text-center rounded border w-full border-gray-100 p-2">
+                                    <p className="font-medium text-lg">Step {step} of 10</p>
+                                </div>
                             </div>
                             {step===1 && (
                             <div>

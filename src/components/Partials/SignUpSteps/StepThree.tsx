@@ -6,16 +6,19 @@ const StepThree = () => {
     const emailRef = useRef<HTMLInputElement>(null);
 
     const emailInput = (
-        <div>
+        <div className="relative">
             <TextInput
                 inref={emailRef}
-                type="email"
+                type="text"
                 id="waanverse_email"
                 name="waanverse_email"
                 label="Email"
                 disabled={false}
                 required={true}
             />
+            <div className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-500">
+                @waanverse.com
+            </div>
         </div>
     );
 
