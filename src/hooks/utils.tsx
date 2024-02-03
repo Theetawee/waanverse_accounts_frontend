@@ -1,12 +1,12 @@
 import CryptoJS from "crypto-js";
-import { User } from "./useTypes";
+import { UserType } from "./types";
 
 
 
 
 const SECRET_KEY=import.meta.env.VITE_SECRET_KEY;
 const utils = () => {
-    const encryptData = (data: User): string => {
+    const encryptData = (data: UserType): string => {
         const encryptedData = CryptoJS.AES.encrypt(
             JSON.stringify(data),
             SECRET_KEY
@@ -14,7 +14,7 @@ const utils = () => {
         return encryptedData;
     };
 
-    const decryptData = (encryptedData: string): User => {
+    const decryptData = (encryptedData: string): UserType => {
         const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
         const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
         return decryptedData;

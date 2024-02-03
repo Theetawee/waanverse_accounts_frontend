@@ -5,7 +5,9 @@ import { Navigate,Outlet } from "react-router-dom";
 
 const HasNoQuestions = () => {
 
-    const { hasQuestions } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
+
+  
 
     if(hasQuestions) {
       return <Navigate to="/account" />
@@ -15,7 +17,7 @@ const HasNoQuestions = () => {
 
 
 
-  
+
 }
 
 export default HasNoQuestions

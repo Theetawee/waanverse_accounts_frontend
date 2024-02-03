@@ -11,9 +11,9 @@ const AppBar = () => {
 
     const [dropOut, setDropOut] = useState(false)
 
-    const {setUserData } = useContext(AuthContext);
+    const {logout } = useContext(AuthContext);
     const handleLogout=()=>{
-        setUserData(null);
+        logout();
         setDropOut(false);
     }
 

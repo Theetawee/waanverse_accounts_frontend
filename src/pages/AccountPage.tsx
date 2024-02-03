@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { FaPencilAlt, FaLink, FaShieldAlt, FaLock } from "react-icons/fa";
 
 const AccountPage = () => {
-    const { userData } = useContext(AuthContext);
+    const { userInfo } = useContext(AuthContext);
 
-    const name = `${userData?.first_name} ${userData?.last_name}`;
+    const name = `${userInfo?.first_name} ${userInfo?.last_name}`;
 
     return (
         <>

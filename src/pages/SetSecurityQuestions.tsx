@@ -4,10 +4,10 @@ import { useState } from "react";
 import ChooseQuestionAndAnswer from "../components/Partials/ChooseQuestionAndAnswer";
 
 const SetSecurityQuestions = () => {
-    const { userData } = useContext(AuthContext);
+    const { userInfo } = useContext(AuthContext);
     const [step, setStep] = useState(1);
 
-    const name = `${userData?.first_name} ${userData?.last_name}`;
+    const name = `${userInfo?.first_name} ${userInfo?.last_name}`;
 
     return (
         <>

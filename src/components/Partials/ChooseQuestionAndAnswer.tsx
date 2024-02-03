@@ -20,7 +20,7 @@ const ChooseQuestionAndAnswer = () => {
     const [selectedTypeOne, setSelectedTypeOne] = useState("");
     const [selectedTypeTwo, setSelectedTypeTwo] = useState("");
 
-    const { userData,setRefetchUser,setHasQuestions} = useContext(AuthContext);
+    const { userInfo,setFastRefresh} = useContext(AuthContext);
 
 
     const handleTypeOneChange = (selectedOption: Option) => {
@@ -42,11 +42,10 @@ const ChooseQuestionAndAnswer = () => {
         formData.append("answer2", answer_two);
 
         try {
-            const response = await updateQuestions(userData!.id, formData);
+            const response = await updateQuestions(userInfo!.id, formData);
             console.log(response);
             if(response.message==="success"){
-                setRefetchUser(true);
-                setHasQuestions(true);
+                setFastRefresh(true);
                 toast.success("Security questions and answers updated successfully");
             }
         }catch{

@@ -1,182 +1,175 @@
-import { Dispatch, createContext, useEffect, useState } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
+import { UserType, AuthContextDataType } from "../hooks/types";
+const baseUrl = import.meta.env.VITE_BASE_URL;
+import OfflineAlert from "../components/common/OfflineAlert";
+import LoadingState from "../components/common/LoadingState";
 import utils from "../hooks/utils";
-import { User } from "../hooks/useTypes";
-interface AuthContextInterface {
-    isAuthenticated: boolean;
-    AuthenticateUser: (user: User) => void;
-    userData: User | null;
-    setUserData: Dispatch<React.SetStateAction<User | null>>;
-    hasQuestions: boolean;
-    setRefetchUser: Dispatch<React.SetStateAction<boolean>>;
-    setHasQuestions: Dispatch<React.SetStateAction<boolean>>
+
+
+
+interface AuthProviderProps {
+    children: ReactNode;
 }
 
-export const AuthContext = createContext<AuthContextInterface>({
+export const AuthContext = createContext<AuthContextDataType>({
     isAuthenticated: false,
+    userInfo: null,
     AuthenticateUser: () => {},
-    userData: null,
-    setUserData: () => {},
-    hasQuestions: false,
-    setRefetchUser: () => { },
-    setHasQuestions: () => { }
+    setFastRefresh: () => {},
+    isOnline: navigator.onLine,
+    logout: () => {},
 });
 
-const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
+const AuthProvider = ({ children }: AuthProviderProps) => {
     const { encryptData, decryptData } = utils();
-    const [refetchUser, setRefetchUser] = useState(false);
-    const [isExpired, setIsExpired] = useState(
-        () => {
-            const lastTime_string = localStorage.getItem("__ts");
-            if (lastTime_string) {
-                const lastTime = parseInt(lastTime_string);
-                const now = new Date().getTime();
-                const diff = now - lastTime;
-                //check if difference is greater than 15 mins
-                if (diff > 1000*60*15) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+    // const duration = 1000 * 60 * 15;
 
-        }
-    );
-    const [hasQuestions, setHasQuestions] = useState(() => {
-        const encryptedData = localStorage.getItem("__uD");
-        if (encryptedData) {
-            const decryptedData:User = decryptData(encryptedData);
-            console.log(decryptedData);
-            if(decryptedData.security_question_type_one === null || decryptedData.security_question_type_one === "" || decryptedData.security_question_type_two === null || decryptedData.security_question_type_two === "") {
-                return false;
-            } else {
-                return true;
-            }
+    const AuthenticateUser: (user: UserType) => void = (user) => {
+        setIsAuthenticated(true);
+        setUserInfo(user);
+        const userData = encryptData(user);
+        localStorage.setItem("__uD", userData);
+    };
 
-        } else {
-            return false;
-        }
-    });
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
-        const encryptedData = localStorage.getItem("__uD");
-        if (encryptedData) {
-            return true;
-        } else {
-            return false;
-        }
+        const user = localStorage.getItem("__uD");
+        return user ? true : false;
     });
 
-    const [userData, setUserData] = useState<User | null>(() => {
-        const encryptedData = localStorage.getItem("__uD");
-        if (encryptedData) {
-            const decryptedData = decryptData(encryptedData);
-            return decryptedData;
+    const [fastRefresh, setFastRefresh] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [userInfo, setUserInfo] = useState<UserType | null>(() => {
+        const user = localStorage.getItem("__uD");
+        if (user) {
+            const userData = decryptData(user);
+            return userData;
         } else {
             return null;
         }
     });
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-    const AuthenticateUser = (user: User) => {
-        if (
-            user.security_question_type_one === null ||
-            user.security_question_type_one === "" ||
-            user.security_question_type_two === null ||
-            user.security_question_type_two === ""
-        ) {
-            setHasQuestions(false);
-        }
-        localStorage.setItem("__uD", encryptData(user));
-        localStorage.setItem("__ts", new Date().getTime().toString());
-        setIsAuthenticated(true);
-        setUserData(user);
+
+    const UnauthenticateUser: () => Promise<void> = async () => {
+        setIsAuthenticated(false);
+        setUserInfo(null);
+        localStorage.removeItem("__Ts");
+        localStorage.removeItem("__uD");
+        await fetch(`${baseUrl}/accounts/logout/`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
     };
 
+
     useEffect(() => {
-        const LogoutUser = async () => {
-            const response = await fetch(
-                `${import.meta.env.VITE_BASE_URL}/accounts/logout/`,
-                {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
-            if (response.status === 200) {
-                localStorage.removeItem("__uD");
-                localStorage.removeItem("__ts");
-                setIsAuthenticated(false);
-                setUserData(null);
-            }
+        const AuthenticateUser: (user: UserType) => void = (user) => {
+            setIsAuthenticated(true);
+            setUserInfo(user);
+            const userData = encryptData(user);
+            localStorage.setItem("__uD", userData);
         };
 
-        if (!userData && isAuthenticated) {
-            LogoutUser();
-        }
-    }, [userData]);
-
-    useEffect(() => {
         const getUserInfo = async () => {
-            const response = await fetch(
-                `${import.meta.env.VITE_BASE_URL}/accounts/me/`,
-                {
+            try {
+                const response = await fetch(`${baseUrl}/accounts/me`, {
                     method: "GET",
                     credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                });
+
+                if (!response.ok) {
+                    return;
                 }
-            );
-            if (response.status === 200) {
-                const data = await response.json();
-                setUserData(data);
+                const data: UserType = await response.json();
                 AuthenticateUser(data);
+            } catch (error) {
+                console.error("Error fetching user info", error);
             }
         };
 
-        const refreshToken = async () => {
-            const response = await fetch(
-                `${import.meta.env.VITE_BASE_URL}/accounts/token/refresh/`,
-                {
-                    method: "POST",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+        const RefreshToken = async () => {
+            try {
+                const response = await fetch(
+                    `${baseUrl}/accounts/token/refresh/`,
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+                const data = await response.json();
+                if (response.ok) {
+                    getUserInfo();
+                } else {
+                    if (data.code === "token_not_valid") {
+                        UnauthenticateUser();
+                    }
                 }
-            );
-            if (response.status === 200) {
-                console.log("refetching");
-                getUserInfo();
-            } else {
-                setUserData(null);
+            } catch {
+                // UnauthenticateUser();
             }
         };
 
-        if (isAuthenticated && isExpired || refetchUser) {
-            refreshToken();
-            setRefetchUser(false);
-            setIsExpired(false);
+        if (fastRefresh) {
+            RefreshToken();
+            setFastRefresh(false);
+        }
+        if (userInfo === null) {
+            UnauthenticateUser();
+            setIsLoading(false);
+        } else {
+            setIsLoading(false);
         }
 
-        setRefetchUser(false);
-    }, [refetchUser]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [fastRefresh, userInfo]);
 
-    const contextData: AuthContextInterface = {
+
+    useEffect(() => {
+        const handleOnline = () => setIsOnline(true);
+        const handleOffline = () => setIsOnline(false);
+
+        window.addEventListener("online", handleOnline);
+        window.addEventListener("offline", handleOffline);
+
+        return () => {
+            window.removeEventListener("online", handleOnline);
+            window.removeEventListener("offline", handleOffline);
+        };
+    }, []);
+
+    const contextData: AuthContextDataType = {
         isAuthenticated,
+        userInfo,
         AuthenticateUser,
-        userData,
-        setUserData,
-        hasQuestions,
-        setRefetchUser,
-        setHasQuestions
+        setFastRefresh,
+        isOnline,
+        logout: UnauthenticateUser,
     };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
+            <>
+                {isLoading ? (
+                    <LoadingState />
+                ) : (
+                    <>
+                        {!isOnline && <OfflineAlert />}
+
+                        {children}
+                    </>
+                )}
+            </>
         </AuthContext.Provider>
     );
 };
 
-export default AuthContextProvider;
+export default AuthProvider;
