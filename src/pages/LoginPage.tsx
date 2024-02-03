@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Input from "../components/common/Input";
 import { FaLock } from "react-icons/fa";
 import useLogin from "../hooks/useLogin";
 import Loader from "../components/common/Loader";
 import BasicFooter from "../components/common/BasicFooter";
+import TextInput from "../components/common/Inputs/TextInput";
 
 const LoginPage = () => {
     const { login, isLoading } = useLogin();
@@ -20,7 +20,7 @@ const LoginPage = () => {
             className="h-full overflow-x-hidden "
         >
             <div className="h-screen flex-col bg-gray-100/40 px-4 flex items-center justify-center">
-                <div className="p-4 w-full mx-auto rounded-xl max-w-md shadow bg-white">
+                <div className="p-4 sm:p-8 w-full mx-auto rounded-xl max-w-lg shadow bg-white">
                     <form method="post" onSubmit={handleSubmit}>
                         <div className="grid space-y-6 grid-cols-1">
                             <div className="w-full flex items-center flex-col justify-center">
@@ -33,26 +33,18 @@ const LoginPage = () => {
                             </div>
 
                             <div>
-                                <Input
-                                    type="email"
-                                    name="email"
-                                    label="Email"
-                                    disabled={isLoading}
-                                />
+                                <TextInput type="email" label="Email" disabled={isLoading} id="waanverse_email" name="email"/>
+
                             </div>
                             <div>
-                                <Input
-                                    type="password"
-                                    name="password"
-                                    label="Password"
-                                    disabled={isLoading}
-                                />
+                                <TextInput type="password" label="Password" disabled={isLoading} id="waanverse_password" name="password"/>
+
                             </div>
-                            <div className="max-w-sm text-center mx-auto w-full">
+                            <div>
                                 <button
                                     disabled={isLoading}
                                     type="submit"
-                                    className="bg-primary-600 disabled:cursor-progress hover:bg-primary-700 text-white font-bold py-2 px-4 rounded w-full"
+                                    className="bg-primary-600 disabled:cursor-progress hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded w-20"
                                 >
                                     {isLoading ? <Loader fill="white"/> : "Login"}
                                 </button>

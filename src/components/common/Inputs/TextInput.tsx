@@ -3,19 +3,19 @@ interface Props {
     id: string,
     name: string,
     disabled: boolean,
-    required: boolean,
+    required?: boolean,
     setValue?: boolean,
     minLength?: number,
     value?: string,
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void,
     label: string,
     type: string,
-    inref: any
+    inref?: any
 }
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
-const TextInput = ({id,name,disabled,required,setValue=false,minLength=0,value="",onChange=() => {},label,type,inref}: Props) => {
+const TextInput = ({id,name,disabled,required=true,setValue=false,minLength=0,value="",onChange=() => {},label,type,inref}: Props) => {
 
     const [passwordType, setPasswordType] = useState("password");
 
