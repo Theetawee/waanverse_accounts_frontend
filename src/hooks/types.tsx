@@ -34,3 +34,20 @@ export interface SignupFormData {
     gender: "male" | "female" | "other";
     dob: string;
 }
+
+
+export interface QuestionType{
+    id: number;
+    question: string;
+    created: string;
+    category: "O" | "T";
+    uses:"text"|"number"|"date"|"address"|"email"|"time";
+}
+
+
+export interface QuestionsSumitType{
+    question1: string;
+    question2: string;
+    answer1: string;
+    answer2: string;
+}

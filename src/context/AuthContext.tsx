@@ -88,6 +88,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 }
                 const data: UserType = await response.json();
                 AuthenticateUser(data);
+                setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching user info", error);
             }
@@ -119,6 +120,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         };
 
         if (fastRefresh) {
+            setIsLoading(true);
             RefreshToken();
             setFastRefresh(false);
         }

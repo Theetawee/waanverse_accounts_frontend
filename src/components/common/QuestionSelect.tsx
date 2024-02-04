@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Select from "react-select";
+import { QuestionType } from "../../hooks/types";
 
 
 interface props{
     label: string
-    questions: string[]
+    questions: QuestionType[]
     onChange: any,
     name: string,
 
@@ -13,14 +14,10 @@ interface props{
 
 
 const QuestionSelect = ({ label,name ,questions, onChange }: props) => {
-    const options = questions.map((question) => ({
-        value: question,
-        label: question,
-    }));
-
+    const options= questions.map((question) => ({ value: question.id, label: question.question,uses:question.uses }));
     return (
         <div className="text-gray-700">
-            <label htmlFor={name} className="block mb-2">{label}</label>
+            <label htmlFor={name} className="block mb-2 text-gray-700 text-lg">{label}</label>
             <Select name={name} id={name}  options={options} onChange={onChange} />
         </div>
     );

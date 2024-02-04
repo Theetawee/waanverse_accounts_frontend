@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 interface StepContextType {
     step: number;
     setStep: React.Dispatch<React.SetStateAction<number>>
-    data: [];
+    data: any;
     setData: React.Dispatch<React.SetStateAction<[]>>
 }
 
@@ -20,7 +20,7 @@ const StepContextProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [step, setStep] = useState(1);
 
-    const [data, setData] = useState<any>([]);
+    const [data, setData] = useState<any>();
 
     const contextData: StepContextType ={
         step,

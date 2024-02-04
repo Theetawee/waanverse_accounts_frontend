@@ -1,5 +1,5 @@
 import Seo from "../components/utils/Seo";
-import { StepOne, StepTwo } from "../components/Partials/SecurityQuestionSetUp";
+import { StepOne, StepTwo,StepThree, StepFour } from "../components/Partials/SecurityQuestionSetUp";
 import { StepContext } from "../context/StepContext";
 import { useContext } from "react";
 
@@ -16,6 +16,17 @@ const SetSecurityQuestions = () => {
             {step === 2 && (
                 <>
                     <StepTwo/>
+                </>
+            )}
+            {step === 3 && (
+                <>
+                    <StepThree/>
+                </>
+            )}
+            {step === 4 && (
+                <>
+<StepFour/>
+
                 </>
             )}
         </Seo>
