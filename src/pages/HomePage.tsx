@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import Lock from "../assets/images/lock.png";
 import BasicFooter from "../components/common/BasicFooter";
-
+import Seo from "../components/utils/Seo";
 const HomePage = () => {
     return (
-        <>
+        <Seo
+            title="WaanVerse Accounts"
+            description="Manage and control your authentication flow with WaanVerse Accounts. Streamlined user authentication, secure access, and personalized user profiles.p"
+        >
             <section className="h-full overflow-x-hidden">
                 <section className="bg-gray-100/30">
                     <div className="p-10">
@@ -104,7 +107,7 @@ const HomePage = () => {
                     </div>
                 </section>
             </section>
-        </>
+        </Seo>
     );
 };
 

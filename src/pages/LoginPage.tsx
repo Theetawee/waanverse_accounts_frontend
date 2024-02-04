@@ -4,6 +4,7 @@ import useLogin from "../hooks/useLogin";
 import Loader from "../components/common/Loader";
 import BasicFooter from "../components/common/BasicFooter";
 import TextInput from "../components/common/Inputs/TextInput";
+import Seo from "../components/utils/Seo";
 
 const LoginPage = () => {
     const { login, isLoading } = useLogin();
@@ -16,66 +17,86 @@ const LoginPage = () => {
     };
 
     return (
-        <section
-            className="h-full overflow-x-hidden "
+        <Seo
+            title="Secure Login to Your WaanVerse Account - Access a World of Connections"
+            description="Log in to your WaanVerse account with confidence. Your gateway to a world of seamless connections, personalized experiences, and innovative collaborations. Join the WaanVerse community and explore a new dimension of online interaction"
         >
-            <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
-                <div className="p-4 sm:p-8 w-full mx-auto rounded-md max-w-lg border bg-white">
-                    <form method="post" onSubmit={handleSubmit}>
-                        <div className="grid space-y-8 grid-cols-1">
-                            <div className="w-full flex items-center flex-col justify-center">
-                                <span>
-                                    <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
-                                </span>
-                                <h1 className="text-3xl">
-                                    Login to your WaanVerse Account
-                                </h1>
-                            </div>
+            <section className="h-full overflow-x-hidden ">
+                <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
+                    <div className="p-4 sm:p-8 w-full mx-auto rounded-md max-w-lg border bg-white">
+                        <form method="post" onSubmit={handleSubmit}>
+                            <div className="grid space-y-8 grid-cols-1">
+                                <div className="w-full flex items-center flex-col justify-center">
+                                    <span>
+                                        <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
+                                    </span>
+                                    <h1 className="text-3xl">
+                                        Login to your WaanVerse Account
+                                    </h1>
+                                </div>
 
-                            <div className="mb-4">
-                                <TextInput type="email" label="Email" disabled={isLoading} id="waanverse_email" name="email"/>
-
-                            </div>
-                            <div>
-                                <TextInput auto_on={false} type="password" label="Password" disabled={isLoading} id="waanverse_password" name="password"/>
-
-                            </div>
-                            <div>
-                                <button
-                                    disabled={isLoading}
-                                    type="submit"
-                                    className="bg-primary-600 disabled:cursor-progress hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded w-20"
-                                >
-                                    {isLoading ? <Loader fill="white"/> : "Login"}
-                                </button>
-                            </div>
-                            <div>
-                                <div className="flex items-center text-gray-700">
-                                    <div>
-                                        <p>
-                                            You can{" "}
-                                            <Link
-                                                className="text-primary-600 hover:underline"
-                                                to="/signup"
-                                            >
-                                                Register
-                                            </Link>{" "}
-                                            a new account or click here if you{" "}
-                                            <Link
-                                                to="/reset-password"
-                                                className="text-primary-600 hover:underline"
-                                            >
-                                                Forgot&nbsp;your&nbsp;Password
-                                            </Link>
-                                        </p>
+                                <div className="mb-4">
+                                    <TextInput
+                                        type="email"
+                                        label="Email"
+                                        disabled={isLoading}
+                                        id="waanverse_email"
+                                        name="email"
+                                    />
+                                </div>
+                                <div>
+                                    <TextInput
+                                        auto_on={false}
+                                        type="password"
+                                        label="Password"
+                                        disabled={isLoading}
+                                        id="waanverse_password"
+                                        name="password"
+                                    />
+                                </div>
+                                <div>
+                                    <button
+                                        disabled={isLoading}
+                                        type="submit"
+                                        className="bg-primary-600 disabled:cursor-progress hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded w-20"
+                                    >
+                                        {isLoading ? (
+                                            <Loader fill="white" />
+                                        ) : (
+                                            "Login"
+                                        )}
+                                    </button>
+                                </div>
+                                <div>
+                                    <div className="flex items-center text-gray-700">
+                                        <div>
+                                            <p>
+                                                You can{" "}
+                                                <Link
+                                                    className="text-primary-600 hover:underline"
+                                                    to="/signup"
+                                                >
+                                                    Register
+                                                </Link>{" "}
+                                                a new account or click here if
+                                                you{" "}
+                                                <Link
+                                                    to="/reset-password"
+                                                    className="text-primary-600 hover:underline"
+                                                >
+                                                    Forgot&nbsp;your&nbsp;Password
+                                                </Link>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <BasicFooter />{" "}
                 </div>
-                <BasicFooter/>            </div>
-        </section>
+            </section>
+        </Seo>
     );
 };
 

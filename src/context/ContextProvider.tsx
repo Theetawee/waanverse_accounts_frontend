@@ -1,8 +1,8 @@
 import AuthContextProvider from "./AuthContext";
-import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import StepContextProvider from "./StepContext";
 import DrawerProvider from "./DrawerContext";
+import { HelmetProvider } from "react-helmet-async";
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -15,7 +15,7 @@ const ContextProvider = ({ children }: { children: React.ReactNode }) => {
                     </StepContextProvider>
                     </QueryClientProvider>
                 </DrawerProvider>
-            </HelmetProvider>
+                </HelmetProvider>
         </AuthContextProvider>
     );
 };
