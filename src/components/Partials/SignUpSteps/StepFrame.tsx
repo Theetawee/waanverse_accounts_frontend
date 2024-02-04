@@ -102,6 +102,7 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
     const handleSubmit =async () => {
         console.log(data);
         await signup(data);
+        setData([]);
 
     };
     const handleNext = () => {

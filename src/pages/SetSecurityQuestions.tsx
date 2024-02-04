@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useState } from "react";
 import ChooseQuestionAndAnswer from "../components/Partials/ChooseQuestionAndAnswer";
+import Seo from "../components/utils/Seo";
 
 const SetSecurityQuestions = () => {
     const { userInfo } = useContext(AuthContext);
@@ -10,7 +11,7 @@ const SetSecurityQuestions = () => {
     const name = `${userInfo?.first_name} ${userInfo?.last_name}`;
 
     return (
-        <>
+        <Seo title="Set Security Questions" description="Set Security Questions that will be used to recover your account">
             {step === 1 && (
                 <>
                     <section className="py-8 px-4">
@@ -69,7 +70,7 @@ const SetSecurityQuestions = () => {
                         </div>
                 </>
             )}
-        </>
+        </Seo>
     );
 };
 
