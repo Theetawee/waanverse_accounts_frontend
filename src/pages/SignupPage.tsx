@@ -12,8 +12,8 @@ const SignupPage = () => {
 
     return (
         <section className="h-full overflow-x-hidden">
-            <div className="min-h-screen flex-col py-16 bg-gray-100/40 px-4 flex items-center justify-center">
-                <div className="sm:p-8 p-4 w-full mx-auto rounded-xl max-w-lg shadow bg-white">
+            <div className="min-h-screen flex-col py-16 bg-gray-50/40 px-4 flex items-center justify-center">
+                <div className="sm:p-8 p-4 w-full mx-auto rounded-md max-w-lg border border-gray-100 bg-white">
                     <form method="post">
                         <div className="grid space-y-6 grid-cols-1">
                             <div className="w-full flex items-center flex-col justify-center">
@@ -24,47 +24,70 @@ const SignupPage = () => {
                                     Create your WaanVerse Account
                                 </h1>
                                 <div className="max-w-32 text-center rounded border w-full border-gray-100 p-2">
-                                    <p className="font-medium text-lg">Step {step} of 10</p>
+                                    <p className="font-medium text-lg">
+                                        Step {step} of 10
+                                    </p>
                                 </div>
                             </div>
-                            {step===1 && (
-                            <div>
-                                <StepOne />
-                            </div>
+                            {step === 1 && (
+                                <div>
+                                    <p className="text-lg text-gray-700">
+                                        Enter your First name
+                                    </p>
+                                    <StepOne />
+                                </div>
                             )}
-                            {step===2 && (
-                            <div>
-                                <StepTwo />
-                            </div>
+                            {step === 2 && (
+                                <div>
+                                    <p className="text-lg text-gray-700">
+                                        Enter your Last name
+                                    </p>
+
+                                    <StepTwo />
+                                </div>
                             )}
                             {step === 3 && (
                                 <div>
-                                    <StepThree/>
+                                    <p className="text-lg text-gray-700">
+                                        Enter your new Waanverse Email
+                                    </p>
+
+                                    <StepThree />
                                 </div>
                             )}
                             {step === 4 && (
-                                <StepFour/>
+                                <div>
+                                    {" "}
+                                    <p className="text-lg text-gray-700">
+                                        Enter your valid phone number
+                                    </p>
+                                    <StepFour />
+                                </div>
                             )}
-                            {step === 5 && (
-                                <StepFive/>
-                            )}
-                            {step === 6 && (
-                                <StepSix/>
-                            )}
-                            {step === 7 && (
-                                <StepSeven/>
-                            )}
+                            {step === 5 && <StepFive />}
+                            {step === 6 && <StepSix />}
+                            {step === 7 && <StepSeven />}
                             {step === 8 && (
-                                <StepEight/>
+                                <div>
+                                    {" "}
+                                    <p className="text-lg text-gray-700">
+                                        Enter your password
+                                    </p>
+                                    <StepEight />
+                                </div>
                             )}
                             {step === 9 && (
-                                <StepNine/>
+                                <div>
+                                    {" "}
+                                    <p className="text-lg text-gray-700">
+                                        Confirm your password
+                                    </p>
+                                    <StepNine />
+                                </div>
                             )}
-                            {step === 10 && (
-                                <StepTen/>
-                            )}
+                            {step === 10 && <StepTen />}
                             <div>
-                                <div className="flex items-center">
+                                <div className="flex items-center text-gray-700">
                                     <div>
                                         <p>
                                             You can{" "}

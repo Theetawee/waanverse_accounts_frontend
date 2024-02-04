@@ -11,7 +11,7 @@ const StepSeven = () => {
 
     const dobInput = (
         <div>
-            <p className="mb-2">What's your date of birth?</p>
+            <p className="mb-2 text-lg text-gray-700">What's your date of birth?</p>
             <div className="flex items-center">
                 <DatePicker
                     icon={

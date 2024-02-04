@@ -14,7 +14,7 @@ const StepSix = () => {
 
     const countryInput = (
         <div>
-            <p className="mb-2">What's your country?</p>
+            <p className="mb-2 text-gray-700 text-lg">What's your country?</p>
             <CountrySelector sendValue={(value) => setCountry(value.label)}/>
             <input type="hidden" id="waanverse_user_country" name="country" ref={countryRef} value={country} />
         </div>

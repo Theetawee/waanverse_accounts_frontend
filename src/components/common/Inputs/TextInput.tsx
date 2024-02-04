@@ -45,6 +45,7 @@ const TextInput = ({id,name,disabled,required=true,setValue=false,minLength=0,va
                           value={value}
                           onChange={onChange}
                           aria-label={label}
+                          autoFocus={true}
                       />
                   ) : (
                       <input
@@ -59,7 +60,8 @@ const TextInput = ({id,name,disabled,required=true,setValue=false,minLength=0,va
                           autoCapitalize="off"
                           autoComplete="off"
                           minLength={minLength}
-                          aria-label={label}
+                              aria-label={label}
+                              autoFocus={true}
                       />
                   )}
                   {type === "password" && (

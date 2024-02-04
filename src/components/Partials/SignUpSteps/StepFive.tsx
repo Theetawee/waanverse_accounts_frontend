@@ -27,7 +27,7 @@ const StepFive = () => {
             <input type="hidden" aria-label="Gender" id="waanverse_user_gender" ref={genderRef} name="gender" value={selectedOption} />
             <label
                 htmlFor="waanverse_user_gender"
-                className="block text-lg font-medium text-gray-900 dark:text-gray-300 mb-2"
+                className="block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
                 What's your gender
             </label>
