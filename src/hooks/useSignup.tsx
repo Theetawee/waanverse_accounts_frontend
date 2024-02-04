@@ -3,7 +3,7 @@ import { useState,useContext } from "react";
 import useAxios from "./useAxios";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
-
+import { StepContext } from "../context/StepContext";
 
 interface errorType {
     field: string;
@@ -12,6 +12,7 @@ interface errorType {
 
 const useSignup = () => {
 
+    const { setStep, setData } = useContext(StepContext);
 
     const { AuthenticateUser } = useContext(AuthContext);
 
@@ -37,6 +38,8 @@ const useSignup = () => {
             const response =await api.post("/accounts/signup/", formData);
             AuthenticateUser(response.data.user);
             toast.success("Signup successful");
+            setStep(1);
+            setData([]);
 
         } catch (error: any) {
             console.log(error)
