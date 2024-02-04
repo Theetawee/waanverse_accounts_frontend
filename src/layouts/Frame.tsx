@@ -17,13 +17,13 @@ const Frame = () => {
 
             {/* Sidebar */}
             <aside
-                className={`fixed top-0 border-r border-gray-100 dark:border-gray-800 left-0 md:z-10 z-50  w-5/6 md:w-[30%]  h-screen transition-transform -translate-x-full ${
+                className={`fixed top-0 left-0 md:z-10 z-50  w-72 md:w-72  h-screen transition-transform -translate-x-full ${
                     isOpen ? "translate-x-0" : "md:translate-x-0"
                 } `}
                 aria-label="Sidebar"
             >
                 {/* Sidebar Content */}
-                <div className="h-full px-3 relative md:pt-32 py-4   bg-white dark:bg-gray-900">
+                <div className="h-full px-3 relative md:pt-32 py-4   bg-gray-50 dark:bg-gray-900">
                     <Aside/>
                 </div>
             </aside>

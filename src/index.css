@@ -52,3 +52,10 @@
 }
 
 
+.sideLink{
+  @apply hover:bg-gray-100 p-2 flex items-center rounded  text-gray-700 transition ease-in-out duration-500;
+}
+
+.sideLink.active{
+  @apply bg-white border-l-2 font-bold shadow rounded-l-none border-primary-500;
+}
