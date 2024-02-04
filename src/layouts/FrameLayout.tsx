@@ -12,7 +12,7 @@ const FrameLayout = () => {
                 <AppBar/>
             </SuspenseLoader>
             <SuspenseLoader>
-                <main className="min-h-screen sm:ml-[30%] lg:ml-[25%]">
+                <main className="min-h-screen md:ml-[30%]">
                     <Outlet />
                     </main>
             </SuspenseLoader>

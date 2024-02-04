@@ -17,7 +17,7 @@ interface DrawerProviderProps {
 }
 
 const DrawerProvider = ({ children }: DrawerProviderProps) => {
-    const sm = 640;
+    const sm = 768;
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const showDrawer: boolean = windowWidth >= sm;
     const [isOpen, setIsOpen] = useState<boolean>(showDrawer);
