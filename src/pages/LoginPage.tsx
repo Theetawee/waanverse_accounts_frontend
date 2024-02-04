@@ -22,7 +22,7 @@ const LoginPage = () => {
             <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
                 <div className="p-4 sm:p-8 w-full mx-auto rounded-md max-w-lg border bg-white">
                     <form method="post" onSubmit={handleSubmit}>
-                        <div className="grid space-y-6 grid-cols-1">
+                        <div className="grid space-y-8 grid-cols-1">
                             <div className="w-full flex items-center flex-col justify-center">
                                 <span>
                                     <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
@@ -32,12 +32,12 @@ const LoginPage = () => {
                                 </h1>
                             </div>
 
-                            <div>
+                            <div className="mb-4">
                                 <TextInput type="email" label="Email" disabled={isLoading} id="waanverse_email" name="email"/>
 
                             </div>
                             <div>
-                                <TextInput type="password" label="Password" disabled={isLoading} id="waanverse_password" name="password"/>
+                                <TextInput auto_on={false} type="password" label="Password" disabled={isLoading} id="waanverse_password" name="password"/>
 
                             </div>
                             <div>
@@ -50,7 +50,7 @@ const LoginPage = () => {
                                 </button>
                             </div>
                             <div>
-                                <div className="flex items-center">
+                                <div className="flex items-center text-gray-700">
                                     <div>
                                         <p>
                                             You can{" "}
