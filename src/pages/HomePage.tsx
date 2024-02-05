@@ -143,8 +143,8 @@ const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
                             </span>
                             <hr className="w-64 h-px bg-gray-400 border-0 dark:bg-gray-700" />
                         </div>
-                        <div className="w-[90%] mt-5">
-                            <button onClick={()=>{window.location.href=googleLink}} className="w-full hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-x bg-white">
+                        <div className="w-[90%] mx-auto mt-5">
+                            <button onClick={()=>{window.location.href=googleLink}} className="hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-5 max-w-sm bg-white">
                                 <FcGoogle className="w-5 h-5"/>
                                 <span className="ml-2">Continue with Google</span>
                             </button>
