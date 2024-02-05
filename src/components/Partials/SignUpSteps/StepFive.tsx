@@ -23,26 +23,34 @@ const StepFive = () => {
     };
 
     const genderInput = (
-        <div className="relative mt-4">
-            <input type="hidden" aria-label="Gender" id="waanverse_user_gender" ref={genderRef} name="gender" value={selectedOption} />
+        <div className="relative text-gray-700">
+            <input
+                type="hidden"
+                aria-label="Gender"
+                id="waanverse_user_gender"
+                ref={genderRef}
+                name="gender"
+                value={selectedOption}
+            />
             <label
                 htmlFor="waanverse_user_gender"
-                className="block text-lg font-medium text-gray-700 dark:text-gray-300 mb-2"
+                className="block   font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
                 What's your gender
             </label>
             <div
-                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md relative cursor-pointer"
+                className="w-full px-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded relative cursor-pointer"
                 onClick={toggleOptions}
             >
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between text-sm items-center">
                     <span>
                         {selectedOption === ""
                             ? "Select Gender"
                             : selectedOption.toUpperCase()}
                     </span>
-                    <FaAngleDown className={`${isOpen ? "rotate-180" : ""} w-5 h-5`} />
-
+                    <FaAngleDown
+                        className={`${isOpen ? "rotate-180" : ""} w-4 h-4`}
+                    />
                 </div>
                 {isOpen && (
                     <div className="absolute z-10 top-full left-0 mt-2 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-md">

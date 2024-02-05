@@ -23,14 +23,14 @@ const LoginPage = () => {
         >
             <section className="h-full overflow-x-hidden ">
                 <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
-                    <div className="p-4 sm:p-8 w-full mx-auto shadow rounded max-w-lg border bg-white">
+                    <div className="p-4  w-full mx-auto shadow rounded max-w-md border bg-white">
                         <form method="post" onSubmit={handleSubmit}>
-                            <div className="grid space-y-8 grid-cols-1">
+                            <div className="grid space-y-6 grid-cols-1">
                                 <div className="w-full flex items-center flex-col justify-center">
                                     <span>
                                         <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
                                     </span>
-                                    <h1 className="text-3xl">
+                                    <h1 className="text-xl">
                                         Login to your WaanVerse Account
                                     </h1>
                                 </div>
@@ -58,7 +58,7 @@ const LoginPage = () => {
                                     <button
                                         disabled={isLoading}
                                         type="submit"
-                                        className="bg-primary-600 disabled:cursor-progress hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded w-20"
+                                        className="bg-primary-600 disabled:cursor-progress hover:bg-primary-600/90 text-white py-2 px-5 rounded w-32"
                                     >
                                         {isLoading ? (
                                             <Loader fill="white" />
@@ -70,21 +70,20 @@ const LoginPage = () => {
                                 <div>
                                     <div className="flex items-center text-gray-700">
                                         <div>
-                                            <p>
-                                                You can{" "}
+                                            <p className="text-sm">
+                                                No account? {" "}
                                                 <Link
                                                     className="text-primary-600 hover:underline"
                                                     to="/signup"
                                                 >
-                                                    Register
-                                                </Link>{" "}
-                                                a new account or click here if
-                                                you{" "}
+                                                    Create one!
+                                                </Link></p>
+                                            <p className="text-sm mt-1">
                                                 <Link
                                                     to="/reset-password"
                                                     className="text-primary-600 hover:underline"
                                                 >
-                                                    Forgot&nbsp;your&nbsp;Password
+                                                    Forgot&nbsp;your&nbsp;Password?
                                                 </Link>
                                             </p>
                                         </div>

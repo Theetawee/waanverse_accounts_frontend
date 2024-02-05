@@ -19,9 +19,7 @@ const StepNine = () => {
                 disabled={false}
                 required={true}
             />
-            <span className="text-sm text-gray-600">
-                This password must match with the password you entered first.
-            </span>
+            
         </div>
     );
 

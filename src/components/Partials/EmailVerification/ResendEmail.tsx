@@ -18,20 +18,20 @@ const ResendEmail = () => {
     const [remainingTime, setRemainingTime] = useState(60);
     const [success, setSuccess] = useState(false);
 
-    const handleResend =async (e:ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const handleResend = async (e: ChangeEvent<HTMLFormElement>) => {
+        e.preventDefault();
         const email = e.target.email.value;
         setIsLoading(true);
         try {
-            const resp=await fetch(`${baseUrl}/accounts/resend_email/`, {
+            const resp = await fetch(`${baseUrl}/accounts/resend_email/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email,
-                })
-            })
+                }),
+            });
             if (resp.ok) {
                 toast.success("Email sent successfully");
                 setSuccess(true);
@@ -39,17 +39,16 @@ const ResendEmail = () => {
                 localStorage.setItem("timestamp", time.toString());
                 setCanSend(false);
                 setRemainingTime(60);
-            }
-            else {
-                toast.error(`Something went wrong or ${email} is already verified`);
+            } else {
+                toast.error(
+                    `Something went wrong or ${email} is already verified`
+                );
             }
         } catch (error) {
             toast.error("Something went wrong");
-
-        }finally {
+        } finally {
             setIsLoading(false);
         }
-
     };
 
     useEffect(() => {
@@ -73,8 +72,8 @@ const ResendEmail = () => {
 
     return (
         <div className="w-[96]">
-            <p className="text-lg mb-4">Activate your account</p>
-            <p className="text-lg mb-4">Resend Account activation link</p>
+            <p className="  mb-4">Activate your account</p>
+            <p className="  mb-4">Resend Account activation link</p>
             {canSend ? (
                 <>
                     <form method="post" onSubmit={handleResend}>
@@ -87,30 +86,30 @@ const ResendEmail = () => {
                             required={true}
                         />
                         <div className="mt-6">
-
                             <button
                                 type="submit"
                                 disabled={isLoading}
                                 className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded"
                             >
-                                {isLoading?<Loader fill="white"/>:"Resend"}
+                                {isLoading ? <Loader fill="white" /> : "Resend"}
                             </button>
                         </div>
                     </form>
                 </>
-            ) : (<>
-
-                {success?(
-                    <p className="text-sm text-gray-600">
-                       <span className="text-green-500">Email sent successfully.</span> You Can request again after {remainingTime} seconds
-                    </p>
-                ):(
-                    <p className="text-sm text-gray-600">
-                        Can request again after {remainingTime} seconds
-                    </p>
-                )}
-
-
+            ) : (
+                <>
+                    {success ? (
+                        <p className="text-sm text-gray-600">
+                            <span className="text-green-500">
+                                Email sent successfully.
+                            </span>{" "}
+                            You Can request again after {remainingTime} seconds
+                        </p>
+                    ) : (
+                        <p className="text-sm text-gray-600">
+                            Can request again after {remainingTime} seconds
+                        </p>
+                    )}
                 </>
             )}
         </div>

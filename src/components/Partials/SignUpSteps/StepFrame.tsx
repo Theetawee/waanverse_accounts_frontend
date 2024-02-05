@@ -99,16 +99,18 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
 
     return (
         <>
-            <section className="min-h-32 flex items-center justify-center">
-                <div className="grid grid-cols-1 gap-4 w-full">
+            <section className="flex items-center justify-center">
+                <div className="grid grid-cols-1 w-full">
                     {errors && errors.length > 0 ? (
                         <>
+                            <ul className="list-disc pl-4">
                             {errors.map((error, index) => (
-                                <p key={index} className="text-red-500">
+                                <li key={index} className="text-red-500 mb-1">
                                     <span>{error.field}: </span>
                                     {error.message}
-                                </p>
+                                </li>
                             ))}
+                                </ul>
                         </>
                     ) : (
                         <>
@@ -130,7 +132,7 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
                             <button
                                 onClick={handleNext}
                                 type="button"
-                                className="py-2.5 float-end flex items-center justify-center px-5 w-32 font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-50 hover:text-primary-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                className="py-2 float-end flex items-center justify-center px-5 text-sm  text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-50/70 hover:text-primary-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                             >
                                 <span>Next</span>
                                 <MdOutlineArrowForwardIos className="ml-2 w-4 h-4" />
@@ -144,7 +146,7 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
                                 <button
                                     type="button"
                                     onClick={() => setStep(1)}
-                                    className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                    className="focus:outline-none text-white bg-rose-600 hover:bg-rose-600/90 focus:ring-1 focus:ring-red-300 font-medium rounded text-sm px-5 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                 >
                                     Retry again
                                 </button>
@@ -154,7 +156,7 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
                                 <button
                                     onClick={handleSubmit}
                                     type="button"
-                                    className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-0 focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5  dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                                    className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-0 focus:ring-primary-300 font-medium rounded text-sm px-5 py-2  dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                                 >
                                     {isLoading ? <Loader fill="white"/> : "Submit"}
                                 </button>

@@ -27,7 +27,7 @@ const HomePage = () => {
                                     WaanVerse&nbsp;Accounts
                                 </span>
                             </h1>
-                            <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+                            <p className="mb-8   font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
                                 Seamlessly manage your authentication process
                                 across all Waanverse products and services.
                                 Benefit from centralized account management,
@@ -43,7 +43,7 @@ const HomePage = () => {
                                     <h2 className="text-left text-3xl mb-4">
                                         Experience the Advantage
                                     </h2>
-                                    <ul className="list-disc text-left px-4 text-lg text-gray-700">
+                                    <ul className="list-disc text-left px-4   text-gray-700">
                                         <li>
                                             Streamlined user authentication
                                             process
@@ -66,7 +66,7 @@ const HomePage = () => {
                                             Keeping your information private,
                                             safe, and secure
                                         </h3>
-                                        <p className="text-lg">
+                                        <p className=" ">
                                             Your account helps you do more by
                                             personalizing your Waanverse
                                             experience and offering easy access
@@ -90,14 +90,14 @@ const HomePage = () => {
                         <Link
                             to={"/signup"}
                             type="button"
-                            className="text-white text-center w-full md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded text-lg px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                            className="text-white text-center w-full md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded   px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                         >
                             Create Your Account
                         </Link>
                         <Link
                             to={"/login"}
                             type="button"
-                            className="py-2.5 w-full text-center md:w-auto md:ml-10 px-5 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                            className="py-2.5 w-full text-center md:w-auto md:ml-10 px-5   font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                         >
                             Login to Your Account
                         </Link>

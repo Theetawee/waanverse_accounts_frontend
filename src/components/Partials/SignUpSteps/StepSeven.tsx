@@ -11,7 +11,7 @@ const StepSeven = () => {
 
     const dobInput = (
         <div>
-            <p className="mb-2 text-lg text-gray-700">What's your date of birth?</p>
+            <p className="mb-2   text-gray-700">What's your date of birth?</p>
             <div className="flex items-center">
                 <DatePicker
                     icon={
@@ -25,7 +25,13 @@ const StepSeven = () => {
                     onChange={(date) => setStartDate(date!)}
                 />
             </div>
-            <input type="hidden" id="waanverse_user_dob" name="date_of_birth" ref={dobRef} value={startDate.toISOString().slice(0, 10)} />
+            <input
+                type="hidden"
+                id="waanverse_user_dob"
+                name="date_of_birth"
+                ref={dobRef}
+                value={startDate.toISOString().slice(0, 10)}
+            />
         </div>
     );
 
