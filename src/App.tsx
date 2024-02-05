@@ -20,11 +20,12 @@ const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 const SetSecurityQuestions = lazy(() => import("./pages/SetSecurityQuestions"));
 import HasNoQuestions from "./components/utils/HasNoQuestions";
 import HasQuestions from "./components/utils/HasQuestions";
-
+const LogoutPage = lazy(() => import("./pages/LogoutPage"));
 
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<MainLayout />}>
+            <Route path="/logout" element={<LogoutPage />} />
             <Route element={<ProtectedRoute />}>
                 <Route index element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
@@ -38,9 +39,11 @@ const router = createBrowserRouter(
                     <Route index element={<AccountPage />} />
                 </Route>
                 <Route element={<HasQuestions />}>
-                    <Route path="/account/set-security-questions" element={<SetSecurityQuestions />} />
+                    <Route
+                        path="/account/set-security-questions"
+                        element={<SetSecurityQuestions />}
+                    />
                 </Route>
-
             </Route>
         </Route>,
         <Route

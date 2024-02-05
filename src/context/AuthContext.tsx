@@ -50,7 +50,25 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
 
-    const UnauthenticateUser: () => Promise<void> = async () => {
+    const UnauthenticateUser= async () => {
+        const resp=await fetch(`${baseUrl}/accounts/logout/`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+            setIsAuthenticated(false);
+            setUserInfo(null);
+            localStorage.removeItem("__Ts");
+            localStorage.removeItem("__uD");
+        }
+        return data;
+    };
+
+    const UnauthenticateUserInner = async () => {
         setIsAuthenticated(false);
         setUserInfo(null);
         localStorage.removeItem("__Ts");
@@ -62,7 +80,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 "Content-Type": "application/json",
             },
         });
+
     };
+
 
 
     useEffect(() => {
@@ -111,7 +131,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     getUserInfo();
                 } else {
                     if (data.code === "token_not_valid") {
-                        UnauthenticateUser();
+                        UnauthenticateUserInner();
                     }
                 }
             } catch {
@@ -124,8 +144,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             RefreshToken();
             setFastRefresh(false);
         }
-        if (userInfo === null) {
-            UnauthenticateUser();
+        if (userInfo === null && isAuthenticated) {
+            UnauthenticateUserInner();
             setIsLoading(false);
         } else {
             setIsLoading(false);

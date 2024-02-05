@@ -7,12 +7,13 @@ import { HiOutlineHome,HiOutlineUser,HiOutlineLockClosed } from "react-icons/hi2
 import { BsShield } from "react-icons/bs";
 import { AiTwotoneAppstore } from "react-icons/ai";
 import { IoIosLink } from "react-icons/io";
+import { HiOutlineLogout } from "react-icons/hi";
+
 
 const Aside = () => {
     const { userInfo } = useContext(AuthContext);
 
     const name = `${userInfo?.first_name} ${userInfo?.last_name}`;
-
 
     return (
         <>
@@ -33,14 +34,35 @@ const Aside = () => {
                     </Link>
                 </div>
             </div>
-        <div className="mt-8 grid grid-cols-1 gap-2">
-          <AsideLink label="Account" path="/account" icon={HiOutlineHome} />
-          <AsideLink label="Your Info" path="/info" icon={HiOutlineUser} />
-          <AsideLink label="Security" path="/security" icon={BsShield} />
-          <AsideLink label="Privacy" path="/privacy" icon={HiOutlineLockClosed} />
-          <AsideLink label="Products and Services" path="/apps" icon={AiTwotoneAppstore} />
-          <AsideLink label="Linked Apps" path="/linked" icon={IoIosLink} />
-
+            <div className="mt-8 grid grid-cols-1 gap-2">
+                <AsideLink
+                    label="Account"
+                    path="/account"
+                    icon={HiOutlineHome}
+                />
+                <AsideLink
+                    label="Your Info"
+                    path="/info"
+                    icon={HiOutlineUser}
+                />
+                <AsideLink label="Security" path="/security" icon={BsShield} />
+                <AsideLink
+                    label="Privacy"
+                    path="/privacy"
+                    icon={HiOutlineLockClosed}
+                />
+                <AsideLink
+                    label="Products and Services"
+                    path="/apps"
+                    icon={AiTwotoneAppstore}
+                />
+                <AsideLink
+                    label="Linked Apps"
+                    path="/linked"
+                    icon={IoIosLink}
+          />
+          <AsideLink label="Logout" path="/logout" icon={HiOutlineLogout} />
+                
             </div>
         </>
     );

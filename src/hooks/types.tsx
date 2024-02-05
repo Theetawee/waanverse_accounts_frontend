@@ -19,7 +19,8 @@ export interface AuthContextDataType {
     AuthenticateUser: (user: UserType) => void;
     setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>;
     isOnline: boolean;
-    logout: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    logout: () => any;
 }
 
 

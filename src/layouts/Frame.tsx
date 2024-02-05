@@ -17,7 +17,7 @@ const Frame = () => {
 
             {/* Sidebar */}
             <aside
-                className={`fixed top-0 left-0 md:z-10 z-50  w-72 md:w-72  h-screen transition-transform -translate-x-full ${
+                className={`fixed top-0 left-0 md:z-10 z-50 w-72  h-screen transition-transform -translate-x-full ${
                     isOpen ? "translate-x-0" : "md:translate-x-0"
                 } `}
                 aria-label="Sidebar"
