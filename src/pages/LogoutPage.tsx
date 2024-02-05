@@ -18,7 +18,6 @@ const LogoutPage = () => {
                     setSubtext("Please try again by refreshing the page.");
                 }
             }
-            console.log('loging out')
             logoutUser();
     }, [logout]);
 

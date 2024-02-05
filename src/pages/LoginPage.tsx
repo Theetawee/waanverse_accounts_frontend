@@ -23,7 +23,7 @@ const LoginPage = () => {
         >
             <section className="h-full overflow-x-hidden ">
                 <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
-                    <div className="p-4 sm:p-8 w-full mx-auto rounded-md max-w-lg border bg-white">
+                    <div className="p-4 sm:p-8 w-full mx-auto shadow rounded max-w-lg border bg-white">
                         <form method="post" onSubmit={handleSubmit}>
                             <div className="grid space-y-8 grid-cols-1">
                                 <div className="w-full flex items-center flex-col justify-center">

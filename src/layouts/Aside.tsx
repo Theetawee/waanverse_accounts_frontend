@@ -13,7 +13,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 const Aside = () => {
     const { userInfo } = useContext(AuthContext);
 
-    const name = `${userInfo?.first_name} ${userInfo?.last_name}`;
+    const name = `${userInfo?.name}`;
 
     return (
         <>
@@ -62,7 +62,7 @@ const Aside = () => {
                     icon={IoIosLink}
           />
           <AsideLink label="Logout" path="/logout" icon={HiOutlineLogout} />
-                
+
             </div>
         </>
     );

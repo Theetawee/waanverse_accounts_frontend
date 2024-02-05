@@ -17,12 +17,9 @@ import PrivateRoute from "./components/utils/PrivateRoute";
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 import SuspenseLoader from "./components/utils/SuspenseLoader";
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
-const SetSecurityQuestions = lazy(() => import("./pages/SetSecurityQuestions"));
-import HasNoQuestions from "./components/utils/HasNoQuestions";
-import HasQuestions from "./components/utils/HasQuestions";
 const LogoutPage = lazy(() => import("./pages/LogoutPage"));
 const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
-
+const AccountActivationPage = lazy(() => import("./pages/AccountActivationPage"));
 
 
 
@@ -35,20 +32,14 @@ const router = createBrowserRouter(
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
-                <Route path='/verify-email' element={<VerifyEmailPage/>}/>
+                <Route path='/verify-email' element={<VerifyEmailPage />} />
+                <Route path='/accounts/activate/:token' element={<AccountActivationPage />} />
             </Route>
         </Route>,
         <Route path="/account" element={<FrameLayout />}>
             <Route element={<PrivateRoute />}>
-                <Route element={<HasNoQuestions />}>
                     <Route index element={<AccountPage />} />
-                </Route>
-                <Route element={<HasQuestions />}>
-                    <Route
-                        path="/account/set-security-questions"
-                        element={<SetSecurityQuestions />}
-                    />
-                </Route>
+
             </Route>
         </Route>,
         <Route

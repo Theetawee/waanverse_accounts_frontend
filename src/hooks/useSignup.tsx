@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState,useContext } from "react";
 import useAxios from "./useAxios";
-import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { StepContext } from "../context/StepContext";
 import { SignupFormData } from "./types";
+import { useNavigate } from "react-router-dom";
 
 interface errorType {
     field: string;
@@ -12,10 +12,9 @@ interface errorType {
 }
 
 const useSignup = () => {
-
+    const navigate = useNavigate();
     const { setStep, setData } = useContext(StepContext);
 
-    const { AuthenticateUser } = useContext(AuthContext);
 
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState<errorType[]|null>(null);
@@ -26,8 +25,8 @@ const useSignup = () => {
 
         try {
 
-            const response =await api.post("/accounts/signup/", data);
-            AuthenticateUser(response.data.user);
+            await api.post("/accounts/signup/", data);
+            navigate('/verify-email?redirect_login=false')
             toast.success("Signup successful");
             setStep(1);
             setData({

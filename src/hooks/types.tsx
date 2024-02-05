@@ -3,12 +3,11 @@ export interface UserType {
     joined: string;
     date_of_birth: string;
     email: string;
-    first_name: string;
+    name: string;
     id: number;
-    last_name: string;
+    username: string;
     phone: string;
     gender: "male" | "female"|"other";
-    has_security_questions: boolean;
     image: string;
     image_hash: string;
 }

@@ -6,7 +6,7 @@ export default {
         extend: {
             backgroundImage: {
                 "page-pattern":
-                    "url('https://files.waanverse.com/images/bg.svg')",
+                    "url('https://files.waanverse.com/images/gradbg.svg')",
             },
             colors: {
                 primary: {
