@@ -34,8 +34,6 @@ const GoogleLoginPage = () => {
                         const data = await resp.json();
                         AuthenticateUser(data.user);
                     } else {
-                        const data = await resp.json();
-                        console.log(data);
                         toast.error("Login failed");
                         return navigate("/login");
                     }

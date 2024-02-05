@@ -28,8 +28,7 @@ const AccountActivationPage = () => {
                         toast.success("Account activated successfully");
                         return navigate("/login");
                     } else {
-                        const data = await resp.json()
-                        console.log(data)
+                        await resp.json()
                         toast.error("Unable to activate account");
                         return navigate("/verify-email?redirect_login=true");
                     }

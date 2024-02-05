@@ -81,7 +81,6 @@ const useHandleSignUpSteps = (
                             ...prev,
                             [refName.current!.name]: refName.current!.value,
                         }));
-                        console.log('added data',data);
                     } else {
                         inavlidateInput();
                         setError(
@@ -116,7 +115,6 @@ const useHandleSignUpSteps = (
                         return;
                     }
                 } else {
-                    console.log(refName.current.name);
                     setData((prev) => ({
                         ...prev,
                         [refName.current!.name]: refName.current!.value,
@@ -131,7 +129,6 @@ const useHandleSignUpSteps = (
     };
 
     const handleSubmit = async () => {
-        console.log(data);
         await signup(data);
     };
 

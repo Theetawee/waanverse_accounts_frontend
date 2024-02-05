@@ -10,10 +10,7 @@ import {
     StepFour,
     StepFive,
     StepSix,
-    StepSeven,
-    StepEight,
-    StepNine,
-    StepTen,
+
 } from "../components/Partials/SignUpSteps";
 import Seo from "../components/utils/Seo";
 const SignupPage = () => {
@@ -67,33 +64,21 @@ const SignupPage = () => {
                                     <div>
                                         {" "}
                                         <p className="text-sm  text-gray-700">
-                                            Enter your valid phone number
+                                            Enter your password
                                         </p>
                                         <StepFour />
                                     </div>
                                 )}
-                                {step === 5 && <StepFive />}
-                                {step === 6 && <StepSix />}
-                                {step === 7 && <StepSeven />}
-                                {step === 8 && (
-                                    <div>
-                                        {" "}
-                                        <p className="text-sm  text-gray-700">
-                                            Enter your password
-                                        </p>
-                                        <StepEight />
-                                    </div>
-                                )}
-                                {step === 9 && (
+                                {step === 5 && (
                                     <div>
                                         {" "}
                                         <p className="text-sm  text-gray-700">
                                             Confirm your password
                                         </p>
-                                        <StepNine />
+                                        <StepFive />
                                     </div>
                                 )}
-                                {step === 10 && <StepTen />}
+                                {step === 6 && <StepSix />}
                                 <div>
                                     <div className="flex items-center text-gray-700">
                                         <div>

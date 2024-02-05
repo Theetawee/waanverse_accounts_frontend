@@ -42,7 +42,6 @@ const useSignup = () => {
             });
 
         } catch (error: any) {
-            console.log(error)
             const set_errors:errorType[]=[];
             if (error.response.data.email) {
                 set_errors.push({field: "Email error", message: error.response.data.email[0] });
