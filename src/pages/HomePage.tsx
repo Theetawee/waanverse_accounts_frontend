@@ -9,8 +9,8 @@ const HomePage = () => {
             title="WaanVerse Accounts"
             description="Manage and control your authentication flow with WaanVerse Accounts. Streamlined user authentication, secure access, and personalized user profiles.p"
         >
-            <section className="h-full overflow-x-hidden">
-                <section className="bg-gray-100/30">
+            <section className="h-full bg-homebg overflow-x-hidden">
+                <section className=" bg-white/50">
                     <div className="p-10">
                         <img
                             src={Logo}
@@ -80,7 +80,7 @@ const HomePage = () => {
                     </section>
                 </section>
                 <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
-                <section className="min-h-[50vh] py-10 flex flex-col justify-center items-center px-6">
+                <section className="min-h-[50vh] bg-page-pattern bg-white py-10 flex flex-col justify-center items-center px-6">
                     <div className="mb-20">
                         <h2 className="text-center text-4xl font-bold text-primary-600">
                             Your WaanVerse starts here...
