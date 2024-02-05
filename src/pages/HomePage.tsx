@@ -48,7 +48,7 @@ const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
                         <img
                             src={Logo}
                             alt="Waanverse"
-                            className="w-12 rounded shadow h-12"
+                            className="w-12 rounded  h-12"
                         />
                     </div>
 
