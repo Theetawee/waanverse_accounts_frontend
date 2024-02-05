@@ -21,7 +21,7 @@ const LogoutPage = lazy(() => import("./pages/LogoutPage"));
 const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
 const AccountActivationPage = lazy(() => import("./pages/AccountActivationPage"));
 const PasswordResetConfirmPage = lazy(() => import("./pages/PasswordResetConfirmPage"));
-
+const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"))
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -35,6 +35,7 @@ const router = createBrowserRouter(
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
                 <Route path='/verify-email' element={<VerifyEmailPage />} />
                 <Route path='/accounts/activate/:token' element={<AccountActivationPage />} />
+                <Route path="/oauth2/google" element={<GoogleLoginPage/>}/>
             </Route>
         </Route>,
         <Route path="/account" element={<FrameLayout />}>

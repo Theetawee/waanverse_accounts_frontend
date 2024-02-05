@@ -4,8 +4,10 @@ import Lock from "../assets/images/lock.png";
 import BasicFooter from "../components/common/BasicFooter";
 import Seo from "../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
-import { useEffect } from "react";
 import Endpoints from "../hooks/Endpoints";
+import { useEffect } from "react";
+const redirect_uri = import.meta.env.VITE_REDIRECT_URL;
+const client_id = import.meta.env.VITE_GOOGLE_CLIENT;
 
 
 
@@ -13,11 +15,17 @@ import Endpoints from "../hooks/Endpoints";
 const HomePage = () => {
     const { pingServer } = Endpoints();
 
+const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_uri}&prompt=consent&response_type=code&client_id=${client_id}&scope=openid%20email%20profile&access_type=offline`;
+
+
+
+
+
     useEffect(() => {
         const Ping = async () => {
             try {
                 await pingServer();
-                
+
             } catch {
                 await pingServer()
             }
@@ -136,7 +144,7 @@ const HomePage = () => {
                             <hr className="w-64 h-px bg-gray-400 border-0 dark:bg-gray-700" />
                         </div>
                         <div className="w-[90%] mt-5">
-                            <button className="w-full hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-x bg-white">
+                            <button onClick={()=>{window.location.href=googleLink}} className="w-full hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-x bg-white">
                                 <FcGoogle className="w-5 h-5"/>
                                 <span className="ml-2">Continue with Google</span>
                             </button>
