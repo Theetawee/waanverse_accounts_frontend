@@ -1,5 +1,5 @@
 import { DrawerContext } from "../context/DrawerContext";
-import { useContext} from "react";
+import { useContext } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const AppBar = () => {
                         className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
                         <span className="self-center text-xl text-white whitespace-nowrap dark:text-white">
-                            WaanVerse Accounts
+                            Waanverse Accounts
                         </span>
                     </Link>
                     <div className="flex md:order-2 md:w-1/2 ml-[10%] ">
@@ -24,7 +24,7 @@ const AppBar = () => {
                             data-collapse-toggle="navbar-search"
                             type="button"
                             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500  md:hidden "
-                            >
+                        >
                             <span className="sr-only">Open main menu</span>
                             <MdOutlineMenu
                                 className="w-6 h-6 text-white"
@@ -32,7 +32,6 @@ const AppBar = () => {
                             />
                         </button>
                     </div>
-
                 </div>
             </nav>
         </>

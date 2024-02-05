@@ -1,17 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 import { ManifestOptions, VitePWA } from "vite-plugin-pwa";
-
-
-
-
 
 const ManifestFile: Partial<ManifestOptions> = {
     background_color: "#ffffff",
-    categories: [
-        "Authentication",
-        "Security"
-    ],
+    categories: ["Authentication", "Security"],
 
     description:
         "Waanverse Accounts - Manage and control your authentication flow with Waanverse Accounts. Streamlined user authentication, secure access, and personalized user profiles.",
@@ -101,7 +94,7 @@ const ManifestFile: Partial<ManifestOptions> = {
             sizes: "1024x1024",
             type: "image/png",
             purpose: "maskable",
-        }
+        },
     ],
     name: "Waanverse Accounts",
     short_name: "Accounts",
@@ -132,7 +125,6 @@ const ManifestFile: Partial<ManifestOptions> = {
     ],
 };
 
-
 export default defineConfig({
     publicDir: "public",
     plugins: [
@@ -160,7 +152,7 @@ export default defineConfig({
                             },
                         },
                     },
-                ]
+                ],
             },
             devOptions: { enabled: true },
             manifest: ManifestFile,
@@ -170,5 +162,3 @@ export default defineConfig({
     ],
     base: "./",
 });
-
-

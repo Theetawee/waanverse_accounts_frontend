@@ -9,38 +9,27 @@ import { useEffect } from "react";
 const redirect_uri = import.meta.env.VITE_REDIRECT_URL;
 const client_id = import.meta.env.VITE_GOOGLE_CLIENT;
 
-
-
-
 const HomePage = () => {
     const { pingServer } = Endpoints();
 
-const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_uri}&prompt=consent&response_type=code&client_id=${client_id}&scope=openid%20email%20profile&access_type=offline`;
-
-
-
-
+    const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_uri}&prompt=consent&response_type=code&client_id=${client_id}&scope=openid%20email%20profile&access_type=offline`;
 
     useEffect(() => {
         const Ping = async () => {
             try {
                 await pingServer();
-
             } catch {
-                await pingServer()
+                await pingServer();
             }
-        }
+        };
         Ping();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Seo
-            title="WaanVerse Accounts"
-            description="Manage and control your authentication flow with WaanVerse Accounts. Streamlined user authentication, secure access, and personalized user profiles.p"
+            title="Waanverse Accounts"
+            description="Manage and control your authentication flow with Waanverse Accounts. Streamlined user authentication, secure access, and personalized user profiles.p"
         >
             <section className="h-full bg-homebg overflow-x-hidden">
                 <section className=" bg-white/50">
@@ -144,9 +133,16 @@ const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${
                             <hr className="w-64 h-px bg-gray-400 border-0 dark:bg-gray-700" />
                         </div>
                         <div className="w-[90%] mx-auto mt-5">
-                            <button onClick={()=>{window.location.href=googleLink}} className="hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-5 max-w-sm bg-white">
-                                <FcGoogle className="w-5 h-5"/>
-                                <span className="ml-2">Continue with Google</span>
+                            <button
+                                onClick={() => {
+                                    window.location.href = googleLink;
+                                }}
+                                className="hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-5 max-w-sm bg-white"
+                            >
+                                <FcGoogle className="w-5 h-5" />
+                                <span className="ml-2">
+                                    Continue with Google
+                                </span>
                             </button>
                         </div>
                     </div>
