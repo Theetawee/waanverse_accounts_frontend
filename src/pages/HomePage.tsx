@@ -4,11 +4,31 @@ import Lock from "../assets/images/lock.png";
 import BasicFooter from "../components/common/BasicFooter";
 import Seo from "../components/utils/Seo";
 import { FcGoogle } from "react-icons/fc";
+import { useEffect } from "react";
+import Endpoints from "../hooks/Endpoints";
 
 
 
 
 const HomePage = () => {
+    const { pingServer } = Endpoints();
+
+    useEffect(() => {
+        const Ping = async () => {
+            try {
+                await pingServer();
+                
+            } catch {
+                await pingServer()
+            }
+        }
+        Ping();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
+
+
     return (
         <Seo
             title="WaanVerse Accounts"

@@ -4,6 +4,13 @@ const Endpoints = () => {
 
   const api = useAxios();
 
+
+  const pingServer = async () => {
+    const resp = await api.get('/ping/')
+    return resp.data
+  }
+
+
   const handlePasswordReset = async (data: string) => {
     const formData = new FormData();
     formData.append('email',data)
@@ -20,7 +27,8 @@ const Endpoints = () => {
 
   return {
     handlePasswordReset,
-    handlePasswordResetConfirm
+    handlePasswordResetConfirm,
+    pingServer
   }
 }
 
