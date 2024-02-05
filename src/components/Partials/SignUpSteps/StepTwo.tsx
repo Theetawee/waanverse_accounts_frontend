@@ -3,18 +3,19 @@ import { useRef } from "react";
 import StepFrame from "./StepFrame";
 
 const StepTwo = () => {
-    const lastNameRef = useRef<HTMLInputElement>(null);
+    const UsernameRef = useRef<HTMLInputElement>(null);
 
     const lastNameInput = (
         <div>
             <TextInput
-                inref={lastNameRef}
+                inref={UsernameRef}
                 type="text"
-                id="waanverse_last_name"
-                name="last_name"
-                label="Last Name"
+                id="waanverse_username"
+                name="username"
+                label="Username"
                 disabled={false}
                 required={true}
+                minLength={4}
             />
         </div>
     );
@@ -25,7 +26,7 @@ const StepTwo = () => {
                 childOne={lastNameInput}
                 next={true}
                 nextStep={3}
-                refName={lastNameRef}
+                refName={UsernameRef}
             />
         </>
     );

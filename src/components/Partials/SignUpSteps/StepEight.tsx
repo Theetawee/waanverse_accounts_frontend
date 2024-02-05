@@ -12,7 +12,7 @@ const StepEight = () => {
                 inref={passwordRef}
                 type="password"
                 id="password"
-                name="password"
+                name="password1"
                 label="Password"
                 disabled={false}
                 required={true}

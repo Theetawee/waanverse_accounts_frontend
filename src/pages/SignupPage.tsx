@@ -36,7 +36,7 @@ const SignupPage = () => {
                                 {step === 1 && (
                                     <div>
                                         <p className="text-lg text-gray-700">
-                                            Enter your First name
+                                            Enter your Name
                                         </p>
                                         <StepOne />
                                     </div>
@@ -44,7 +44,7 @@ const SignupPage = () => {
                                 {step === 2 && (
                                     <div>
                                         <p className="text-lg text-gray-700">
-                                            Enter your Last name
+                                            Choose your unique username
                                         </p>
 
                                         <StepTwo />
@@ -53,7 +53,7 @@ const SignupPage = () => {
                                 {step === 3 && (
                                     <div>
                                         <p className="text-lg text-gray-700">
-                                            Enter your new Waanverse Email
+                                            Enter your email Address
                                         </p>
 
                                         <StepThree />

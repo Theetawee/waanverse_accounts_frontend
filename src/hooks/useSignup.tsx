@@ -4,6 +4,7 @@ import useAxios from "./useAxios";
 import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { StepContext } from "../context/StepContext";
+import { SignupFormData } from "./types";
 
 interface errorType {
     field: string;
@@ -20,26 +21,26 @@ const useSignup = () => {
     const [errors, setErrors] = useState<errorType[]|null>(null);
     const api = useAxios();
 
-    const signup =async (data: any) => {
+    const signup =async (data: SignupFormData) => {
         setIsLoading(true);
-        const formData = new FormData();
-        formData.append("email", data.waanverse_email);
-        formData.append("password1", data.password);
-        formData.append("first_name", data.first_name);
-        formData.append("last_name", data.last_name);
-        formData.append("country", data.country);
-        formData.append("password2", data.confirm_password);
-        formData.append("phone", data.phone_number);
-        formData.append("gender", data.gender.toLowerCase());
-        formData.append("date_of_birth", data.dob);
 
         try {
 
-            const response =await api.post("/accounts/signup/", formData);
+            const response =await api.post("/accounts/signup/", data);
             AuthenticateUser(response.data.user);
             toast.success("Signup successful");
             setStep(1);
-            setData([]);
+            setData({
+                email: "",
+                password1: "",
+                password2: "",
+                username: "",
+                gender: "male",
+                date_of_birth: "",
+                country: "",
+                name: "",
+                phone:""
+            });
 
         } catch (error: any) {
             console.log(error)

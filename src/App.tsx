@@ -21,6 +21,10 @@ const SetSecurityQuestions = lazy(() => import("./pages/SetSecurityQuestions"));
 import HasNoQuestions from "./components/utils/HasNoQuestions";
 import HasQuestions from "./components/utils/HasQuestions";
 const LogoutPage = lazy(() => import("./pages/LogoutPage"));
+const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
+
+
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -31,6 +35,7 @@ const router = createBrowserRouter(
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
+                <Route path='/verify-email' element={<VerifyEmailPage/>}/>
             </Route>
         </Route>,
         <Route path="/account" element={<FrameLayout />}>

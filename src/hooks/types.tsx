@@ -26,14 +26,14 @@ export interface AuthContextDataType {
 
 export interface SignupFormData {
     email: string;
-    password: string;
-    confirm_password: string;
-    first_name: string;
-    last_name: string;
+    password1: string;
+    password2: string;
+    name: string;
+    username: string;
     country: string;
     phone: string;
     gender: "male" | "female" | "other";
-    dob: string;
+    date_of_birth: string;
 }
 
 

@@ -1,6 +1,5 @@
 import { ReactNode, RefObject, useContext } from "react";
 import { StepContext } from "../../../context/StepContext";
-import toast from "react-hot-toast";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 interface Props {
     childOne: ReactNode;
@@ -8,9 +7,9 @@ interface Props {
     nextStep?: number;
     refName?: RefObject<HTMLInputElement>;
 }
-import utils from "../../../hooks/utils";
-import useSignup from "../../../hooks/useSignup";
 import Loader from "../../common/Loader";
+import { BiError } from "react-icons/bi";
+import useHandleSignUpSteps from "../../../hooks/useHandleSignUpSteps";
 /*
 Total Steps = 10
 
@@ -93,42 +92,14 @@ required : true
 
 
 const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
-    const { setStep, setData, data } = useContext(StepContext);
-    const { generateWaanverseEmail } = utils();
+    const { setStep } = useContext(StepContext);
 
-    const { signup, isLoading, errors } = useSignup();
+    const {error,handleNext,handleSubmit,isLoading,signupErrors:errors } = useHandleSignUpSteps(refName,nextStep);
 
-
-    const handleSubmit =async () => {
-        console.log(data);
-        await signup(data);
-
-    };
-    const handleNext = () => {
-        if (refName?.current) {
-            if (refName.current.value !== "") {
-                if (refName.current.id === "waanverse_email") {
-                    const email = generateWaanverseEmail(refName.current.value);
-                    setData((prev) => ({ ...prev, [refName.current!.name]: email }));
-                } else if (refName.current.name === 'dob') {
-                    setData((prev) => ({ ...prev, [refName.current!.name]: refName.current!.value }));
-                } else {
-                    setData((prev) => ({ ...prev, [refName.current!.name]: refName.current!.value }));
-                }
-                setStep(nextStep!);
-            }
-            else{
-                toast.error(`Please enter ${refName.current.ariaLabel}`);
-                refName.current.className+=" border-red-500 border-2";
-                return;
-            }
-        }
-
-    };
 
     return (
         <>
-            <section className="h-32 flex items-center justify-center">
+            <section className="min-h-32 flex items-center justify-center">
                 <div className="grid grid-cols-1 gap-4 w-full">
                     {errors && errors.length > 0 ? (
                         <>
@@ -140,7 +111,15 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
                             ))}
                         </>
                     ) : (
-                        <div>{childOne}</div>
+                        <>
+                            <div className="mt-1">{childOne}</div>
+                            {error && (
+                                <p className="text-sm flex-wrap flex text-red-400">
+                                    <BiError className="w-4 h-4 mr-1" />
+                                    {error}
+                                </p>
+                            )}
+                        </>
                     )}
                 </div>
             </section>
@@ -163,8 +142,8 @@ const StepFrame = ({ childOne, next, nextStep, refName }: Props) => {
                         {errors && errors.length > 0 ? (
                             <>
                                 <button
-                                        type="button"
-                                        onClick={()=>setStep(1)}
+                                    type="button"
+                                    onClick={() => setStep(1)}
                                     className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                 >
                                     Retry again

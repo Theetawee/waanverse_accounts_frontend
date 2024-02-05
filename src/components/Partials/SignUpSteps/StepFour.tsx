@@ -12,7 +12,7 @@ const StepFour = () => {
                 inref={phoneNumberRef}
                 type="text"
                 id="phone_number"
-                name="phone_number"
+                name="phone"
                 label="Phone Number"
                 disabled={false}
                 required={true}

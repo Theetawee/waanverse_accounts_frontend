@@ -14,13 +14,13 @@ const StepNine = () => {
                 inref={confirmPasswordRef}
                 type="password"
                 id="confirm_password"
-                name="confirm_password"
+                name="password2"
                 label="Confirm Password"
                 disabled={false}
                 required={true}
             />
             <span className="text-sm text-gray-600">
-                This password must match with the password you entered first. 
+                This password must match with the password you entered first.
             </span>
         </div>
     );

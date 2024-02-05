@@ -5,16 +5,16 @@ import TextInput from "../../common/Inputs/TextInput";
 
 const StepOne = () => {
 
-    const firstNameRef = useRef<HTMLInputElement>(null);
+    const NameRef = useRef<HTMLInputElement>(null);
 
-    const firstNameInput = (
+    const NameInput = (
         <div>
             <TextInput
-                inref={firstNameRef}
+                inref={NameRef}
                 type="text"
-                id="waanverse_first_name"
-                name="first_name"
-                label="First Name"
+                id="waanverse_user_name"
+                name="name"
+                label="Name"
                 disabled={false}
                 required={true}
             />
@@ -25,10 +25,10 @@ const StepOne = () => {
     return (
         <>
             <StepFrame
-                childOne={firstNameInput}
+                childOne={NameInput}
                 next={true}
                 nextStep={2}
-                refName={firstNameRef}
+                refName={NameRef}
             />
         </>
     );

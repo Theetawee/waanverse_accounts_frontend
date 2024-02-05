@@ -25,7 +25,7 @@ const StepSeven = () => {
                     onChange={(date) => setStartDate(date!)}
                 />
             </div>
-            <input type="hidden" id="waanverse_user_dob" name="dob" ref={dobRef} value={startDate.toISOString().slice(0, 10)} />
+            <input type="hidden" id="waanverse_user_dob" name="date_of_birth" ref={dobRef} value={startDate.toISOString().slice(0, 10)} />
         </div>
     );
 
