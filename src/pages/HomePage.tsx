@@ -3,6 +3,11 @@ import Logo from "../assets/images/logo.svg";
 import Lock from "../assets/images/lock.png";
 import BasicFooter from "../components/common/BasicFooter";
 import Seo from "../components/utils/Seo";
+import { FcGoogle } from "react-icons/fc";
+
+
+
+
 const HomePage = () => {
     return (
         <Seo
@@ -80,27 +85,42 @@ const HomePage = () => {
                     </section>
                 </section>
                 <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
-                <section className="min-h-[50vh] bg-page-pattern bg-white py-10 flex flex-col justify-center items-center px-6">
+                <section className="min-h-[50vh] px-6 bg-page-pattern bg-white py-10 flex flex-col justify-center items-center">
                     <div className="mb-20">
                         <h2 className="text-center text-4xl font-bold text-primary-600">
                             Your WaanVerse starts here...
                         </h2>
                     </div>
-                    <div className="flex flex-wrap justify-center space-y-5 md:space-y-0 md:justify-between items-center">
-                        <Link
-                            to={"/signup"}
-                            type="button"
-                            className="text-white text-center w-full md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded   px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-                        >
-                            Create Your Account
-                        </Link>
-                        <Link
-                            to={"/login"}
-                            type="button"
-                            className="py-2.5 w-full text-center md:w-auto md:ml-10 px-5   font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                        >
-                            Login to Your Account
-                        </Link>
+                    <div className="flex items-center justify-center flex-col px-4">
+                        <div className="flex flex-wrap justify-center space-y-5 md:space-y-0 md:justify-between items-center">
+                            <Link
+                                to={"/signup"}
+                                type="button"
+                                className="text-white text-center w-[90%] md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded   px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                            >
+                                Create Your Account
+                            </Link>
+                            <Link
+                                to={"/login"}
+                                type="button"
+                                className="py-2.5 w-[90%] text-center md:w-auto md:ml-10 px-5   font-medium text-gray-700 focus:outline-none bg-white rounded border border-gray-50 hover:shadow hover:text-primary-700 focus:z-10 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                            >
+                                Login to Your Account
+                            </Link>
+                        </div>
+                        <div className="flex mt-6 items-center justify-center w-full">
+                            <hr className="w-64 h-px  bg-gray-400 border-0 dark:bg-gray-700" />
+                            <span className=" px-3 font-medium text-gray-900 dark:text-white dark:bg-gray-900">
+                                or
+                            </span>
+                            <hr className="w-64 h-px bg-gray-400 border-0 dark:bg-gray-700" />
+                        </div>
+                        <div className="w-[90%] mt-5">
+                            <button className="w-full hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-x bg-white">
+                                <FcGoogle className="w-5 h-5"/>
+                                <span className="ml-2">Continue with Google</span>
+                            </button>
+                        </div>
                     </div>
                     <div className="py-6">
                         <BasicFooter />
