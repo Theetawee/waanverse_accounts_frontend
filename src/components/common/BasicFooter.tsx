@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 const BasicFooter = () => {
   return (
       <>
-          <div className="flex flex-wrap items-center max-w-lg mx-auto p-4 justify-center gap-x-4">
+          <div className="flex flex-wrap text-sm items-center max-w-lg mx-auto p-4 justify-center gap-x-4">
               <span>
                   <Link className="hover:underline text-gray-700" to={"/"}>
                       Home
