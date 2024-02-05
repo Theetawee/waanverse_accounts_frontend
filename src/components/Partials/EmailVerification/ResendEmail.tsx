@@ -89,7 +89,7 @@ const ResendEmail = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="bg-primary-600 hover:bg-primary-700 text-white font-bold py-2.5 px-5 rounded"
+                                className="bg-primary-600 hover:bg-primary-700 text-white  py-2 text-sm px-5 rounded"
                             >
                                 {isLoading ? <Loader fill="white" /> : "Resend"}
                             </button>
