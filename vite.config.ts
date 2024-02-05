@@ -96,6 +96,12 @@ const ManifestFile: Partial<ManifestOptions> = {
             sizes: "any",
             type: "image/svg+xml",
         },
+        {
+            src: "/icons/1024.png",
+            sizes: "1024x1024",
+            type: "image/png",
+            purpose: "maskable",
+        }
     ],
     name: "Waanverse Accounts",
     short_name: "Accounts",
