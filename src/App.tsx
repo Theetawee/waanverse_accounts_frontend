@@ -22,11 +22,17 @@ const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
 const AccountActivationPage = lazy(() => import("./pages/AccountActivationPage"));
 const PasswordResetConfirmPage = lazy(() => import("./pages/PasswordResetConfirmPage"));
 const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"))
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"))
+
+
+
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<MainLayout />}>
-            <Route path="/accounts/password/reset/confirm/:uid/:token" element={<PasswordResetConfirmPage/>}/>
+            <Route path="/accounts/password/reset/confirm/:uid/:token" element={<PasswordResetConfirmPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/logout" element={<LogoutPage />} />
             <Route element={<ProtectedRoute />}>
                 <Route index element={<HomePage />} />
