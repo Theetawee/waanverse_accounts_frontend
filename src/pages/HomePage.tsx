@@ -34,11 +34,13 @@ const HomePage = () => {
             <section className="h-full bg-homebg overflow-x-hidden">
                 <section className=" bg-white/50">
                     <div className="p-10">
+                        <Link to="/">
                         <img
                             src={Logo}
                             alt="Waanverse"
                             className="w-12 rounded  h-12"
-                        />
+                            />
+                            </Link>
                     </div>
 
                     <section className="dark:bg-gray-900">
