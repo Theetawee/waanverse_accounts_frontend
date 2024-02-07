@@ -10,8 +10,6 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const AccountPage = lazy(() => import("./pages/AccountPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage"));
-import FrameLayout from "./layouts/FrameLayout";
-import MainLayout from "./layouts/MainLayout";
 import ProtectedRoute from "./components/utils/ProtectedRoute";
 import PrivateRoute from "./components/utils/PrivateRoute";
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
@@ -23,9 +21,8 @@ const AccountActivationPage = lazy(() => import("./pages/AccountActivationPage")
 const PasswordResetConfirmPage = lazy(() => import("./pages/PasswordResetConfirmPage"));
 const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"))
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"))
-
-
-
+const FrameLayout = lazy(() => import("./layouts/FrameLayout"))
+const MainLayout = lazy(() => import("./layouts/MainLayout"))
 
 
 const router = createBrowserRouter(
