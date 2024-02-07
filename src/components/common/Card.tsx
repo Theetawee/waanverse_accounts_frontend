@@ -1,17 +1,30 @@
 import { IconType } from "react-icons";
-
+import { useNavigate } from "react-router-dom";
 interface props {
     icon: IconType;
     name: string;
     description: string;
+    path:string
 }
 
-const Card = ({ icon: Icon, name, description }: props) => {
+const Card = ({ icon: Icon, name, description,path }: props) => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(`/account${path}`);
+    }
+
+
+
+
     return (
-        <div className="p-4 w-full h-52 flex items-center justify-center flex-col sm:w-[18rem] mx-auto m-6 text-center bg-white rounded-xl border-gray-100 border cursor-pointer">
-            <Icon className="w-8 h-8 mx-auto mb-2 text-gray-500" />
-            <p className="text-xl font-semibold">{name}</p>
-            <p className="  text-gray-600">{description}</p>
+        <div onClick={handleClick} className="p-4 w-full  shadow flex items-center justify-center flex-col sm:w-full  bg-white rounded-md border-gray-100 border cursor-pointer">
+            <div className="bg-primary-600 rounded-full p-2 w-14 h-14 flex items-center justify-center">
+                <Icon className="w-full h-full mx-auto  text-white " />
+            </div>
+            <div className="py-4 max-w-md mx-auto">
+                <p className="text-xl">{name}</p>
+                <p className="  text-gray-600">{description}</p>
+            </div>
         </div>
     );
 };

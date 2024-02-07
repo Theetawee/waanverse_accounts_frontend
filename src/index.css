@@ -56,5 +56,5 @@
 }
 
 .sideLink.active{
-  @apply bg-white border-l-2 font-bold shadow rounded-l-none border-primary-500;
+  @apply border-l-4 font-bold  rounded-l-none border-primary-500;
 }

@@ -23,11 +23,14 @@ const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"))
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"))
 const FrameLayout = lazy(() => import("./layouts/FrameLayout"))
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
+const ProfilePage = lazy(() => import("./pages/ProfilePage"))
+const SecurityPage = lazy(() => import("./pages/SecurityPage"))
+
 
 
 const router = createBrowserRouter(
     createRoutesFromElements([
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<SuspenseLoader><MainLayout /></SuspenseLoader>}>
             <Route path="/accounts/password/reset/confirm/:uid/:token" element={<PasswordResetConfirmPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/logout" element={<LogoutPage />} />
@@ -41,9 +44,11 @@ const router = createBrowserRouter(
                 <Route path="/oauth2/google" element={<GoogleLoginPage/>}/>
             </Route>
         </Route>,
-        <Route path="/account" element={<FrameLayout />}>
+        <Route path="/account" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
             <Route element={<PrivateRoute />}>
-                    <Route index element={<AccountPage />} />
+                <Route path="/account/home" element={<AccountPage />} />
+                <Route path="/account/info" element={<ProfilePage />} />
+                <Route path="/account/security" element={<SecurityPage />} />
 
             </Route>
         </Route>,
