@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { NavLink } from "react-router-dom";
-
+import { DrawerContext } from "../context/DrawerContext";
+import { useContext } from "react";
 interface Props{
     path: string;
     icon: IconType;
@@ -10,10 +11,17 @@ interface Props{
 
 
 const AsideLink = ({path,icon:Icon,label}:Props) => {
+
+    const { toggleSidebar} = useContext(DrawerContext);
+
+
+
+
+
   return (
       <>
           <span>
-              <NavLink to={path} className="sideLink">
+              <NavLink onClick={toggleSidebar} to={path} className="sideLink">
                   <div className="flex">
                       <span>
                           <Icon className="w-5 h-5"/>
