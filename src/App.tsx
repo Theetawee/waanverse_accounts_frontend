@@ -46,7 +46,7 @@ const router = createBrowserRouter(
         </Route>,
         <Route path="/account" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
             <Route element={<PrivateRoute />}>
-                <Route path="/account/home" element={<AccountPage />} />
+                <Route index path="/account/home" element={<AccountPage />} />
                 <Route path="/account/info" element={<ProfilePage />} />
                 <Route path="/account/security" element={<SecurityPage />} />
 
