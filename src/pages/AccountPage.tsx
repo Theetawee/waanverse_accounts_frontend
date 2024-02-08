@@ -1,36 +1,20 @@
-import { Link } from "react-router-dom";
 import { IoKeyOutline } from "react-icons/io5";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import Card from "../components/common/Card";
 import { HiOutlineUser } from "react-icons/hi2";
+import useTopBar from "../hooks/useTopBar";
 const AccountPage = () => {
 
     const { userInfo} = useContext(AuthContext);
 
+    useTopBar("Account");
+
+
     return (
         <>
-            <section className="px-4">
+            <section className="p-4">
                 <div className="max-w-screen-xl md:px-4 mx-auto">
-                    <div className="flex py-8  md:py-16 px-4 items-center justify-between">
-                        <div>
-                            <p className="text-xl font-bold">Account</p>
-                        </div>
-                        <div className="hidden md:block">
-                            <div className="flex hover:text-primary-600 items-center justify-center">
-                                <div className="bg-primary-600 p-2 rounded-full">
-                                    <IoKeyOutline className="w-5 text-white h-5" />
-                                </div>
-                                <Link
-                                    to={"/"}
-                                    className="flex ml-1 text-sm flex-col"
-                                >
-                                    <p>Change Password</p>
-                                    <p>Security</p>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
                     <div className="bg-white p-4 rounded-md shadow">
                         <p className="text-lg mb-4">
                             Hello {userInfo?.name} welcome to your Waanverse

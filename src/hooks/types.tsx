@@ -52,3 +52,8 @@ export interface QuestionsSumitType{
     answer1: string;
     answer2: string;
 }
+
+export interface TopBarContextType{
+    title: string,
+    setTitle: React.Dispatch<React.SetStateAction<string>>
+}

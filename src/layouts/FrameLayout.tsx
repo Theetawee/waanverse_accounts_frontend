@@ -3,6 +3,7 @@ import SuspenseLoader from "../components/utils/SuspenseLoader";
 import ContextProvider from "../context/ContextProvider";
 import AppBar from "./AppBar";
 import Frame from "./Frame";
+import TopBar from "../components/common/TopBar";
 
 const FrameLayout = () => {
     return (
@@ -13,6 +14,7 @@ const FrameLayout = () => {
             </SuspenseLoader>
             <SuspenseLoader>
                 <main className="min-h-screen md:ml-72">
+                    <TopBar/>
                     <Outlet />
                     </main>
             </SuspenseLoader>
