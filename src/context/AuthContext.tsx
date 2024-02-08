@@ -24,7 +24,7 @@ export const AuthContext = createContext<AuthContextDataType>({
 const AuthProvider = ({ children }: AuthProviderProps) => {
     const { encryptData, decryptData } = utils();
     // const duration = 1000 * 60 * 15;
-    const [serverOk, setServerOk] = useState(false);
+    const [serverOk, setServerOk] = useState<boolean>(true);
 
     const AuthenticateUser: (user: UserType) => void = (user) => {
         setIsAuthenticated(true);
