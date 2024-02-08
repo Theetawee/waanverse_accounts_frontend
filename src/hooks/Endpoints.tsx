@@ -1,10 +1,14 @@
+import { UserType } from "./types";
 import useAxios from "./useAxios";
 
 const Endpoints = () => {
 
   const api = useAxios();
 
-
+  const getUserInfo = async ():Promise<UserType> => {
+    const resp = await api.get("/accounts/me/");
+    return resp.data;
+  }
 
   const handlePasswordReset = async (data: string) => {
     const formData = new FormData();
@@ -23,7 +27,7 @@ const Endpoints = () => {
   return {
     handlePasswordReset,
     handlePasswordResetConfirm,
-    
+    getUserInfo
   }
 }
 

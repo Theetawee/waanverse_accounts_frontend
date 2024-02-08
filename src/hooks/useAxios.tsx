@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const useAxios = () => {
     const baseUrl: string = import.meta.env.VITE_BASE_URL;
-    const { logout } = useContext(AuthContext);
+    const { innerLogout,AuthenticateUser} = useContext(AuthContext);
     const axiosInstance: AxiosInstance = axios.create({
         baseURL: baseUrl,
         withCredentials: true,
@@ -12,6 +12,16 @@ const useAxios = () => {
             "Content-Type": "application/json",
         },
     });
+
+    const updateUserInfo=async()=>{
+        try{
+            const response = await axiosInstance.get("/accounts/me/")
+            AuthenticateUser(response.data)
+        }catch(error){
+            console.log(error)
+            innerLogout()
+        }
+    }
 
     //Add a response interceptor
     axiosInstance.interceptors.response.use(
@@ -32,10 +42,11 @@ const useAxios = () => {
                         method: "POST",
                         credentials: "include",
                     })
+                    await updateUserInfo();
                     return axiosInstance(originalRequest);
                 } catch {
                     // If token refresh fails, log the user out
-                    logout();
+                    innerLogout();
                     return Promise.reject(error);
                 }
             }

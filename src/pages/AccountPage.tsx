@@ -4,12 +4,18 @@ import { useContext } from "react";
 import Card from "../components/common/Card";
 import { HiOutlineUser } from "react-icons/hi2";
 import useTopBar from "../hooks/useTopBar";
+
+
+
+
+
+
+
 const AccountPage = () => {
 
     const { userInfo} = useContext(AuthContext);
 
     useTopBar("Account");
-
 
     return (
         <>

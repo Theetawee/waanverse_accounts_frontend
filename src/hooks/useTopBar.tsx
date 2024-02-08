@@ -6,7 +6,6 @@ const useTopBar = (title:string) => {
 
   useEffect(() => {
       setTitle(title);
-      console.log('called')
       return () => {
           setTitle("");
       };

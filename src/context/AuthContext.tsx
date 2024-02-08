@@ -18,7 +18,8 @@ export const AuthContext = createContext<AuthContextDataType>({
     setFastRefresh: () => {},
     isOnline: navigator.onLine,
     logout: () => { },
-    serverOk:false
+    serverOk: false,
+    innerLogout: () => {},
 });
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
@@ -184,6 +185,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         setFastRefresh,
         isOnline,
         logout: UnauthenticateUser,
+        innerLogout: UnauthenticateUserInner,
         serverOk
     };
 
