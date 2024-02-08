@@ -1,15 +1,21 @@
 export interface UserType {
-    country: string;
+    location: string;
     joined: string;
-    date_of_birth: string;
+    date_of_birth: string|null;
     email: string;
     name: string;
     id: number;
     username: string;
-    phone: string;
-    gender: "male" | "female"|"other";
-    image: string;
+    phone: string|null;
+    gender: "male" | "female"|"other"|null;
+    image: string | null;
     image_hash: string;
+    bio: string | null;
+    verified: boolean;
+    is_following: number;
+    is_followed_by: number;
+    is_waany: boolean;
+    badges: BadgeType[];
 }
 
 export interface AuthContextDataType {
@@ -56,4 +62,16 @@ export interface QuestionsSumitType{
 export interface TopBarContextType{
     title: string,
     setTitle: React.Dispatch<React.SetStateAction<string>>
+}
+
+
+export interface BadgeType{
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    image_hash: string;
+    added_on: string;
+    updated_on: string;
+    value: number;
 }
