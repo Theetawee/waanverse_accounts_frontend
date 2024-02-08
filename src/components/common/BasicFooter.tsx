@@ -27,7 +27,7 @@ const BasicFooter = () => {
                   </Link>
               </span>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center mt-3 justify-center">
               {serverOk ? (
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
               ) : (

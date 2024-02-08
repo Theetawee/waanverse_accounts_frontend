@@ -11,7 +11,7 @@ const AppBar = () => {
             <nav className="bg-primary-900 z-30  sticky  top-0 left-0 w-full border-b border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl justify-between flex flex-wrap items-center  mx-auto px-4 py-2">
                     <Link
-                        to="/account"
+                        to="/account/home"
                         className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
                         <span className="self-center text-xl text-white whitespace-nowrap dark:text-white">
