@@ -6,7 +6,7 @@ import { useContext } from "react";
 const BasicFooter = () => {
     const { serverOk} = useContext(AuthContext);
   return (
-      <div className="flex items-center flex-col">
+      <div className="flex items-center flex-col p-4">
           <div className="flex flex-wrap text-sm items-center max-w-lg mx-auto justify-center gap-x-4">
               <span>
                   <Link className="hover:underline text-gray-700" to={"/"}>
