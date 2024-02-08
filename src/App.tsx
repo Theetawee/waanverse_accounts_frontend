@@ -44,7 +44,7 @@ const router = createBrowserRouter(
                 <Route path="/oauth2/google/" element={<GoogleLoginPage/>}/>
             </Route>
         </Route>,
-        <Route path="/account" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
+        <Route path="/" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
             <Route element={<PrivateRoute />}>
                 <Route index path="/account/home" element={<AccountPage />} />
                 <Route path="/account/info" element={<ProfilePage />} />
