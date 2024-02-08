@@ -20,6 +20,7 @@ export interface AuthContextDataType {
     isOnline: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     logout: () => any;
+    serverOk:boolean
 }
 
 

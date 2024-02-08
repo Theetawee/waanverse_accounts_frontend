@@ -17,12 +17,14 @@ export const AuthContext = createContext<AuthContextDataType>({
     AuthenticateUser: () => {},
     setFastRefresh: () => {},
     isOnline: navigator.onLine,
-    logout: () => {},
+    logout: () => { },
+    serverOk:false
 });
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
     const { encryptData, decryptData } = utils();
     // const duration = 1000 * 60 * 15;
+    const [serverOk, setServerOk] = useState(false);
 
     const AuthenticateUser: (user: UserType) => void = (user) => {
         setIsAuthenticated(true);
@@ -158,10 +160,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     useEffect(() => {
         const handleOnline = () => setIsOnline(true);
         const handleOffline = () => setIsOnline(false);
-
+        const getServerStatus = async () => {
+            try {
+                await fetch(`${baseUrl}/ping/`);
+                setServerOk(true);
+            } catch (error) {
+                setServerOk(false);
+            }
+        }
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
-
+        getServerStatus();
         return () => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
@@ -175,6 +184,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         setFastRefresh,
         isOnline,
         logout: UnauthenticateUser,
+        serverOk
     };
 
     return (
@@ -184,7 +194,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     <LoadingState />
                 ) : (
                     <>
-
                         {!isOnline && <OfflineAlert />}
 
                         {children}
