@@ -41,7 +41,7 @@ const router = createBrowserRouter(
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
                 <Route path='/verify-email' element={<VerifyEmailPage />} />
                 <Route path='/accounts/activate/:token' element={<AccountActivationPage />} />
-                <Route path="/oauth2/google" element={<GoogleLoginPage/>}/>
+                <Route path="/oauth2/google/" element={<GoogleLoginPage/>}/>
             </Route>
         </Route>,
         <Route path="/account" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
