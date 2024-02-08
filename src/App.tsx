@@ -25,13 +25,24 @@ const FrameLayout = lazy(() => import("./layouts/FrameLayout"))
 const MainLayout = lazy(() => import("./layouts/MainLayout"))
 const ProfilePage = lazy(() => import("./pages/ProfilePage"))
 const SecurityPage = lazy(() => import("./pages/SecurityPage"))
-
+const UpdateImage = lazy(() => import("./pages/UpdateImage"));
+const UpdateInfo = lazy(() => import("./pages/UpdateInfo"));
 
 
 const router = createBrowserRouter(
     createRoutesFromElements([
-        <Route path="/" element={<SuspenseLoader><MainLayout /></SuspenseLoader>}>
-            <Route path="/accounts/password/reset/confirm/:uid/:token" element={<PasswordResetConfirmPage />} />
+        <Route
+            path="/"
+            element={
+                <SuspenseLoader>
+                    <MainLayout />
+                </SuspenseLoader>
+            }
+        >
+            <Route
+                path="/accounts/password/reset/confirm/:uid/:token"
+                element={<PasswordResetConfirmPage />}
+            />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/logout" element={<LogoutPage />} />
             <Route element={<ProtectedRoute />}>
@@ -39,17 +50,28 @@ const router = createBrowserRouter(
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/reset-password" element={<ResetPasswordPage />} />
-                <Route path='/verify-email' element={<VerifyEmailPage />} />
-                <Route path='/accounts/activate/:token' element={<AccountActivationPage />} />
-                <Route path="/oauth2/google/" element={<GoogleLoginPage/>}/>
+                <Route path="/verify-email" element={<VerifyEmailPage />} />
+                <Route
+                    path="/accounts/activate/:token"
+                    element={<AccountActivationPage />}
+                />
+                <Route path="/oauth2/google/" element={<GoogleLoginPage />} />
             </Route>
         </Route>,
-        <Route path="/" element={<SuspenseLoader><FrameLayout /></SuspenseLoader>}>
+        <Route
+            path="/"
+            element={
+                <SuspenseLoader>
+                    <FrameLayout />
+                </SuspenseLoader>
+            }
+        >
             <Route element={<PrivateRoute />}>
                 <Route index path="/account/home" element={<AccountPage />} />
                 <Route path="/account/info" element={<ProfilePage />} />
                 <Route path="/account/security" element={<SecurityPage />} />
-
+                <Route path="/account/update/image" element={<UpdateImage />} />
+                <Route path="/account/update/info" element={<UpdateInfo />} />
             </Route>
         </Route>,
         <Route
