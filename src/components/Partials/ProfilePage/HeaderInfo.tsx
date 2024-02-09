@@ -20,7 +20,7 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
               <div className="ml-4">
                   <p className="text-sm mb-6 max-w-sm">
                       Personalize your account with a photo. Your profile photo
-                      will appear on apps and devices that use your Microsoft
+                      will appear on apps and devices that use your Waanverse
                       account.
                   </p>
                   <div>
