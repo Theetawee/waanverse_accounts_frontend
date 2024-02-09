@@ -108,7 +108,9 @@ const InfoFields = () => {
 
                     {/* location */}
                     <div className="grid grid-cols-1 z-20 gap-2">
-                        <p>Country</p>
+                        <div className="flex flex-col">
+                            <p>Country</p> <p className="ml-1 font-bold text-primary-600 text-sm">Current: {location}</p>
+                            </div>
                         <CountrySelector
                             name="location"
                             sendValue={handleCountry}
@@ -133,13 +135,17 @@ const InfoFields = () => {
                     </div>
                     {/* gender */}
                     <div className="grid  grid-cols-1 gap-2">
-                        <p>Gender</p>
+                        <div className="flex flex-col">
+                            <p>Gender</p> <p className="ml-1 font-bold text-primary-600 text-sm">Current: {gender}</p>
+                        </div>
                         <GenderSelect sendValue={handleGender} />
                     </div>
 
                     {/* date of birth */}
                     <div className="grid grid-cols-1  gap-2">
-                        <p>Date of Birth</p>
+                        <div className="flex flex-col">
+                            <p>Date of Birth</p> <p className="ml-1 font-bold text-primary-600 text-sm">Current: {userInfo?.date_of_birth}</p>
+                        </div>
 
                         <DatePicker
                             showIcon={true}
@@ -150,7 +156,7 @@ const InfoFields = () => {
                         />
                     </div>
                     <div>
-                        <p className="text-sm text-gray-500 dark:text-gray-300">
+                        <p className="text-sm text-primary-600 dark:text-gray-300">
                             Your profile is private. We will not share your
                             information with anyone.
                         </p>
