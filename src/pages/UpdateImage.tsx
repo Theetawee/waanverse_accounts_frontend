@@ -5,6 +5,10 @@ import DefaultAvater from "../assets/images/default.webp";
 import { BsImage} from "react-icons/bs";
 import ImageCroper from "../components/Partials/ProfilePage/ImageCroper";
 
+
+
+
+
 const UpdateImage = () => {
     const { userInfo } = useContext(AuthContext);
     const inputRef = useRef<HTMLInputElement>(null);

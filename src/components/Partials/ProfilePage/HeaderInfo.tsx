@@ -13,7 +13,7 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
                   <Image
                       src={data.image || DefaultAvater}
                       alt={data.name}
-                      hash={data.image_hash}
+                      hash={data.profile_image_hash}
                       className="w-32 h-32 border border-gray-100 rounded-full object-cover"
                   />
               </div>

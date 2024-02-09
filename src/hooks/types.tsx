@@ -9,7 +9,7 @@ export interface UserType {
     phone: string|null;
     gender: "male" | "female"|"other"|null;
     image: string | null;
-    image_hash: string;
+    profile_image_hash: string;
     bio: string | null;
     verified: boolean;
     is_following: number;

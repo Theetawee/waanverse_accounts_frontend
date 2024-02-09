@@ -18,6 +18,7 @@ const Image = ({
     const [imgLoaded, setImgLoaded] = useState(false);
 
     const onImgLoad = () => {
+        console.log('loaded')
         setImgLoaded(true);
     }
 
