@@ -5,10 +5,10 @@ import ContextProvider from "../context/ContextProvider";
 const MainLayout = () => {
     return (
         <ContextProvider>
-        <SuspenseLoader>
-          <main className="min-h-screen bg-page-pattern bg-gray-50 bg-no-repeat bg-center  bg-cover">
-            <Outlet />
-            </main>
+            <SuspenseLoader>
+                <main className="min-h-screen bg-page-pattern bg-gray-50 bg-no-repeat bg-center  bg-cover">
+                    <Outlet />
+                </main>
             </SuspenseLoader>
         </ContextProvider>
     );

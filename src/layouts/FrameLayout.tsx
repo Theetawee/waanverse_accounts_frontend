@@ -7,14 +7,14 @@ import Frame from "./Frame";
 const FrameLayout = () => {
     return (
         <ContextProvider>
-            <Frame/>
+            <Frame />
             <SuspenseLoader>
-                <AppBar/>
+                <AppBar />
             </SuspenseLoader>
             <SuspenseLoader>
                 <main className="min-h-screen md:ml-72">
                     <Outlet />
-                    </main>
+                </main>
             </SuspenseLoader>
         </ContextProvider>
     );
