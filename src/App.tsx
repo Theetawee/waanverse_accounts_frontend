@@ -17,28 +17,24 @@ import SuspenseLoader from "./components/utils/SuspenseLoader";
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 const LogoutPage = lazy(() => import("./pages/LogoutPage"));
 const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
-const AccountActivationPage = lazy(() => import("./pages/AccountActivationPage"));
-const PasswordResetConfirmPage = lazy(() => import("./pages/PasswordResetConfirmPage"));
-const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"))
-const PrivacyPage = lazy(() => import("./pages/PrivacyPage"))
-const FrameLayout = lazy(() => import("./layouts/FrameLayout"))
-const MainLayout = lazy(() => import("./layouts/MainLayout"))
-const ProfilePage = lazy(() => import("./pages/ProfilePage"))
-const SecurityPage = lazy(() => import("./pages/SecurityPage"))
+const AccountActivationPage = lazy(
+    () => import("./pages/AccountActivationPage")
+);
+const PasswordResetConfirmPage = lazy(
+    () => import("./pages/PasswordResetConfirmPage")
+);
+const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const SecurityPage = lazy(() => import("./pages/SecurityPage"));
 const UpdateImage = lazy(() => import("./pages/UpdateImage"));
 const UpdateInfo = lazy(() => import("./pages/UpdateInfo"));
-
+import MainLayout from "./layouts/MainLayout";
+import FrameLayout from "./layouts/FrameLayout";
 
 const router = createBrowserRouter(
     createRoutesFromElements([
-        <Route
-            path="/"
-            element={
-                <SuspenseLoader>
-                    <MainLayout />
-                </SuspenseLoader>
-            }
-        >
+        <Route path="/" element={<MainLayout />}>
             <Route
                 path="/accounts/password/reset/confirm/:uid/:token"
                 element={<PasswordResetConfirmPage />}
@@ -58,14 +54,7 @@ const router = createBrowserRouter(
                 <Route path="/oauth2/google/" element={<GoogleLoginPage />} />
             </Route>
         </Route>,
-        <Route
-            path="/"
-            element={
-                <SuspenseLoader>
-                    <FrameLayout />
-                </SuspenseLoader>
-            }
-        >
+        <Route path="/" element={<FrameLayout />}>
             <Route element={<PrivateRoute />}>
                 <Route index path="/account/home" element={<AccountPage />} />
                 <Route path="/account/info" element={<ProfilePage />} />
