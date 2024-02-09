@@ -58,3 +58,17 @@
 .sideLink.active{
   @apply border-l-4 font-bold  rounded-l-none border-primary-500;
 }
+
+
+/* Croper css */
+
+.cropper-view-box,
+.cropper-face {
+    border-radius: 50%;
+}
+
+.cropper-line,
+.cropper-point {
+    border-radius: 50%;
+    background-color: #fff;
+}
