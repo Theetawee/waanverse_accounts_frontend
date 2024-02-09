@@ -25,7 +25,7 @@ const Aside = () => {
                     <Image src={profile_image} alt={name} hash={userInfo?.profile_image_hash} className="w-full rounded-full h-full"/>
                 </div>
                 <div className="ml-2">
-                    <Link to={"/"}>
+                    <Link to={"/account/info"}>
                         <p className="hover:text-primary-500">{name}</p>
                         <p className="text-sm hover:text-primary-500 text-gray-600">
                             {userInfo?.email}
