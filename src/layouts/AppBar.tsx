@@ -2,14 +2,18 @@ import { DrawerContext } from "../context/DrawerContext";
 import { useContext } from "react";
 import { MdOutlineMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { TopBarContext } from "../context/TopBarContext";
+import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 const AppBar = () => {
     const { toggleSidebar } = useContext(DrawerContext);
+    const {title,back } = useContext(TopBarContext);
 
     return (
-        <>
-            <nav className="bg-primary-900 z-30  sticky  top-0 left-0 w-full border-b border-gray-200 dark:bg-gray-900">
-                <div className="max-w-screen-xl justify-between flex flex-wrap items-center  mx-auto px-4 py-2">
+        <header>
+            <nav className="bg-primary-900 z-30 h-16 flex items-center justify-center fixed mb-8 top-0 left-0 w-full border-b border-gray-200 dark:bg-gray-900">
+                <div className="max-w-screen-xl w-full justify-between flex  items-center  mx-auto px-4 py-2">
                     <Link
                         to="/account/home"
                         className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -18,7 +22,17 @@ const AppBar = () => {
                             Waanverse Accounts
                         </span>
                     </Link>
-                    <div className="flex md:order-2 md:w-1/2 ml-[10%] ">
+
+                    <div className="md:flex items-center  hidden text-white">
+                        {back && (
+                            <button onClick={() => history.back()}>
+                                <IoMdArrowRoundBack className="w-6 h-6" />
+                            </button>)}
+                            <p className="ml-1">{title}</p>
+                        </div>
+
+
+                    <div className="flex md:hidden md:order-2 md:w-1/2 ml-[10%] ">
                         <button
                             onClick={toggleSidebar}
                             data-collapse-toggle="navbar-search"
@@ -34,7 +48,8 @@ const AppBar = () => {
                     </div>
                 </div>
             </nav>
-        </>
+            <div className="h-24"></div>
+        </header>
     );
 };
 

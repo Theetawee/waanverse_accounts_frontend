@@ -3,17 +3,19 @@ import { TopBarContextType } from "../hooks/types";
 
 export const TopBarContext = createContext<TopBarContextType>({
     title: "",
-    setTitle: () => {},
+    setTitle: () => { },
+    back: false,
+    setBack: () => { },
 });
 
 
 const TopBarContextProvider = ({ children }:{children: React.ReactNode}) => {
-
+    const[back,setBack]=useState(false);
     const [title,setTitle]=useState("");
 
     const contextData = {
         title,
-        setTitle
+        setTitle,back,setBack
     };
 
 

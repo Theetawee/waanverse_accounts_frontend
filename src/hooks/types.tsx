@@ -46,6 +46,8 @@ export interface SignupFormData {
 export interface TopBarContextType{
     title: string,
     setTitle: React.Dispatch<React.SetStateAction<string>>
+    back: boolean,
+    setBack: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 

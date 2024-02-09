@@ -1,15 +1,17 @@
 import { useContext, useEffect } from "react";
 import {TopBarContext} from "../context/TopBarContext";
 
-const useTopBar = (title:string) => {
-  const { setTitle } = useContext(TopBarContext);
+const useTopBar = (title:string,back=true) => {
+  const { setTitle,setBack } = useContext(TopBarContext);
 
   useEffect(() => {
-      setTitle(title);
+    setTitle(title);
+    setBack(back);
       return () => {
-          setTitle("");
+        setTitle("");
+        setBack(false);
       };
-  }, [setTitle, title]);
+  }, [back, setBack, setTitle, title]);
 
 
 }

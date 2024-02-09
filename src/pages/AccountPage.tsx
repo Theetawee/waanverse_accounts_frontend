@@ -15,7 +15,7 @@ const AccountPage = () => {
 
     const { userInfo} = useContext(AuthContext);
 
-    useTopBar("Account");
+    useTopBar("Account",false);
 
     return (
         <>
