@@ -1,13 +1,7 @@
-import { useEffect } from "react";
 import { MdClose } from "react-icons/md";
+import InfoFields from "../components/Partials/ProfilePage/InfoFields";
 
 const UpdateInfo = () => {
-    useEffect(() => {
-        document.documentElement.style.overflow = "hidden";
-        return () => {
-            document.documentElement.style.overflow = "auto";
-        };
-    }, []);
 
     return (
         <>
@@ -18,13 +12,12 @@ const UpdateInfo = () => {
                 onClick={() => history.back()}
                 className={`
                     flex
-                  overflow-hidden  fixed top-0 right-0 left-0 z-50 bg-black/30 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full`}
+                  overflow-x-hidden overflow-y-auto  fixed top-0 right-0 left-0 z-50 bg-black/30 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full`}
             >
                 <div
                     onClick={(e) => e.stopPropagation()}
                     className="relative p-4 animate-fadeIn w-full max-w-xl  max-h-full"
-                >
-                    <div className="relative bg-white rounded-xl flex justify-center flex-col shadow dark:bg-gray-900">
+                >   <div className="relative bg-white rounded-md flex justify-center flex-col shadow dark:bg-gray-900">
                         <div className="flex items-center justify-between p-6 dark:border-gray-600">
                             <h3 className="text-xl  text-gray-700 dark:text-white">
                                 Update Info
@@ -39,8 +32,11 @@ const UpdateInfo = () => {
                                 <span className="sr-only">Close modal</span>
                             </button>
                         </div>
-                        <div className="p-4">image</div>
+                        <div className="p-4">
+                            <InfoFields/>
+                        </div>
                     </div>
+                    <div className="h-20"></div>
                 </div>
             </div>
         </>

@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 
-function CountrySelector( {sendValue}: {sendValue: (value: any) => void}) {
+function CountrySelector( {sendValue,name="country"}: {sendValue: (value: any) => void,name?:string}) {
     const [value, setValue] = useState<any>("");
     const options = useMemo(() => countryList().getData(), []);
 
@@ -27,7 +27,7 @@ function CountrySelector( {sendValue}: {sendValue: (value: any) => void}) {
         sendValue(value);
     };
 
-    return <Select styles={customStyles}  name="country" options={options} value={value} onChange={changeHandler} />;
+    return <Select styles={customStyles}  name={name} options={options} value={value} onChange={changeHandler} />;
 }
 
 export default CountrySelector;

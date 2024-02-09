@@ -26,9 +26,9 @@ const ProfilePage = () => {
         return <CommonError />;
     } else {
         return (
-          <section className="min-h-screen px-4 pb-16">
-            <div className="grid grid-cols-1 gap-3">
-              <HeaderInfo data={data}/>
+            <section className="min-h-screen px-4 pb-16">
+                <div className="grid grid-cols-1 gap-3">
+                    <HeaderInfo data={data} />
                     <div className="bg-white  rounded-md shadow">
                         <div className="flex items-center p-4 justify-between gap-4">
                             <div>
@@ -37,7 +37,12 @@ const ProfilePage = () => {
                                     This data is not visible to anyone else
                                 </p>
                             </div>
-                            <Link to="/account/update/info">Edit info</Link>
+                            <Link
+                                to="/account/update/info"
+                                className="text-sm text-primary-600 hover:underline"
+                            >
+                                Edit info
+                            </Link>
                         </div>
                         <hr />
                         <div>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserType } from "./types";
 import useAxios from "./useAxios";
 
@@ -9,6 +10,13 @@ const Endpoints = () => {
     const resp = await api.get("/accounts/me/");
     return resp.data;
   }
+
+
+  const updateUserInfo = async (data:any) => {
+    const response = await api.post("/accounts/update/info/", data);
+    return response.data;
+  }
+
 
   const handlePasswordReset = async (data: string) => {
     const formData = new FormData();
@@ -40,7 +48,8 @@ const updateProfileImage = async (data: Blob) => {
     handlePasswordReset,
     handlePasswordResetConfirm,
     getUserInfo,
-    updateProfileImage
+    updateProfileImage,
+    updateUserInfo
   }
 }
 

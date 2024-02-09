@@ -24,8 +24,8 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
                       account.
                   </p>
                   <div>
-                      <Link to="/account/update/image"
-
+                      <Link
+                          to="/account/update/image"
                           className="px-5 py-1.5 border border-gray-200 rounded"
                       >
                           Change photo
@@ -42,7 +42,7 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
                   <p>{data.name}</p>
               </div>
               <div className="flex items-center justify-end">
-                  <button>Edit name</button>
+                  <Link to="/account/update/info" className="text-sm text-primary-600 hover:underline">Edit info</Link>
               </div>
           </div>
       </div>

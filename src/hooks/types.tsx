@@ -24,8 +24,7 @@ export interface AuthContextDataType {
     AuthenticateUser: (user: UserType) => void;
     setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>;
     isOnline: boolean;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    logout: () => any;
+    logout: () => void;
     serverOk: boolean;
     innerLogout: () => void;
 }
@@ -44,22 +43,6 @@ export interface SignupFormData {
 }
 
 
-export interface QuestionType{
-    id: number;
-    question: string;
-    created: string;
-    category: "O" | "T";
-    uses:"text"|"number"|"date"|"address"|"email"|"time";
-}
-
-
-export interface QuestionsSumitType{
-    question1: string;
-    question2: string;
-    answer1: string;
-    answer2: string;
-}
-
 export interface TopBarContextType{
     title: string,
     setTitle: React.Dispatch<React.SetStateAction<string>>
@@ -75,4 +58,13 @@ export interface BadgeType{
     added_on: string;
     updated_on: string;
     value: number;
+}
+
+
+export interface EditableUserInfoType{
+    name?: string;
+    date?: Date;
+    gender?: string;
+    phone?: string;
+    location?: string;
 }
