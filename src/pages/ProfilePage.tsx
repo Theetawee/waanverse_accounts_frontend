@@ -3,7 +3,7 @@ import Endpoints from "../hooks/Endpoints";
 import Loader from "../components/common/Loader";
 import CommonError from "../components/common/CommonError";
 import useTopBar from "../hooks/useTopBar";
-import DetailBlock from "../components/common/DetailBlock";
+import DetailBlock from "../components/Partials/ProfilePage/DetailBlock";
 import HeaderInfo from "../components/Partials/ProfilePage/HeaderInfo";
 import { Link } from "react-router-dom";
 
@@ -47,7 +47,7 @@ const ProfilePage = () => {
                         <hr />
                         <div>
                             <DetailBlock
-                                label="username"
+                                label="Username"
                                 value={`@${data.username}`}
                             />
                             <DetailBlock label="Email" value={data.email} />
