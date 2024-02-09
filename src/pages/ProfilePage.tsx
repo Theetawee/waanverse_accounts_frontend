@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import Endpoints from "../hooks/Endpoints";
-import Loader from "../components/common/Loader";
 import CommonError from "../components/common/CommonError";
 import useTopBar from "../hooks/useTopBar";
 import DetailBlock from "../components/Partials/ProfilePage/DetailBlock";
 import HeaderInfo from "../components/Partials/ProfilePage/HeaderInfo";
 import { Link } from "react-router-dom";
+import ProfileLoader from "../components/Partials/ProfilePage/ProfileLoader";
 
 
 
@@ -21,7 +21,7 @@ const ProfilePage = () => {
     });
 
     if (isPending) {
-        return <Loader />;
+        return <ProfileLoader />;
     } else if (isError) {
         return <CommonError />;
     } else {

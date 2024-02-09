@@ -8,7 +8,7 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
 
   return (
       <div className="bg-white shadow rounded-md">
-          <div className="flex p-4 flex-wrap gap-y-3 items-center">
+          <div className="flex sm:justify-start justify-center p-4 flex-wrap gap-y-3 items-center">
               <div>
                   <Image
                       src={data.image || DefaultAvater}
@@ -23,7 +23,7 @@ const HeaderInfo = ({ data }: { data: UserType }) => {
                       will appear on apps and devices that use your Waanverse
                       account.
                   </p>
-                  <div>
+                  <div className="flex items-center sm:justify-start justify-center">
                       <Link
                           to="/account/update/image"
                           className="px-5 py-1.5 border border-gray-200 rounded"
