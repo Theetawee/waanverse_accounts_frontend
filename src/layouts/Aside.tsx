@@ -22,12 +22,12 @@ const Aside = () => {
         <>
             <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full ">
-                    <Image src={profile_image} alt={name} hash={userInfo?.profile_image_hash} className="w-full rounded-full h-full"/>
+                    <Image src={profile_image} alt={name} hash={userInfo?.profile_image_hash} className="w-12 rounded-full h-full"/>
                 </div>
                 <div className="ml-2">
                     <Link to={"/account/info"}>
-                        <p className="hover:text-primary-500">{name}</p>
-                        <p className="text-sm hover:text-primary-500 text-gray-600">
+                        <p className="hover:text-primary-500 overflow-hidden text-nowrap overflow-ellipsis w-32">{name}</p>
+                        <p className="text-sm hover:text-primary-500 overflow-hidden text-nowrap overflow-ellipsis w-40 text-gray-600">
                             {userInfo?.email}
                         </p>
                     </Link>
