@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 import OfflineAlert from "../components/common/OfflineAlert";
 import LoadingState from "../components/common/LoadingState";
 import utils from "../hooks/utils";
-
+import { useSearchParams } from "react-router-dom";
 
 
 interface AuthProviderProps {
@@ -26,6 +26,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const { encryptData, decryptData } = utils();
     // const duration = 1000 * 60 * 15;
     const [serverOk, setServerOk] = useState<boolean>(false);
+    const [searchParams] = useSearchParams();
+    const redirect_url = searchParams.get("redirect_url");
+    const initialized = searchParams.get("initialized");
+
+
+
 
     const AuthenticateUser: (user: UserType) => void = (user) => {
         setIsAuthenticated(true);
@@ -152,9 +158,25 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             UnauthenticateUserInner();
             setIsLoading(false);
         }
+         else {
+            setIsLoading(false);
+        }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [fastRefresh,userInfo]);
+    }, [encryptData, fastRefresh, isAuthenticated, userInfo]);
+
+
+    useEffect(() => {
+        if (initialized==="true" && redirect_url) {
+            localStorage.setItem("__redirect_url", redirect_url);
+        }
+    },[initialized,redirect_url])
+
+
+
+
+
+
+
 
 
     useEffect(() => {
@@ -168,9 +190,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 setServerOk(false);
             }
         }
-        if (isLoading) {
-            setFastRefresh(true);
-        }
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
         getServerStatus();
@@ -178,7 +197,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
         };
-    }, [isLoading]);
+    }, []);
 
     const contextData: AuthContextDataType = {
         isAuthenticated,

@@ -137,6 +137,7 @@ export default defineConfig({
                 clientsClaim: true,
                 skipWaiting: true,
                 cleanupOutdatedCaches: true,
+                disableDevLogs: true,
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/files\.waanverse\.com\/.*/i,
