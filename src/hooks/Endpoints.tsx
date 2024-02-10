@@ -43,13 +43,21 @@ const updateProfileImage = async (data: Blob) => {
 };
 
 
+  // change password
+
+  const changePassword = async (data: { old_password: string, new_password1: string, new_password2: string }) => {
+    const response = await api.post("/accounts/password/change/", data);
+    return response.data;
+  }
+
 
   return {
     handlePasswordReset,
     handlePasswordResetConfirm,
     getUserInfo,
     updateProfileImage,
-    updateUserInfo
+    updateUserInfo,
+    changePassword
   }
 }
 

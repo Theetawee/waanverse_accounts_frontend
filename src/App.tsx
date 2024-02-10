@@ -31,6 +31,17 @@ const UpdateImage = lazy(() => import("./pages/UpdateImage"));
 const UpdateInfo = lazy(() => import("./pages/UpdateInfo"));
 import MainLayout from "./layouts/MainLayout";
 import FrameLayout from "./layouts/FrameLayout";
+const ChangePasswordPage = lazy(
+    () => import("./pages/ChangePasswordPage")
+)
+
+
+
+
+
+
+
+
 
 const router = createBrowserRouter(
     createRoutesFromElements([
@@ -61,6 +72,10 @@ const router = createBrowserRouter(
                 <Route path="/account/security" element={<SecurityPage />} />
                 <Route path="/account/update/image" element={<UpdateImage />} />
                 <Route path="/account/update/info" element={<UpdateInfo />} />
+                <Route
+                    path="/account/password/change"
+                    element={<ChangePasswordPage />}
+                />
             </Route>
         </Route>,
         <Route
@@ -73,6 +88,9 @@ const router = createBrowserRouter(
         />,
     ])
 );
+
+
+
 
 function App() {
     return (
