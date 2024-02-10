@@ -38,13 +38,20 @@ const useAxios = () => {
                 originalRequest._retry = true;
                 try {
                     // Wait for the token refresh to complete before retrying the request
-                    await fetch(`${baseUrl}/accounts/token/refresh/`, {
+                    const resp=await fetch(`${baseUrl}/accounts/token/refresh/`, {
                         method: "POST",
                         credentials: "include",
                     })
-                    await updateUserInfo();
-                    return axiosInstance(originalRequest);
-                } catch {
+                    await resp.json();
+                    if (resp.ok) {
+                        await updateUserInfo();
+                        return axiosInstance(originalRequest);
+                    }
+                    else {
+                        innerLogout();
+                    }
+
+                } catch (err) {
                     // If token refresh fails, log the user out
                     innerLogout();
                     return Promise.reject(error);
