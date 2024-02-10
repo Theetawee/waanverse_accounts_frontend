@@ -13,6 +13,7 @@ import Endpoints from "../../../hooks/Endpoints";
 import Loader from "../../common/Loader";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { isAxiosError } from "axios";
 
 const InfoFields = () => {
     const navigate = useNavigate();
@@ -45,8 +46,14 @@ const InfoFields = () => {
             toast.success("Profile updated successfully");
             navigate("/account/info");
         },
-        onError: () => {
-            toast.error("Something went wrong");
+        onError: (error) => {
+            if (isAxiosError(error)) {
+                if (error.response?.data.phone) {
+                    toast.error(error.response?.data.phone[0]);
+                }
+            } else {
+                toast.error("Something went wrong");
+            }
         },
     });
 

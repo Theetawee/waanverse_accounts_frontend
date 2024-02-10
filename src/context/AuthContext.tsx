@@ -136,6 +136,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                     if (data.code === "token_not_valid") {
                         UnauthenticateUserInner();
                     }
+                    setIsLoading(false);
                 }
             } catch {
                 // UnauthenticateUser();
@@ -150,12 +151,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         if (userInfo === null && isAuthenticated) {
             UnauthenticateUserInner();
             setIsLoading(false);
-        } else {
-            setIsLoading(false);
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [fastRefresh, userInfo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [fastRefresh,userInfo]);
 
 
     useEffect(() => {
@@ -169,6 +168,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 setServerOk(false);
             }
         }
+        if (isLoading) {
+            setFastRefresh(true);
+        }
         window.addEventListener("online", handleOnline);
         window.addEventListener("offline", handleOffline);
         getServerStatus();
@@ -176,7 +178,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
         };
-    }, []);
+    }, [isLoading]);
 
     const contextData: AuthContextDataType = {
         isAuthenticated,
