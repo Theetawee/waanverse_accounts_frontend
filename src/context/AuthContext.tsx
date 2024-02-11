@@ -13,7 +13,8 @@ interface AuthContextType {
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     isAuthenticated: boolean;
     setUserInfo: React.Dispatch<React.SetStateAction<UserType | null>>
-    userInfo:UserType|null
+    userInfo: UserType | null;
+    setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
@@ -27,7 +28,8 @@ export const AuthContext = createContext<AuthContextType>({
     setIsAuthenticated: () => { },
     isAuthenticated: false,
     setUserInfo: () => { },
-    userInfo: null
+    userInfo: null,
+    setFastRefresh: () => { }
 });
 
 
@@ -57,6 +59,8 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const { LoginUser, loging,isSuccess,user } = useLogin();
 
     const [redirect, setRedirect] = useState(false);
+
+    const [fastRefresh, setFastRefresh] = useState(false);
 
 
     useEffect(() => {
@@ -106,15 +110,16 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
             }
         }
 
-        if (isLoading && isAuthenticated) {
+        if (isLoading && isAuthenticated || fastRefresh) {
             ResfreshToken();
+            setFastRefresh(false);
         } else {
             setIsLoading(false);
         }
 
 
 
-    }, [isAuthenticated, isLoading])
+    }, [fastRefresh, isAuthenticated, isLoading])
 
 
 
@@ -142,7 +147,7 @@ const contextData: AuthContextType = {
     setIsAuthenticated,
     isAuthenticated,
     setUserInfo,
-    userInfo
+    userInfo,setFastRefresh
 }
 
     return (
