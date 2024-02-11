@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.VITE_BASE_URL;
 import OfflineAlert from "../components/common/OfflineAlert";
 import LoadingState from "../components/common/LoadingState";
 import utils from "../hooks/utils";
-import { useSearchParams } from "react-router-dom";
+import RedirectToApp from "../components/Partials/LinkedApps/RedirectToApp";
 
 
 interface AuthProviderProps {
@@ -26,9 +26,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const { encryptData, decryptData } = utils();
     // const duration = 1000 * 60 * 15;
     const [serverOk, setServerOk] = useState<boolean>(false);
-    const [searchParams] = useSearchParams();
-    const redirect_url = searchParams.get("redirect_url");
-    const initialized = searchParams.get("initialized");
 
 
 
@@ -58,6 +55,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     });
     const [isOnline, setIsOnline] = useState(navigator.onLine);
 
+    const [redirect, setRedirect] = useState(false);
 
     const UnauthenticateUser= async () => {
         const resp=await fetch(`${baseUrl}/accounts/logout/`, {
@@ -158,22 +156,26 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             UnauthenticateUserInner();
             setIsLoading(false);
         }
-         else {
+        else {
+
             setIsLoading(false);
         }
 
     }, [encryptData, fastRefresh, isAuthenticated, userInfo]);
 
 
+
     useEffect(() => {
-        if (initialized==="true" && redirect_url) {
-            localStorage.setItem("__redirect_url", redirect_url);
+        if (userInfo) {
+            const redirect_uri = localStorage.getItem("redirect_uri");
+            const linked_app = localStorage.getItem("linked_app");
+            if (redirect_uri && linked_app) {
+                setRedirect(true);
+            } else {
+                setRedirect(false);
+            }
         }
-    },[initialized,redirect_url])
-
-
-
-
+    }, [userInfo]);
 
 
 
@@ -216,7 +218,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 {isLoading ? (
                     <LoadingState />
                 ) : (
-                    <>
+                        <>
+                            {redirect && <RedirectToApp/>}
                         {!isOnline && <OfflineAlert />}
 
                         {children}

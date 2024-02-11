@@ -16,6 +16,7 @@ export interface UserType {
     is_followed_by: number;
     is_waany: boolean;
     badges: BadgeType[];
+    access_key: string;
 }
 
 export interface AuthContextDataType {
