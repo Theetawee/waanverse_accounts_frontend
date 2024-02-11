@@ -77,7 +77,6 @@ const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
                     credentials: "include",
                 })
                 const data = await response.json();
-                console.log(response)
                 if (response.status === 401) {
                     setIsAuthenticated(false);
                     localStorage.removeItem("authenticated");
