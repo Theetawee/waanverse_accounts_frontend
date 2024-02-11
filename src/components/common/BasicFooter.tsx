@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
 
 
 const BasicFooter = () => {
-    const { serverOk} = useContext(AuthContext);
   return (
       <div className="flex items-center flex-col p-4">
           <div className="flex flex-wrap text-sm items-center max-w-lg mx-auto justify-center gap-x-4">
@@ -28,11 +25,6 @@ const BasicFooter = () => {
               </span>
           </div>
           <div className="flex items-center mt-3 justify-center">
-              {serverOk ? (
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              ) : (
-                  <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-              )}
               <p className="text-xs ml-2">
                   Copyright © 2024 Waanverse Corp. All rights reserved.
               </p>

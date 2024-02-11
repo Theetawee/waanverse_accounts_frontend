@@ -11,7 +11,7 @@ const LoginPage = lazy(() => import("./pages/LoginPage"));
 const AccountPage = lazy(() => import("./pages/AccountPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage"));
 import ProtectedRoute from "./components/utils/ProtectedRoute";
-import PrivateRoute from "./components/utils/PrivateRoute";
+import AuthRequired from "./components/utils/AuthRequired";
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 import SuspenseLoader from "./components/utils/SuspenseLoader";
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
@@ -65,8 +65,9 @@ const router = createBrowserRouter(
                 <Route path="/oauth2/google/" element={<GoogleLoginPage />} />
             </Route>
         </Route>,
+        // Protected Routes
         <Route path="/" element={<FrameLayout />}>
-            <Route element={<PrivateRoute />}>
+            <Route element={<AuthRequired />}>
                 <Route index path="/account/home" element={<AccountPage />} />
                 <Route path="/account/info" element={<ProfilePage />} />
                 <Route path="/account/security" element={<SecurityPage />} />

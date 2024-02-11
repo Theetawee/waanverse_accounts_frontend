@@ -1,19 +1,25 @@
 import { Link } from "react-router-dom";
 import { FaLock } from "react-icons/fa";
-import useLogin from "../hooks/useLogin";
 import Loader from "../components/common/Loader";
 import BasicFooter from "../components/common/BasicFooter";
 import TextInput from "../components/common/Inputs/TextInput";
 import Seo from "../components/utils/Seo";
+import useAuth from "../hooks/Auth/useAuth";
+
+
+
+
+
+
 
 const LoginPage = () => {
-    const { login, isLoading } = useLogin();
+    const {LoginUser: login,loging:isLoading } = useAuth();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const email = e.currentTarget.email.value;
         const password = e.currentTarget.password.value;
-        login(email, password);
+        login( email, password );
     };
 
     return (
@@ -31,7 +37,7 @@ const LoginPage = () => {
                                         <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
                                     </span>
                                     <h1 className="text-xl">
-                                        Login to your WaanVerse Account
+                                        Login to your Waanverse Account
                                     </h1>
                                 </div>
 

@@ -22,12 +22,10 @@ export interface UserType {
 export interface AuthContextDataType {
     isAuthenticated: boolean;
     userInfo: UserType | null;
-    AuthenticateUser: (user: UserType) => void;
     setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>;
     isOnline: boolean;
-    logout: () => void;
-    serverOk: boolean;
-    innerLogout: () => void;
+    AuthenticateUser: (user: UserType) => void;
+    LogoutUser: () => void;
 }
 
 

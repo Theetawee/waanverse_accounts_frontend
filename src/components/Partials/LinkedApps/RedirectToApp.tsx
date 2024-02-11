@@ -39,7 +39,7 @@ const RedirectToApp = () => {
                     continue to the application.
                 </p>
                 <button
-                    className="block w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="block w-full px-4 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     onClick={handleRedirect} // Attach onClick handler for redirection
                 >
                     Continue to Application

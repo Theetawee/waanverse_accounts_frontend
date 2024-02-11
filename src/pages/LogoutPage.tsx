@@ -1,37 +1,39 @@
-import { useContext, useEffect,useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useEffect, useRef } from "react";
+import useLogout from "../hooks/Auth/useLogout";
+import Loader from "../components/common/Loader";
+import { Link } from "react-router-dom";
 
 const LogoutPage = () => {
-    const { logout} = useContext(AuthContext);
-    const [message, setMessage] = useState("Hangon a moment while we log you out...");
-    const [subtext, setSubtext] = useState("logging out...");
+    const { LogoutUser:logout,loging,isSuccess,message,subtext } = useLogout();
+
+    const effectRan = useRef(false);
+
+
 
     useEffect(() =>{
-
-            const logoutUser=async()=>{
-                try {
-                    await logout();
-                    setMessage("You signed out of your account");
-                    setSubtext("It's a good idea to close all browser windows.");
-                } catch {
-                    setMessage("Hmm... We are having trouble logging you out.");
-                    setSubtext("Please try again by refreshing the page.");
-                }
-            }
-            logoutUser();
+        if (!effectRan.current) {
+            logout();
+            effectRan.current = true;
+        }
     }, [logout]);
 
 
     return (
         <section className="h-screen flex px-4 items-center justify-center">
             <div className="max-w-lg w-full h-72 bg-white border border-gray-200 rounded mx-auto p-8 shadow-md">
-                <div>
+                <div className="text-center">
                     <h2 className="text-2xl text-gray-700 font-bold mb-4">
                         {message}
                     </h2>
+                    {loging && <Loader fill="primary-500"/>}
+
                     <p className="text-gray-500">
                         {subtext}
                     </p>
+                    {isSuccess && (
+                        <Link className="text-primary-500 hover:underline mt-8" to="/">
+                            Go to Home
+                        </Link>)}
                 </div>
             </div>
         </section>
