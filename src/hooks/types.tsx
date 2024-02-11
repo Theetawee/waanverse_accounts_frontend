@@ -19,14 +19,6 @@ export interface UserType {
     access_key: string;
 }
 
-export interface AuthContextDataType {
-    isAuthenticated: boolean;
-    userInfo: UserType | null;
-    setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>;
-    isOnline: boolean;
-    AuthenticateUser: (user: UserType) => void;
-    LogoutUser: () => void;
-}
 
 
 export interface SignupFormData {

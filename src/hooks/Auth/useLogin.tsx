@@ -1,16 +1,14 @@
 import { useState } from "react";
 import useAxios from "../useAxios";
 import toast from "react-hot-toast";
-import { UserType } from "../types";
-
+import useAuth from "./useAuth";
 
 
 const useLogin = () => {
     const [loging, setLoging] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [user, setUser] = useState<UserType|null>(null);
     const api = useAxios();
 
+    const { AuthenticateUser} = useAuth();
 
 
     const LoginUser = async (email: string,password: string ) => {
@@ -19,11 +17,8 @@ const useLogin = () => {
             const response = await api.post("/accounts/login/", { email, password });
 
             const data = response.data
-            console.log(data.access);
             toast.success("Login successful");
-            localStorage.setItem("authenticated", "true");
-            setIsSuccess(true);
-            setUser(data.user);
+            AuthenticateUser(data.user);
         } catch (error) {
             console.log(error);
             toast.error("Unable to login, please try again.");
@@ -36,8 +31,6 @@ const useLogin = () => {
     return {
         LoginUser,
         loging,
-        isSuccess,
-        user
     };
 };
 

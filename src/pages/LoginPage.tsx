@@ -4,8 +4,7 @@ import Loader from "../components/common/Loader";
 import BasicFooter from "../components/common/BasicFooter";
 import TextInput from "../components/common/Inputs/TextInput";
 import Seo from "../components/utils/Seo";
-import useAuth from "../hooks/Auth/useAuth";
-
+import useLogin from "../hooks/Auth/useLogin";
 
 
 
@@ -13,7 +12,7 @@ import useAuth from "../hooks/Auth/useAuth";
 
 
 const LoginPage = () => {
-    const {LoginUser: login,loging:isLoading } = useAuth();
+    const { LoginUser: login,loging:isLoading } = useLogin();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -1,20 +1,21 @@
-import { createContext, useEffect, useState } from "react";
-import useLogin from "../hooks/Auth/useLogin";
-import useIsOnline from "../hooks/utils/useIsOnline";
+import { createContext, useState, ReactNode, useEffect, Dispatch } from "react";
+import utils from "../hooks/utils";
 import { UserType } from "../hooks/types";
+const baseUrl = import.meta.env.VITE_BASE_URL;
 import OfflineAlert from "../components/common/OfflineAlert";
 import LoadingState from "../components/common/LoadingState";
-import RedirectToApp from "../components/Partials/LinkedApps/RedirectToApp";
-const baseURL = import.meta.env.VITE_BASE_URL;
+import useIsOnline from "../hooks/utils/useIsOnline";
 
-interface AuthContextType {
-    LoginUser: (email: string, password: string) => void;
-    loging: boolean;
-    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+
+interface AuthContextDataType {
     isAuthenticated: boolean;
-    setUserInfo: React.Dispatch<React.SetStateAction<UserType | null>>
     userInfo: UserType | null;
-    setFastRefresh: React.Dispatch<React.SetStateAction<boolean>>
+    setFastRefresh: Dispatch<React.SetStateAction<boolean>>;
+    isOnline: boolean;
+    AuthenticateUser: (user: UserType) => void;
+    logout: () => void;
+    setUserInfo: Dispatch<React.SetStateAction<UserType | null>>;
+    setIsAuthenticated:Dispatch<React.SetStateAction<boolean>>
 }
 
 
@@ -22,144 +23,162 @@ interface AuthContextType {
 
 
 
-export const AuthContext = createContext<AuthContextType>({
-    LoginUser: () => { },
-    loging: false,
-    setIsAuthenticated: () => { },
+
+interface AuthProviderProps {
+    children: ReactNode;
+}
+
+export const AuthContext = createContext<AuthContextDataType>({
     isAuthenticated: false,
-    setUserInfo: () => { },
     userInfo: null,
-    setFastRefresh: () => { }
+    AuthenticateUser: () => {},
+    setFastRefresh: () => {},
+    isOnline: navigator.onLine,
+    logout: () => { },
+    setUserInfo: () => { },
+    setIsAuthenticated:()=>{}
 });
 
 
 
-
-
-
-
-const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
-
-    const [isAuthenticated, setIsAuthenticated] = useState(() => {
-        const auth = localStorage.getItem("authenticated");
-        if (auth === "true") {
-            return true;
-        } else {
-            return false;
-        }
-    });
-
+const AuthProvider = ({ children }: AuthProviderProps) => {
+    const { encryptData, decryptData } = utils();
     const isOnline = useIsOnline();
 
-    const [isLoading, setIsLoading] = useState(true);
+    const AuthenticateUser: (user: UserType) => void = (user) => {
+        setIsAuthenticated(true);
+        setUserInfo(user);
+        const userData = encryptData(user);
+        localStorage.setItem("__uD", userData);
+    };
 
-    const [userInfo, setUserInfo] = useState<UserType|null>(null);
-
-
-    const { LoginUser, loging,isSuccess,user } = useLogin();
-
-    const [redirect, setRedirect] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        const user = localStorage.getItem("__uD");
+        return user ? true : false;
+    });
 
     const [fastRefresh, setFastRefresh] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [userInfo, setUserInfo] = useState<UserType | null>(() => {
+        const user = localStorage.getItem("__uD");
+        if (user) {
+            const userData = decryptData(user);
+            return userData;
+        } else {
+            return null;
+        }
+    });
+
+
+
+    const UnauthenticateUser: () => Promise<void> = async () => {
+        const resp=await fetch(`${baseUrl}/accounts/logout/`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if(resp.ok) {
+            setIsAuthenticated(false);
+            setUserInfo(null);
+            localStorage.removeItem("__uD");
+        }
+    };
+
 
     useEffect(() => {
-        if (isSuccess === true && user!==null) {
+        const AuthenticateUser: (user: UserType) => void = (user) => {
             setIsAuthenticated(true);
             setUserInfo(user);
-        }
-    }, [isSuccess, user])
+            const userData = encryptData(user);
+            localStorage.setItem("__uD", userData);
+        };
 
-
-
-    useEffect(() => {
-
-        const fetchUserInfo= async ()=>{
+        const getUserInfo = async () => {
             try {
-                const response = await fetch(`${baseURL}/accounts/me/`, {
+                const response = await fetch(`${baseUrl}/accounts/me`, {
                     method: "GET",
                     credentials: "include",
-                })
-                const data = await response.json();
-                if (response.status === 401) {
-                    setIsAuthenticated(false);
-                    localStorage.removeItem("authenticated");
-                    setUserInfo(null);
-                } else {
-                    setUserInfo(data);
-                }
-            } catch(err) {
-                console.log(err);
-            }finally {
-                setIsLoading(false);
-            }
-        }
-
-        const ResfreshToken = async () => {
-            try {
-                await fetch(`${baseURL}/accounts/token/refresh/`, {
-                    method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    credentials: "include",
-                })
-                await fetchUserInfo()
-            } catch(err) {
-                console.log(err)
-            }
-        }
+                });
 
-        if (isLoading && isAuthenticated || fastRefresh) {
-            ResfreshToken();
+                if (!response.ok) {
+                    return;
+                }
+                const data: UserType = await response.json();
+                AuthenticateUser(data);
+            } catch (error) {
+                console.error("Error fetching user info", error);
+            }
+        };
+
+        const RefreshToken = async () => {
+             const response = await fetch(
+                    `${baseUrl}/accounts/token/refresh/`,
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+                const data = await response.json();
+                if (response.ok) {
+                    getUserInfo();
+                } else {
+                    if (data.code === "token_not_valid") {
+                        setIsAuthenticated(false);
+                        setUserInfo(null);
+                        localStorage.removeItem("__uD");
+                    }
+                }
+
+        };
+
+        if (fastRefresh) {
+            RefreshToken();
             setFastRefresh(false);
+        }
+        if (userInfo === null) {
+            UnauthenticateUser();
+            setIsLoading(false);
         } else {
             setIsLoading(false);
         }
+    }, [encryptData, fastRefresh, userInfo]);
 
-
-
-    }, [fastRefresh, isAuthenticated, isLoading])
-
-
-
-
-useEffect(() => {
-    if (isAuthenticated && !isLoading && userInfo !== null) {
-        const redirect_uri = localStorage.getItem("redirect_uri");
-        const linked_app = localStorage.getItem("linked_app");
-        if (redirect_uri && linked_app) {
-            setRedirect(true);
-        } else {
-            setRedirect(false);
-        }
-    }
-},[isAuthenticated, isLoading, userInfo])
-
-
-
-
-
-
-const contextData: AuthContextType = {
-    LoginUser,
-    loging,
-    setIsAuthenticated,
-    isAuthenticated,
-    setUserInfo,
-    userInfo,setFastRefresh
-}
+    const contextData: AuthContextDataType = {
+        isAuthenticated,
+        userInfo,
+        AuthenticateUser,
+        setFastRefresh,
+        isOnline,
+        logout: UnauthenticateUser,
+        setUserInfo,
+        setIsAuthenticated
+    };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {isLoading ? (<LoadingState />) : (<>
-                {redirect && <RedirectToApp/>}
-                {!isOnline && <OfflineAlert />}
-                {children}</>)}
+            <>
+                {isLoading ? (
+                    <LoadingState />
+                ) : (
+                    <>
+                        {!isOnline && <OfflineAlert />}
+
+                        {children}
+                    </>
+                )}
+            </>
         </AuthContext.Provider>
-    )
+    );
+};
 
-}
-
-
-export default AuthContextProvider;
+export default AuthProvider;
