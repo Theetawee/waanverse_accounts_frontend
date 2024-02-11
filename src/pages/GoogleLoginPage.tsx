@@ -7,7 +7,7 @@ import { AuthContext } from "../context/AuthContext";
 const GoogleLoginPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const { setIsAuthenticated,setUserInfo} = useContext(AuthContext);
+    const { AuthenticateUser} = useContext(AuthContext);
     const code = searchParams.get('code');
 
 
@@ -32,11 +32,7 @@ const GoogleLoginPage = () => {
                     if (resp.ok) {
                         toast.success("Login successful");
                         const data = await resp.json();
-                        console.log(data)
-                        localStorage.setItem("authenticated", "true");
-                        localStorage.setItem("user", JSON.stringify(data.user));
-                        setIsAuthenticated(true);
-                        setUserInfo(data.user);
+                        AuthenticateUser(data.user);
                     } else {
                         const data = await resp.json();
                         console.log(data);
