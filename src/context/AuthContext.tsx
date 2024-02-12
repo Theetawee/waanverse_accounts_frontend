@@ -10,7 +10,8 @@ import { jwtDecode } from "jwt-decode";
 import LoadingState from "../components/common/LoadingState";
 import { UserType, TokenData } from "../hooks/types";
 const baseURL = import.meta.env.VITE_BASE_URL;
-
+import useIsOnline from "../hooks/utils/useIsOnline";
+import OfflineAlert from "../components/common/OfflineAlert";
 interface AuthContextType {
     user: UserType | null;
     isAuthenticated: boolean;
@@ -35,7 +36,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const [fastRefresh, setFastRefresh] = useState(false);
-
+    const isOnline = useIsOnline();
     useEffect(() => {
         const RefreshTokens = async () => {
             const response = await fetch(`${baseURL}/accounts/token/refresh/`, {
@@ -109,7 +110,11 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {isLoading ? <LoadingState /> : <>{children}</>}
+            {isOnline && <OfflineAlert/>}
+            {isLoading ? <LoadingState /> : <>
+
+                {children}
+            </>}
         </AuthContext.Provider>
     );
 };
