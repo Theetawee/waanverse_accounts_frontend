@@ -15,7 +15,7 @@ const LoadingState = () => {
           setShowRefreshButton(true);
           setText("Taking longer than expected. Please refresh the page.");
           setIcon(<MdRunningWithErrors className=" text-rose-600 mb-20 w-20 h-20"/>);
-        }, 10000);
+        }, 100000);
 
         return () => clearTimeout(timeout);
     }, []);
