@@ -4,13 +4,14 @@ import { AuthContext } from "../context/AuthContext";
 import DefaultAvater from "../assets/images/default.webp";
 import { BsImage} from "react-icons/bs";
 import ImageCroper from "../components/Partials/ProfilePage/ImageCroper";
+import Image from "../components/common/Image";
 
 
 
 
 
 const UpdateImage = () => {
-    const { userInfo } = useContext(AuthContext);
+    const { user:userInfo } = useContext(AuthContext);
     const inputRef = useRef<HTMLInputElement>(null);
     const [error, setError] = useState<string | null>(null);
     const minWidth = 150;
@@ -92,20 +93,40 @@ const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
                             </button>
                         </div>
                         <div className="p-4">
-                            <div className={`relative ${src ? "hidden" : "flex"}  items-center justify-center`}>
-                                <img src={userInfo?.image || DefaultAvater} alt="User" className="w-52 h-52 border border-gray-100 rounded-full object-cover" />
+                            <div
+                                className={`relative ${
+                                    src ? "hidden" : "flex"
+                                }  items-center justify-center`}
+                            >
+                                <Image
+                                    src={userInfo?.image||DefaultAvater}
+                                    hash={userInfo?.image_hash}
+                                    className="w-52 h-52 border border-gray-100 rounded-full object-cover"
+                                    alt="User Image"
+                                />
                                 <span>
-                                    <input ref={inputRef} onChange={handleOnchange} type="file" className="absolute z-10 top-0 left-0 w-full h-full opacity-0  cursor-pointer" />
+                                    <input
+                                        ref={inputRef}
+                                        onChange={handleOnchange}
+                                        type="file"
+                                        className="absolute z-10 top-0 left-0 w-full h-full opacity-0  cursor-pointer"
+                                    />
                                 </span>
-                                <span className="absolute bg-gray-400/20 flex items-center justify-center top-0 p-2 left-0 w-full h-full"><BsImage className="w-6 h-6 text-white" /></span>
+                                <span className="absolute bg-gray-400/20 flex items-center justify-center top-0 p-2 left-0 w-full h-full">
+                                    <BsImage className="w-6 h-6 text-white" />
+                                </span>
                             </div>
                             {error && (
                                 <div className="text-red-500 text-center">
                                     <p>{error}</p>
                                 </div>
                             )}
-                            {src && !error && <ImageCroper src={src} handleCancel={handleCancel} />}
-
+                            {src && !error && (
+                                <ImageCroper
+                                    src={src}
+                                    handleCancel={handleCancel}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
