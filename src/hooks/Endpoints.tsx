@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { UserType } from "./types";
+import { UserDetailType } from "./types";
 import useAxios from "./useAxios";
 
 const Endpoints = () => {
 
   const api = useAxios();
 
-  const getUserInfo = async ():Promise<UserType> => {
+  const getUserInfo = async ():Promise<UserDetailType> => {
     const resp = await api.get("/accounts/me/");
     return resp.data;
   }

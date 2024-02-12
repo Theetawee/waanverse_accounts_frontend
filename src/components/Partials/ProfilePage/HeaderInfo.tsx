@@ -1,8 +1,9 @@
-import { UserType } from "../../../hooks/types";
+import { UserDetailType } from "../../../hooks/types";
 import Image from "../../common/Image";
 import DefaultAvater from "../../../assets/images/default.webp";
 import { Link } from "react-router-dom";
-const HeaderInfo = ({ data }: { data: UserType }) => {
+
+const HeaderInfo = ({ data }: { data: UserDetailType }) => {
 
 
 

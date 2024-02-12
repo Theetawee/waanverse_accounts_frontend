@@ -12,7 +12,7 @@ import Image from "../components/common/Image";
 
 
 const Aside = () => {
-    const { userInfo } = useContext(AuthContext);
+    const { user:userInfo } = useContext(AuthContext);
 
     const name = `${userInfo?.name}`;
 
@@ -22,7 +22,7 @@ const Aside = () => {
         <>
             <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full ">
-                    <Image src={profile_image} alt={name} hash={userInfo?.profile_image_hash} className="w-12 rounded-full h-full"/>
+                    <Image src={profile_image} alt={name} hash={userInfo?.image_hash} className="w-12 rounded-full h-full"/>
                 </div>
                 <div className="ml-2">
                     <Link to={"/account/info"}>

@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import useAuth from "./useAuth";
 
 const useLogout = () => {
-    const { setUserInfo, setIsAuthenticated } = useAuth();
+    const { setUser,setIsAuthenticated } = useAuth();
     const [loging, setLoging] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -18,13 +18,11 @@ const useLogout = () => {
     const LogoutUser = async () => {
         setLoging(true);
         try {
-            const response = await api.post("/accounts/logout/");
-            const data = response.data;
-            console.log(data);
+            await api.post("/accounts/logout/");
             toast.success("Logout successful");
-            localStorage.removeItem("__uD");
+            localStorage.clear();
             setIsSuccess(true);
-            setUserInfo(null);
+            setUser(null);
             setIsAuthenticated(false);
             setMessage("You signed out of your account");
             setSubtext("It's a good idea to close all browser windows.");

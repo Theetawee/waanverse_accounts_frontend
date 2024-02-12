@@ -13,7 +13,7 @@ import useTopBar from "../hooks/useTopBar";
 
 const AccountPage = () => {
 
-    const { userInfo} = useContext(AuthContext);
+    const { user} = useContext(AuthContext);
 
     useTopBar("Account",false);
 
@@ -23,7 +23,7 @@ const AccountPage = () => {
                 <div className="max-w-screen-xl md:px-4 mx-auto">
                     <div className="bg-white p-4 rounded-md shadow">
                         <p className="text-lg mb-4">
-                            Hello {userInfo?.name} welcome to your Waanverse
+                            Hello {user?.name} welcome to your Waanverse
                             account control center
                         </p>
                         <p>Here is a quick guide to help you get started!!</p>

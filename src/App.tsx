@@ -31,28 +31,20 @@ const UpdateImage = lazy(() => import("./pages/UpdateImage"));
 const UpdateInfo = lazy(() => import("./pages/UpdateInfo"));
 import MainLayout from "./layouts/MainLayout";
 import FrameLayout from "./layouts/FrameLayout";
-const ChangePasswordPage = lazy(
-    () => import("./pages/ChangePasswordPage")
-)
-
-
-
-
-
-
-
-
+const ChangePasswordPage = lazy(() => import("./pages/ChangePasswordPage"));
 
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/" element={<MainLayout />}>
-            <Route
-                path="/accounts/password/reset/confirm/:uid/:token"
-                element={<PasswordResetConfirmPage />}
-            />
-            <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/logout" element={<LogoutPage />} />
+
+            <Route path="/privacy" element={<PrivacyPage />} />
             <Route element={<ProtectedRoute />}>
+                <Route
+                    path="/accounts/password/reset/confirm/:uid/:token"
+                    element={<PasswordResetConfirmPage />}
+                />
+
                 <Route index element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
@@ -89,9 +81,6 @@ const router = createBrowserRouter(
         />,
     ])
 );
-
-
-
 
 function App() {
     return (

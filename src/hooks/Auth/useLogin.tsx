@@ -2,15 +2,17 @@
 import { useState } from "react";
 import useAxios from "../useAxios";
 import toast from "react-hot-toast";
-import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
+import useAuth from "./useAuth";
+import { jwtDecode } from "jwt-decode";
+import { UserType,TokenData } from "../types";
+
 
 const useLogin = () => {
     const [loging, setLoging] = useState(false);
     const api = useAxios();
     const navigate = useNavigate();
-    const { AuthenticateUser} = useAuth();
-
+    const {setUser } = useAuth();
 
     const LoginUser = async (email: string,password: string ) => {
         setLoging(true);
@@ -19,9 +21,20 @@ const useLogin = () => {
 
             const data = response.data
             toast.success("Login successful");
-            AuthenticateUser(data.user);
+            localStorage.setItem('user', "true");
+            const token_data:TokenData = jwtDecode(data.access)
+            const user:UserType = {
+                username: token_data.username,
+                name: token_data.name,
+                image: token_data.image,
+                image_hash: token_data.image_hash,
+                email:token_data.email
+            }
+            setUser(user);
+            navigate('/account/home');
+
+
         } catch (error: any) {
-            console.log(error);
             if (error.response.data.non_field_errors) {
                 toast.error(error.response.data.non_field_errors[0]);
                 if (error.response.data.non_field_errors[0] === "E-mail is not verified.") {

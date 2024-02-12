@@ -1,4 +1,6 @@
-export interface UserType {
+import { JwtPayload } from "jwt-decode";
+
+export interface UserDetailType {
     location: string;
     joined: string;
     date_of_birth: string|null;
@@ -18,6 +20,28 @@ export interface UserType {
     badges: BadgeType[];
     access_key: string;
 }
+
+export interface UserType {
+    username: string;
+    email: string;
+    name: string;
+    image: string | null;
+    image_hash: string;
+}
+
+
+
+export interface TokenData extends JwtPayload {
+    user_id: number;
+    username: string;
+    email: string;
+    name: string;
+    image: string | null;
+    image_hash: string;
+}
+
+
+
 
 
 
