@@ -3,11 +3,12 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import Loader from "../components/common/Loader";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
+import {  UserType } from "../hooks/types";
 
 const GoogleLoginPage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const { AuthenticateUser} = useContext(AuthContext);
+    const { setUser,setIsAuthenticated} = useContext(AuthContext);
     const code = searchParams.get('code');
 
 
@@ -32,7 +33,19 @@ const GoogleLoginPage = () => {
                     if (resp.ok) {
                         toast.success("Login successful");
                         const data = await resp.json();
-                        AuthenticateUser(data.user);
+                        console.log(data)
+                        localStorage.setItem("user", "true");
+                        setIsAuthenticated(true);
+                        const user: UserType = {
+                            username: data.username,
+                            name: data.name,
+                            image: data.image,
+                            image_hash: data.profile_image_hash,
+                            email: data.email,
+                        };
+                        console.log(user)
+                        setUser(user);
+                        navigate("/account/home");
                     } else {
                         const data = await resp.json();
                         console.log(data);

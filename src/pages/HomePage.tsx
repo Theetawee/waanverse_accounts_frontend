@@ -3,13 +3,9 @@ import Logo from "../assets/images/logo.svg";
 import Lock from "../assets/images/lock.png";
 import BasicFooter from "../components/common/BasicFooter";
 import Seo from "../components/utils/Seo";
-import { FcGoogle } from "react-icons/fc";
-const redirect_uri = import.meta.env.VITE_REDIRECT_URL;
-const client_id = import.meta.env.VITE_GOOGLE_CLIENT;
 
 const HomePage = () => {
 
-    const googleLink = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${redirect_uri}&prompt=consent&response_type=code&client_id=${client_id}&scope=openid%20email%20profile&access_type=offline`;
 
 
     return (
@@ -113,26 +109,7 @@ const HomePage = () => {
                                 Login to Your Account
                             </Link>
                         </div>
-                        <div className="flex mt-6 items-center justify-center w-full">
-                            <hr className="w-64 h-px  bg-gray-400 border-0 dark:bg-gray-700" />
-                            <span className=" px-3 font-medium text-gray-900 dark:text-white dark:bg-gray-900">
-                                or
-                            </span>
-                            <hr className="w-64 h-px bg-gray-400 border-0 dark:bg-gray-700" />
-                        </div>
-                        <div className="w-[90%] mx-auto mt-5">
-                            <button
-                                onClick={() => {
-                                    window.location.href = googleLink;
-                                }}
-                                className="hover:shadow rounded mx-auto sm:w-1/2 flex items-center justify-center py-2.5 px-5 max-w-sm bg-white"
-                            >
-                                <FcGoogle className="w-5 h-5" />
-                                <span className="ml-2">
-                                    Continue with Google
-                                </span>
-                            </button>
-                        </div>
+
                     </div>
                     <div className="py-6">
                         <BasicFooter />
