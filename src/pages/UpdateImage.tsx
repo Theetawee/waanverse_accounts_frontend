@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import DefaultAvater from "../assets/images/default.webp";
 import { BsImage} from "react-icons/bs";
 import ImageCroper from "../components/Partials/ProfilePage/ImageCroper";
-import Image from "../components/common/Image";
+import ImageComp  from "../components/common/Image";
 
 
 
@@ -98,7 +98,7 @@ const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
                                     src ? "hidden" : "flex"
                                 }  items-center justify-center`}
                             >
-                                <Image
+                                <ImageComp
                                     src={userInfo?.image||DefaultAvater}
                                     hash={userInfo?.image_hash}
                                     className="w-52 h-52 border border-gray-100 rounded-full object-cover"
