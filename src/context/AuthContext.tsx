@@ -110,7 +110,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {isOnline && <OfflineAlert/>}
+            {!isOnline && <OfflineAlert/>}
             {isLoading ? <LoadingState /> : <>
 
                 {children}
