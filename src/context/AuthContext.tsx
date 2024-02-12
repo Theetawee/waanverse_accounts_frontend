@@ -12,6 +12,8 @@ import { UserType, TokenData } from "../hooks/types";
 const baseURL = import.meta.env.VITE_BASE_URL;
 import useIsOnline from "../hooks/utils/useIsOnline";
 import OfflineAlert from "../components/common/OfflineAlert";
+import RedirectUser from "../components/Partials/LinkedApps/RedirectUser";
+
 interface AuthContextType {
     user: UserType | null;
     isAuthenticated: boolean;
@@ -34,7 +36,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         return localStorage.getItem("user") === "true";
     });
     const [isLoading, setIsLoading] = useState(true);
-
+    const [redirect, setRedirect] = useState(false);
     const [fastRefresh, setFastRefresh] = useState(false);
     const isOnline = useIsOnline();
     useEffect(() => {
@@ -100,6 +102,20 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [fastRefresh]);
 
+
+
+    useEffect(() => {
+        if (isAuthenticated && user && !isLoading) {
+            const redirectUser = sessionStorage.getItem('redirect_uri')
+            if (redirectUser) {
+                setRedirect(true);
+            }
+        }
+},[isAuthenticated, isLoading, user])
+
+
+
+
     const contextData = {
         isAuthenticated,
         user,
@@ -108,12 +124,12 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setFastRefresh
     };
 
+
     return (
         <AuthContext.Provider value={contextData}>
             {!isOnline && <OfflineAlert/>}
             {isLoading ? <LoadingState /> : <>
-
-                {children}
+                {redirect?(<RedirectUser/>):(<>{children}</>)}
             </>}
         </AuthContext.Provider>
     );

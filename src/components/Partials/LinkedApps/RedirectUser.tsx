@@ -1,0 +1,41 @@
+import { useEffect } from "react";
+
+const RedirectUser = () => {
+    useEffect(() => {
+        const handleEscape = (event: { key: string; }) => {
+            if (event.key === "Escape") {
+                sessionStorage.removeItem("redirect_uri");
+                window.location.href = "/";
+            }
+        };
+
+        document.addEventListener("keydown", handleEscape);
+
+        return () => {
+            document.removeEventListener("keydown", handleEscape);
+        };
+    }, []);
+
+    const handleRedirect = () => {
+        const redirect = sessionStorage.getItem("redirect_uri");
+        if (!redirect) return;
+        const url = `${redirect}`;
+        window.location.href = url;
+    };
+
+    return (
+        <section className="fixed inset-0 z-50 overflow-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white rounded-lg p-8">
+                <p className="text-xl font-semibold mb-4">Redirect user</p>
+                <button
+                    onClick={handleRedirect}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+                >
+                    Confirm
+                </button>
+            </div>
+        </section>
+    );
+};
+
+export default RedirectUser;
