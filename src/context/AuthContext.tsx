@@ -59,6 +59,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                     name: token_data.name,
                     image: token_data.image,
                     image_hash: token_data.image_hash,
+                    user_id:token_data.user_id
                 };
                 setUser(user);
                 setIsLoading(false);
@@ -89,6 +90,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
                     name: token_data.name,
                     image: token_data.image,
                     image_hash: token_data.image_hash,
+                    user_id:token_data.user_id
                 };
                 setUser(user);
                 setIsLoading(false);

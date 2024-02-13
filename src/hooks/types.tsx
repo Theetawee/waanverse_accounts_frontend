@@ -27,6 +27,7 @@ export interface UserType {
     name: string;
     image: string | null;
     image_hash: string;
+    user_id:number
 }
 
 

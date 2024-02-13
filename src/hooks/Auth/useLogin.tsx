@@ -28,7 +28,8 @@ const useLogin = () => {
                 name: token_data.name,
                 image: token_data.image,
                 image_hash: token_data.image_hash,
-                email:token_data.email
+                email: token_data.email,
+                user_id:token_data.user_id
             }
             setUser(user);
             navigate('/account/home');
