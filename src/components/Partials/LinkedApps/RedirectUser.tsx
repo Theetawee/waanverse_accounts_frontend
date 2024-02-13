@@ -5,7 +5,7 @@ const RedirectUser = () => {
         const redirect = sessionStorage.getItem("redirect_uri");
         if (!redirect) return;
         sessionStorage.removeItem("redirect_uri");
-        const url = `${redirect}`;
+        const url = `${redirect}/authenticate-user`;
         window.location.href = url;
     };
 

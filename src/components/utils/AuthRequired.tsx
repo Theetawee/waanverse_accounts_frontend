@@ -13,9 +13,7 @@ const AuthRequired = () => {
     if (redirect_uri && callback === 'true') {
         sessionStorage.setItem('redirect_uri',redirect_uri)
     }
-    console.log(redirect_uri);
-    console.log(callback)
-
+    
     const {isAuthenticated } = useAuth();
 
     if (isAuthenticated) {
