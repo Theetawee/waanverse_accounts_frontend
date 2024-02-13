@@ -1,24 +1,10 @@
-import { useEffect } from "react";
 
 const RedirectUser = () => {
-    useEffect(() => {
-        const handleEscape = (event: { key: string; }) => {
-            if (event.key === "Escape") {
-                sessionStorage.removeItem("redirect_uri");
-                window.location.href = "/";
-            }
-        };
-
-        document.addEventListener("keydown", handleEscape);
-
-        return () => {
-            document.removeEventListener("keydown", handleEscape);
-        };
-    }, []);
 
     const handleRedirect = () => {
         const redirect = sessionStorage.getItem("redirect_uri");
         if (!redirect) return;
+        sessionStorage.removeItem("redirect_uri");
         const url = `${redirect}`;
         window.location.href = url;
     };
