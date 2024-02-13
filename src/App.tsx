@@ -23,7 +23,6 @@ const AccountActivationPage = lazy(
 const PasswordResetConfirmPage = lazy(
     () => import("./pages/PasswordResetConfirmPage")
 );
-const GoogleLoginPage = lazy(() => import("./pages/GoogleLoginPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 const SecurityPage = lazy(() => import("./pages/SecurityPage"));
@@ -54,7 +53,6 @@ const router = createBrowserRouter(
                     path="/accounts/activate/:token"
                     element={<AccountActivationPage />}
                 />
-                <Route path="/oauth2/google/" element={<GoogleLoginPage />} />
             </Route>
         </Route>,
         // Protected Routes
