@@ -131,7 +131,7 @@ const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         <AuthContext.Provider value={contextData}>
             {!isOnline && <OfflineAlert/>}
             {isLoading ? <LoadingState /> : <>
-                {redirect?(<RedirectUser/>):(<>{children}</>)}
+                {redirect?(<RedirectUser/>):(<><RedirectUser/> {children}</>)}
             </>}
         </AuthContext.Provider>
     );

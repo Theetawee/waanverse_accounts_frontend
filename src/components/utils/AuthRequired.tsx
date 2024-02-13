@@ -9,11 +9,13 @@ const AuthRequired = () => {
 
     const redirect_uri = searchParams.get('redirect_uri')
     const callback = searchParams.get('callback')
+    const app_name= searchParams.get('app_name')
 
-    if (redirect_uri && callback === 'true') {
-        sessionStorage.setItem('redirect_uri',redirect_uri)
+    if (redirect_uri && callback === 'true'&& app_name) {
+        sessionStorage.setItem('redirect_uri', redirect_uri)
+        sessionStorage.setItem('app_name', app_name)
     }
-    
+
     const {isAuthenticated } = useAuth();
 
     if (isAuthenticated) {
