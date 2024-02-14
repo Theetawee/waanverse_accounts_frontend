@@ -12,7 +12,7 @@ const RedirectUser = () => {
     };
 
     return (
-        <section className="fixed inset-0 z-50 overflow-auto bg-gray-50 flex items-center justify-center">
+        <section className="fixed px-4 inset-0 z-50 overflow-auto bg-gray-50 flex items-center justify-center">
             <div className="bg-white max-w-md w-full rounded-lg shadow p-8">
                 <p className="text-2xl font-semibold mb-4">
                     Continue to {app_name}
