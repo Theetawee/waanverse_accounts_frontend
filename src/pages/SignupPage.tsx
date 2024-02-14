@@ -24,7 +24,7 @@ const SignupPage = () => {
             <section className="h-full overflow-x-hidden">
                 <div className="min-h-screen flex-col py-16 bg-gray-50/40 px-4 flex items-center justify-center">
                     <div className="p-4 w-full shadow mx-auto rounded-md max-w-md border border-gray-100 bg-white">
-                        <form method="post">
+                        <div>
                             <div className="grid space-y-4 grid-cols-1">
                                 <div className="w-full flex items-center flex-col justify-center">
                                     <span>
@@ -96,7 +96,7 @@ const SignupPage = () => {
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <BasicFooter />
                 </div>
