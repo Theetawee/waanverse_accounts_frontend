@@ -18,11 +18,11 @@ const BasicFooter = () => {
                       Privacy Policy
                   </Link>
               </span>
-              <span>
+              {/* <span>
                   <Link className="hover:underline text-gray-700" to={"/tos"}>
                       Terms of Service
                   </Link>
-              </span>
+              </span> */}
           </div>
           <div className="flex items-center mt-3 justify-center">
               <p className="text-xs ml-2">
