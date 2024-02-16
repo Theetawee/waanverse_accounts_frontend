@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, ChangeEvent } from "react";
 import TextInput from "../../common/Inputs/TextInput";
 import toast from "react-hot-toast";
@@ -52,7 +53,7 @@ const ResendEmail = () => {
     };
 
     useEffect(() => {
-        let countdownInterval: number | undefined;
+        let countdownInterval: any;
 
         if (!canSend) {
             countdownInterval = setInterval(() => {
