@@ -155,7 +155,7 @@ export default defineConfig({
                     },
                 ],
             },
-            devOptions: { enabled: true },
+            devOptions: { enabled: false },
             manifest: ManifestFile,
             injectRegister: "script-defer",
             includeAssets: ["**/*"],
