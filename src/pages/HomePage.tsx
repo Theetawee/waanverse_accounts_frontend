@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
-import Lock from "../assets/images/lock.png";
+import Lock from "../assets/images/lock.webp";
 import BasicFooter from "../components/common/BasicFooter";
 import Seo from "../components/utils/Seo";
 
 const HomePage = () => {
     return (
         <Seo
-            title="Waanverse Accounts"
+            title="Waanverse Accounts | Sign In or Create your Account today!"
             description="Manage and control your authentication flow with Waanverse Accounts. Streamlined user authentication, secure access, and personalized user profiles.p"
         >
             <section className="h-full bg-homebg overflow-x-hidden">
@@ -20,7 +20,12 @@ const HomePage = () => {
                                 className="w-12 rounded  h-12"
                             />
                         </Link>
-                        <Link className="text-white font-medium bg-gray-800 hover:shadow hover:bg-gray-800/90 px-5 py-2 rounded-full" to="/login">Sign in</Link>
+                        <Link
+                            className="text-white font-medium bg-gray-800 hover:shadow hover:bg-gray-800/90 px-5 py-2 rounded-full"
+                            to="/login"
+                        >
+                            Sign in
+                        </Link>
                     </div>
 
                     <section className="dark:bg-gray-900">
@@ -41,7 +46,10 @@ const HomePage = () => {
 
                             <div className="flex items-center flex-wrap justify-between">
                                 <div className="mx-auto">
-                                    <img src={Lock} alt="" />
+                                    <img
+                                        src={Lock}
+                                        alt="Secure Authentication with Waanverse"
+                                    />
                                 </div>
                                 <div className="mx-auto">
                                     <h2 className="text-left text-3xl mb-4">
@@ -99,7 +107,6 @@ const HomePage = () => {
                             >
                                 Join Waanverse now
                             </Link>
-
                         </div>
                     </div>
                     <div className="py-6">
