@@ -95,7 +95,7 @@ const HomePage = () => {
                             <Link
                                 to={"/signup"}
                                 type="button"
-                                className="text-white text-center w-[90%] md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded-full   px-8 py-3 text-lg dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                                className="text-white text-center w-full md:w-auto bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 font-medium rounded-full   px-8 py-3 text-lg dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
                             >
                                 Join Waanverse now
                             </Link>

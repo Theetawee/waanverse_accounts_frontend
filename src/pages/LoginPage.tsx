@@ -27,15 +27,15 @@ const LoginPage = () => {
             description="Log in to your WaanVerse account with confidence. Your gateway to a world of seamless connections, personalized experiences, and innovative collaborations. Join the WaanVerse community and explore a new dimension of online interaction"
         >
             <section className="h-full overflow-x-hidden ">
-                <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-4 flex items-center justify-center">
+                <div className="h-screen flex-col bg-gray-50/40 border-gray-50 px-2 flex items-center justify-center">
+                    <span>
+                        <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
+                    </span>
                     <div className="p-4  w-full mx-auto shadow rounded max-w-md border bg-white">
                         <form method="post" onSubmit={handleSubmit}>
                             <div className="grid space-y-6 grid-cols-1">
                                 <div className="w-full flex items-center flex-col justify-center">
-                                    <span>
-                                        <FaLock className="text-gray-600 w-8 h-8 mb-6 text-center flex items-center justify-center" />
-                                    </span>
-                                    <h1 className="text-xl">
+                                    <h1 className="text-xl font-medium">
                                         Login to your Waanverse Account
                                     </h1>
                                 </div>
@@ -76,13 +76,14 @@ const LoginPage = () => {
                                     <div className="flex items-center text-gray-700">
                                         <div>
                                             <p className="text-sm">
-                                                No account? {" "}
+                                                No account?{" "}
                                                 <Link
                                                     className="text-primary-600 hover:underline"
                                                     to="/signup"
                                                 >
                                                     Create one!
-                                                </Link></p>
+                                                </Link>
+                                            </p>
                                             <p className="text-sm mt-1">
                                                 <Link
                                                     to="/reset-password"

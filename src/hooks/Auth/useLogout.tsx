@@ -25,7 +25,7 @@ const useLogout = () => {
             setUser(null);
             setIsAuthenticated(false);
             setMessage("You signed out of your account");
-            setSubtext("It's a good idea to close all browser windows.");
+            setSubtext("You can log back in anytime to access your account.");
         } catch (error) {
             console.log(error);
             toast.error("Hmm... We are having trouble logging you out ");
