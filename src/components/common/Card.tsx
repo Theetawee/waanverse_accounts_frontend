@@ -4,7 +4,7 @@ interface props {
     icon: IconType;
     name: string;
     description: string;
-    path:string
+    path: string;
 }
 
 const Card = ({ icon: Icon, name, description,path }: props) => {
